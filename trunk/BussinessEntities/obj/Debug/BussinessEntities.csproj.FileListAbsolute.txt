@@ -1,0 +1,5 @@
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BussinessEntities\obj\Debug\ResolveAssemblyReference.cache
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BussinessEntities\bin\Debug\BussinessEntities.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BussinessEntities\bin\Debug\BussinessEntities.pdb
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BussinessEntities\obj\Debug\BussinessEntities.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BussinessEntities\obj\Debug\BussinessEntities.pdb
