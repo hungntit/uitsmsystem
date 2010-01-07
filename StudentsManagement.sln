@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsManagement", "StudentsManagement\StudentsManagement.csproj", "{23C232B0-7688-4ACE-BA5E-E47D3812A688}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessEntities", "BussinessEntities\BussinessEntities.csproj", "{93006FF6-72F7-4AEF-B4BE-ACFF37C1FB1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{D698A287-FD3E-4C73-9590-99898620F182}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23C232B0-7688-4ACE-BA5E-E47D3812A688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C232B0-7688-4ACE-BA5E-E47D3812A688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C232B0-7688-4ACE-BA5E-E47D3812A688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C232B0-7688-4ACE-BA5E-E47D3812A688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93006FF6-72F7-4AEF-B4BE-ACFF37C1FB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93006FF6-72F7-4AEF-B4BE-ACFF37C1FB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93006FF6-72F7-4AEF-B4BE-ACFF37C1FB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93006FF6-72F7-4AEF-B4BE-ACFF37C1FB1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D698A287-FD3E-4C73-9590-99898620F182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D698A287-FD3E-4C73-9590-99898620F182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D698A287-FD3E-4C73-9590-99898620F182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D698A287-FD3E-4C73-9590-99898620F182}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
