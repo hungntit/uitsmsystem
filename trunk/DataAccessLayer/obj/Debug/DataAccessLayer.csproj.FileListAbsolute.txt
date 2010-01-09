@@ -1,5 +1,7 @@
 D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\DataAccessLayer\bin\Debug\DataAccessLayer.dll
 D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\DataAccessLayer\bin\Debug\BussinessEntities.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\DataAccessLayer\bin\Debug\BussinessEntities.pdb
 D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\DataAccessLayer\obj\Debug\ResolveAssemblyReference.cache
 D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
