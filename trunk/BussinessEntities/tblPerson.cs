@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BussinessEntities
 {
-    class tblPerson
+    public class tblPerson
     {
         #region FIELD
         protected String _ho;

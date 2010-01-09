@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BussinessEntities
 {
-    class tblMonhoc
+    public class tblMonhoc
     {
         #region FIELD
         private String _maMon;

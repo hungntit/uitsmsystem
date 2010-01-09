@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BussinessEntities
 {
-    class tblSinhVien:tblPerson
+   public class tblSinhVien:tblPerson
     {
         #region Field
         private String _maSV;

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BussinessEntities
 {
-    class tblGiangVien:tblPerson
+    public class tblGiangVien:tblPerson
     {
         #region FIELD
         private String _maGiangVien;
