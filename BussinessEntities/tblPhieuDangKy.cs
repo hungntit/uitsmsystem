@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BussinessEntities
 {
-    class tblPhieuDangKy
+    public class tblPhieuDangKy
     {
         private String _maPhieuDK;
         private DateTime _ngayCapnhat;

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BussinessEntities
 {
-    class tblKhoa
+   public class tblKhoa
     {
         
         #region FIELD

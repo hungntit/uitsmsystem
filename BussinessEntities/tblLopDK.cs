@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BussinessEntities
 {
-    class tblLopDK
+  public  class tblLopDK
     {
        
         #region FIELD
