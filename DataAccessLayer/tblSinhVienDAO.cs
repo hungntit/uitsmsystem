@@ -7,7 +7,7 @@ using BussinessEntities;
 namespace DataAccessLayer
    
 {
-    class tblSinhVienDAO:BaseDAO
+    public class tblSinhVienDAO : BaseDAO
     {
         public tblSinhVienDAO()
             : base()
@@ -18,6 +18,96 @@ namespace DataAccessLayer
             : base(user,password)
         {
 
+        }
+
+        public void insertTblSinhVien(tblSinhVien sinhvien)
+        {
+            string QueryStr = "INSERT INTO  " + tblSinhVien.sTABLE_NAME
+                            + "("
+                            + tblSinhVien.sMASV
+                            + "," + tblSinhVien.sCMND
+                            + "," + tblSinhVien.sNIEN_KHOA
+                            + "," + tblSinhVien.sMA_LOP_QUAN_LY
+                            + "," + tblSinhVien.sHO_SINH_VIEN
+                            + "," + tblSinhVien.sTEN_SINH_VIEN
+                            + "," + tblSinhVien.sNGAYSINH
+                            + "," + tblSinhVien.sNOISINH
+                            + "," + tblSinhVien.sGIOITINH
+                            + "," + tblSinhVien.sDIACHI
+                            + ") "
+                            + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
+
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sMASV, sinhvien.MaSV);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sCMND, sinhvien.CMND);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNIEN_KHOA, sinhvien.NienKhoa);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sMA_LOP_QUAN_LY, sinhvien.MaLopQuanLy);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sHO_SINH_VIEN, sinhvien.Ho);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sTEN_SINH_VIEN, sinhvien.Ten);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNGAYSINH, sinhvien.NgaySinh);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNOISINH, sinhvien.NoiSinh);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sGIOITINH, sinhvien.GioiTinh);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sDIACHI, sinhvien.DiaChi);
+                sqlcommand.Prepare();
+                sqlcommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+
+
+            }
+        }
+
+        public void updateTblSinhVien(tblSinhVien sinhvien)
+        {
+            string QueryStr = "UPDATE SINH_VIEN "
+                            + "WHERE " + tblSinhVien.sMASV + " = ? "
+                            + "SET "
+                            + tblSinhVien.sCMND + "= " + sinhvien.CMND
+                            + tblSinhVien.sNIEN_KHOA + "= " + sinhvien.NienKhoa
+                            + tblSinhVien.sMA_LOP_QUAN_LY + "= " + sinhvien.MaLopQuanLy
+                            + tblSinhVien.sHO_SINH_VIEN+ "= " + sinhvien.Ho
+                            + tblSinhVien.sTEN_SINH_VIEN + "= " + sinhvien.Ten
+                            + tblSinhVien.sNGAYSINH + "= " + sinhvien.NgaySinh
+                            + tblSinhVien.sNOISINH + "= " + sinhvien.NoiSinh
+                            + tblGiangVien.sGIOITINH + "= " + sinhvien.GioiTinh
+                            + tblGiangVien.sDIACHI + "= " + sinhvien.DiaChi;
+
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sMASV, sinhvien.MaSV);
+                sqlcommand.Prepare();
+                sqlcommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+
+
+            }
+        }
+        public void deleteTbleSinhVien(String maSv)
+        {
+            this.deleteObj("SINH_VIEN", "MA_SINH_VIEN", maSv);
         }
         /*
          *@ Lay Thong tin giang vien boi MaGV
@@ -39,7 +129,7 @@ namespace DataAccessLayer
                 while (sqldtRd.Read())
                 {
                     String MaSinhVien = sqldtRd.GetString(0);
-                    String MaKhoa = sqldtRd.GetString(1);
+                    int malopquanly = sqldtRd.GetInt32(1);
                     String Ho = sqldtRd.GetString(2);
                     String Ten = sqldtRd.GetString(3);
                     String CMND = sqldtRd.GetString(4);
@@ -48,7 +138,7 @@ namespace DataAccessLayer
                     String NoiSinh = sqldtRd.GetString(7);
                     String DiaChi = sqldtRd.GetString(8);
                     int nienkhoa = sqldtRd.GetInt32(9);
-                    sinhvien = new tblSinhVien(MaSinhVien, MaKhoa, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi, nienkhoa);
+                    sinhvien = new tblSinhVien(MaSinhVien, malopquanly, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi, nienkhoa);
                 }
             }
             catch (Exception e)
@@ -84,7 +174,7 @@ namespace DataAccessLayer
                 while (sqldtRd.Read())
                 {
                     String MaSinhVien = sqldtRd.GetString(0);
-                    String MaKhoa = sqldtRd.GetString(1);
+                    int malopqly = sqldtRd.GetInt32(1);
                     String Ho = sqldtRd.GetString(2);
                     String Ten = sqldtRd.GetString(3);
                     String CMND = sqldtRd.GetString(4);
@@ -93,7 +183,7 @@ namespace DataAccessLayer
                     String NoiSinh = sqldtRd.GetString(7);
                     String DiaChi = sqldtRd.GetString(8);
                     int nienkhoa = sqldtRd.GetInt32(9);
-                    sinhvien = new tblSinhVien(MaSinhVien, MaKhoa, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi, nienkhoa);
+                    sinhvien = new tblSinhVien(MaSinhVien, malopqly, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi, nienkhoa);
                 }
             }
             catch (Exception e)
@@ -132,7 +222,7 @@ namespace DataAccessLayer
                 {
                     tblSinhVien sinhvien = null;
                     String MaSinhVien = sqldtRd.GetString(0);
-                    String MaKhoa = sqldtRd.GetString(1);
+                    int malopqly = sqldtRd.GetInt32(1);
                     String Ho = sqldtRd.GetString(2);
                     String Ten = sqldtRd.GetString(3);
                     String CMND = sqldtRd.GetString(4);
@@ -141,7 +231,7 @@ namespace DataAccessLayer
                     String NoiSinh = sqldtRd.GetString(7);
                     String DiaChi = sqldtRd.GetString(8);
                     int nienkhoa = sqldtRd.GetInt32(9);
-                    sinhvien = new tblSinhVien(MaSinhVien, MaKhoa, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi, nienkhoa);
+                    sinhvien = new tblSinhVien(MaSinhVien, malopqly, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi, nienkhoa);
                     list.Add(sinhvien);
                     
                 }
@@ -168,7 +258,7 @@ namespace DataAccessLayer
 
         }
 
-        protected int CountSinhVien()
+        public int CountSinhVien()
         {
             int result = 0;
 
@@ -220,11 +310,14 @@ namespace DataAccessLayer
 
 /*****************************************************************************************************/
 
-        protected List<tblSinhVien> getAllSinhVienByMaKhoa(String makhoa,int begin,int end, Boolean All)
+        private List<tblSinhVien> getAllSinhVienByMaKhoa(String makhoa,int begin,int end, Boolean All)
         {
             List<tblSinhVien> list = new List<tblSinhVien>();
 
-            string QueryStr = "Select * from SINH_VIEN WHERE MA_KHOA = ?";
+            string QueryStr = "Select  * from "
+                            + "SINH_VIEN,LOP_QUAN_LY "
+                            + "WHERE MA_KHOA = ? AND "
+                            + "SINH_VIEN.MA_SINH_VIEN = LOP_QUAN_LY.MA_SINH_VIEN ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -238,7 +331,7 @@ namespace DataAccessLayer
                 {
                     tblSinhVien sinhvien = null;
                     String MaSinhVien = sqldtRd.GetString(0);
-                    String MaKhoa = sqldtRd.GetString(1);
+                    int malopqly = sqldtRd.GetInt32(1);
                     String Ho = sqldtRd.GetString(2);
                     String Ten = sqldtRd.GetString(3);
                     String CMND = sqldtRd.GetString(4);
@@ -247,7 +340,7 @@ namespace DataAccessLayer
                     String NoiSinh = sqldtRd.GetString(7);
                     String DiaChi = sqldtRd.GetString(8);
                     int nienkhoa = sqldtRd.GetInt32(9);
-                    sinhvien = new tblSinhVien(MaSinhVien, MaKhoa, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi, nienkhoa);
+                    sinhvien = new tblSinhVien(MaSinhVien, malopqly, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi, nienkhoa);
                     list.Add(sinhvien);
                 }
                 if (!All)
@@ -287,7 +380,10 @@ namespace DataAccessLayer
         {
             int result = 0;
 
-            string QueryStr = "Select COUNT(MA_SINH_VIEN) AS COUNTSV from SINH_VIEN WHERE MA_KHOA = ?";
+            string QueryStr = "Select  COUNT(MA_SINH_VIEN) AS COUNTSV from "
+                            + "SINH_VIEN,LOP_QUAN_LY "
+                            + "WHERE MA_KHOA = ? AND "
+                            + "SINH_VIEN.MA_SINH_VIEN = LOP_QUAN_LY.MA_SINH_VIEN ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -318,6 +414,112 @@ namespace DataAccessLayer
 
 
         }
+        /********************************************************************/
 
+
+         private List<tblSinhVien> getAllSinhVienByMaLopQuanLy(int malopQly, int begin, int end, Boolean All)
+         {
+             List<tblSinhVien> list = new List<tblSinhVien>();
+
+             string QueryStr = "Select  * from "
+                             + "SINH_VIEN "
+                             + "WHERE MA_LOP_QUAN_LY = ?  ";
+                            
+             SqlDataReader sqldtRd = null;
+             SqlCommand sqlcommand = null;
+             try
+             {
+                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                 sqlcommand.CommandType = System.Data.CommandType.Text;
+                 sqlcommand.Parameters.AddWithValue("MA_LOP_QUAN_LY", malopQly);
+                 sqlcommand.Prepare();
+                 sqldtRd = sqlcommand.ExecuteReader();
+                 while (sqldtRd.Read())
+                 {
+                     tblSinhVien sinhvien = null;
+                     String MaSinhVien = sqldtRd.GetString(0);
+                     int malopqly = sqldtRd.GetInt32(1);
+                     String Ho = sqldtRd.GetString(2);
+                     String Ten = sqldtRd.GetString(3);
+                     String CMND = sqldtRd.GetString(4);
+                     DateTime NgaySinh = sqldtRd.GetDateTime(5);
+                     Boolean GioiTinh = sqldtRd.GetBoolean(6);
+                     String NoiSinh = sqldtRd.GetString(7);
+                     String DiaChi = sqldtRd.GetString(8);
+                     int nienkhoa = sqldtRd.GetInt32(9);
+                     sinhvien = new tblSinhVien(MaSinhVien, malopqly, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi, nienkhoa);
+                     list.Add(sinhvien);
+                 }
+                 if (!All)
+                 {
+                     list.RemoveRange(end, list.Count - end);
+                     list.RemoveRange(0, begin);
+                 }
+             }
+             catch (Exception e)
+             {
+                 throw e;
+             }
+             finally
+             {
+                 if (sqlcommand != null)
+                     sqlcommand.Dispose();
+                 if (sqldtRd != null)
+                     sqldtRd.Close();
+
+             }
+             return list;
+
+
+         }
+
+         public List<tblSinhVien> getAllSinhVienByMaLopQuanLy(int malop, int begin, int end)
+         {
+             return getAllSinhVienByMaLopQuanLy(malop, begin, end, false);
+         }
+
+         public List<tblSinhVien> getAllSinhVienByMaLopQuanLy(int malop)
+         {
+             return getAllSinhVienByMaLopQuanLy(malop, 0, 0, true);
+         }
+
+         public int CountSinhVienByMaLopQuanLy(int malopQly)
+         {
+             int result = 0;
+
+             string QueryStr = "Select  * from "
+                              + "SINH_VIEN "
+                              + "WHERE MA_LOP_QUAN_LY = ?  ";
+                            
+             SqlDataReader sqldtRd = null;
+             SqlCommand sqlcommand = null;
+             try
+             {
+                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                 sqlcommand.CommandType = System.Data.CommandType.Text;
+                 sqlcommand.Parameters.AddWithValue("MA_LOP_QUAN_LY", malopQly);
+                 sqlcommand.Prepare();
+                 sqldtRd = sqlcommand.ExecuteReader();
+                 while (sqldtRd.Read())
+                 {
+                     result = sqldtRd.GetInt32(0);
+                 }
+             }
+             catch (Exception e)
+             {
+                 throw e;
+             }
+             finally
+             {
+                 if (sqlcommand != null)
+                     sqlcommand.Dispose();
+                 if (sqldtRd != null)
+                     sqldtRd.Close();
+
+             }
+             return result;
+
+
+         }
     }
 }

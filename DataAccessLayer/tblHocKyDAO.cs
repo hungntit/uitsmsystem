@@ -7,7 +7,7 @@ using BussinessEntities;
 namespace DataAccessLayer
    
 {
-    class tblHocKyDAO:BaseDAO
+    public class tblHocKyDAO:BaseDAO
     {
         public tblHocKyDAO()
             : base()
@@ -19,11 +19,15 @@ namespace DataAccessLayer
         {
 
         }
+        public void deleteTblHocKy(int mahocky)
+        {
+             this.deleteObj("HOC_KY", "MA_HOC_KY", mahocky);
+        }
         /*
          *@ Lay Thong tin giang vien boi MaGV
          *@ MaGV: maSV can tim 
          */ 
-        public tblHocKy getbyMaHocKy(String maHK)
+        public tblHocKy getbyMaHocKy(int maHK)
         {
             tblHocKy HKy = null;
             string QueryStr = "Select * from HOC_KY where MA_HK  =   ?";
@@ -38,7 +42,7 @@ namespace DataAccessLayer
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
-                    String mahk = sqldtRd.GetString(0);
+                    int mahk = sqldtRd.GetInt32(0);
                     int hocky = sqldtRd.GetInt32(1);
                     int namhoc = sqldtRd.GetInt32(2);
 
@@ -79,7 +83,7 @@ namespace DataAccessLayer
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
-                    String mahk = sqldtRd.GetString(0);
+                    int mahk = sqldtRd.GetInt32(0);
                    
 
                     HKy = new tblHocKy(mahk, hocky, namhoc);
@@ -101,7 +105,7 @@ namespace DataAccessLayer
             return HKy;
 
         }
-        public List<tblHocKy> getAllPhieuDangKy()
+        public List<tblHocKy> getAllHocKy()
         {
             List<tblHocKy> list = new List<tblHocKy>();
 
@@ -118,7 +122,7 @@ namespace DataAccessLayer
                 while (sqldtRd.Read())
                 {
                     tblHocKy HKy = null;
-                    String mahk = sqldtRd.GetString(0);
+                    int mahk = sqldtRd.GetInt32(0);
                     int hocky = sqldtRd.GetInt32(1);
                     int namhoc = sqldtRd.GetInt32(2);
 

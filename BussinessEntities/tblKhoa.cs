@@ -11,6 +11,10 @@ namespace BussinessEntities
         #region FIELD
         private String _maKhoa;
         private String _tenKhoa;
+        public static String sTABLE_NAME = "KHOA";
+
+        public static String sMA_KHOA = "MA_KHOA";
+        public static String sTEN_KHOA = "TEN_KHOA";
         #endregion
 
         #region Constructors

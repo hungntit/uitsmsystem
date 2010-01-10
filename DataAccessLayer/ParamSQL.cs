@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer
 {
-    class ParamSQL
+   public class ParamSQL
     {
         private String _name;
 
