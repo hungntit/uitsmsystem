@@ -1,0 +1,9 @@
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BusinessLogicLayer\obj\Debug\ResolveAssemblyReference.cache
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BusinessLogicLayer\bin\Debug\BussinessEntities.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BusinessLogicLayer\bin\Debug\BussinessEntities.pdb
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb

@@ -49,11 +49,15 @@
     <Compile Include="tblGiangVien.cs" />
     <Compile Include="tblHocKy.cs" />
     <Compile Include="tblKhoa.cs" />
-    <Compile Include="tblLopDK.cs" />
+    <Compile Include="tblLopDangKy.cs" />
+    <Compile Include="tblLopQuanLy.cs" />
     <Compile Include="tblMonhoc.cs" />
     <Compile Include="tblPerson.cs" />
     <Compile Include="tblPhieuDangKy.cs" />
     <Compile Include="tblSinhVien.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

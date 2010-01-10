@@ -11,7 +11,14 @@ namespace BussinessEntities
         private String _maGiangVien;
         private String _hocvi;
         private String _maKhoa;
-       
+        public static String sTABLE_NAME = "GIANG_VIEN";
+        public static String sMA_GIANG_VIEN = "MA_GIANG_VIEN";
+        public static String sHOC_VI = "HOC_VI";
+        public static String sMA_KHOA = "MA_KHOA";
+        public static String sHO_GIANG_VIEN = "HO_GIANG_VIEN";
+        public static String sTEN_GIANG_VIEN = "TEN_GIANG_VIEN";
+
+
         #endregion
         #region Constructors
 

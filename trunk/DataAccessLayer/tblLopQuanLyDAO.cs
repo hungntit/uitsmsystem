@@ -7,28 +7,30 @@ using BussinessEntities;
 namespace DataAccessLayer
    
 {
-    public class tblKhoaDAO : BaseDAO
+    public class tblLopQuanLyDAO:BaseDAO
     {
-        public tblKhoaDAO()
+        public tblLopQuanLyDAO()
             : base()
         {
             
         }
-        public tblKhoaDAO(string user,string password)
+        public tblLopQuanLyDAO(string user,string password)
             : base(user,password)
         {
 
         }
-
-        public void insertTblKhoa(tblKhoa khoa)
+        public void insertTblLopQuanLy(tblLopQuanLy lopQuanLy)
         {
-            string QueryStr = "INSERT INTO " + tblKhoa.sTABLE_NAME 
-                            +"("
-                            +tblKhoa.sMA_KHOA 
+            string QueryStr = "INSERT INTO  " + tblLopQuanLy.sTABLE_NAME
+                            + "("
+                            + tblLopQuanLy.sMA_LOP
                             + ","
-                            + tblKhoa.sTEN_KHOA 
-                            +") "
-                            + "VALUES(?,?)";
+                            + tblLopQuanLy.sMA_KHOA
+                            + ","
+                            + tblLopQuanLy.sTEN_LOP
+                            + ") "
+                            + "VALUES(?,?,?) ";
+
 
 
 
@@ -37,8 +39,9 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblKhoa.sMA_KHOA, khoa.MaKhoa);
-                sqlcommand.Parameters.AddWithValue(tblKhoa.sTEN_KHOA, khoa.TenKhoa);
+                sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sMA_LOP, lopQuanLy.MaLopQuanLy);
+                sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sMA_KHOA, lopQuanLy.MaKhoa);
+                sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sTEN_LOP, lopQuanLy.TenLopQuanLy);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
@@ -55,12 +58,14 @@ namespace DataAccessLayer
             }
         }
 
-        public void updateTblKhoa(tblKhoa khoa)
+        public void updateTblLopQuanLy(tblLopQuanLy lopQuanLy)
         {
-            string QueryStr = "UPDATE " + tblKhoa.sTABLE_NAME + " "
-                            + " WHERE " + tblKhoa.sMA_KHOA + " = ? "
+            string QueryStr = "UPDATE  " + tblLopQuanLy.sTABLE_NAME + " "
+                            + "WHERE " + tblLopQuanLy.sMA_LOP + " = ? "
                             + "SET "
-                            + tblKhoa.sTEN_KHOA + "= " + khoa.TenKhoa;
+                            + tblLopQuanLy.sMA_KHOA + "= " + lopQuanLy.MaKhoa
+                            + tblLopQuanLy.sTEN_LOP + "= " + lopQuanLy.TenLopQuanLy;
+
 
 
             SqlCommand sqlcommand = null;
@@ -68,7 +73,7 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblKhoa.sMA_KHOA, khoa.MaKhoa);
+                sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sMA_LOP, lopQuanLy.MaLopQuanLy);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
@@ -84,34 +89,35 @@ namespace DataAccessLayer
 
             }
         }
-        public void deleteTblKhoa(String makhoa)
+
+        public void deleteTblLopQuanLy(int malop)
         {
-             this.deleteObj("KHOA", "MA_KHOA", makhoa);
+             this.deleteObj("LOP_QUAN_LY", "MA_LOP_QUAN_LY", malop);
         }
         /*
-         *@ Lay Thong tin Khoa boi MaKhoa
+         *@ Lay Thong tin giang vien boi MaGV
          *@ MaGV: maSV can tim 
-         */ 
-        public tblKhoa getbyMaKhoa(String maKhoa)
+         */
+        public tblLopQuanLy getbyMaLopQuanLy(int maLopQL)
         {
-            tblKhoa khoa = null;
-            string QueryStr = "Select * from KHOA where MA_KHOA  =   ?";
+            tblLopQuanLy lop = null;
+            string QueryStr = "Select * from LOP_QUAN_LY where MA_LOP_QUAN_LY  =   ?";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_KHOA", maKhoa);
+                sqlcommand.Parameters.AddWithValue("MA_LOP_QUAN_LY", maLopQL);
                 sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
-                    String MaKhoa = sqldtRd.GetString(0);
-                    String tenKhoa = sqldtRd.GetString(1);
+                    int malop = sqldtRd.GetInt32(0);
+                    String makhoa = sqldtRd.GetString(1);
+                    String tenlop = sqldtRd.GetString(2);
 
-
-                    khoa = new tblKhoa(MaKhoa, tenKhoa);
+                    lop = new tblLopQuanLy(malop, makhoa, tenlop);
                 }
             }
             catch (Exception e)
@@ -127,33 +133,35 @@ namespace DataAccessLayer
                
             }
 
-            return khoa;
+            return lop;
             
         }
-        /****************************************/
-        private List<tblKhoa> getAllKhoa(int begin,int end,Boolean All)
+
+
+
+        private List<tblLopQuanLy> getAllLopQuanLy(int begin,int end,Boolean All)
         {
-            List<tblKhoa> list = new List<tblKhoa>();
+            List<tblLopQuanLy> list = new List<tblLopQuanLy>();
 
 
-            string QueryStr = "Select * from KHOA ";
+            string QueryStr = "Select * from LOP_QUAN_LY ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
+                
                 sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
-                    tblKhoa khoa = null;
-                    String maKhoa = sqldtRd.GetString(0);
-                    String tenKhoa = sqldtRd.GetString(1);
+                    int malop = sqldtRd.GetInt32(0);
+                    String makhoa = sqldtRd.GetString(1);
+                    String tenlop = sqldtRd.GetString(2);
 
-
-                    khoa = new tblKhoa(maKhoa, tenKhoa);
-                    list.Add(khoa);
+                    tblLopQuanLy lop = new tblLopQuanLy(malop, makhoa, tenlop);
+                    list.Add(lop);
                 }
                 if (!All)
                 {
@@ -173,140 +181,32 @@ namespace DataAccessLayer
                     sqldtRd.Close();
 
             }
+
+
             return list;
 
 
         }
-        public List<tblKhoa> getAllKhoa(int begin, int end)
-        {
-            return getAllKhoa(begin, end, false);
-        }
-        public List<tblKhoa> getAllKhoa()
-        {
-            return getAllKhoa(0, 0, true);
-        }
 
-        public int CountKhoa()
-        {
-            int result  =   0;
-
-
-            string QueryStr = "Select COUNT(MA_KHOA) from KHOA ";
-            SqlDataReader sqldtRd = null;
-            SqlCommand sqlcommand = null;
-            try
-            {
-                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
-                sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Prepare();
-                sqldtRd = sqlcommand.ExecuteReader();
-                while (sqldtRd.Read())
-                {
-                    result  =   sqldtRd.GetInt32(0);
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                if (sqlcommand != null)
-                    sqlcommand.Dispose();
-                if (sqldtRd != null)
-                    sqldtRd.Close();
-
-            }
-            return result;
-
-
-        }
-        /*************************************************/
-
-        /*
-        private List<tblMonhoc> getAllMonHoc(String MaKhoa,int begin,int end,Boolean All)
-        {
-            List<tblMonhoc> list = new List<tblMonhoc>();
-
-
-            string QueryStr = "SELECT MON_HOC.* "
-                            + "from MON_HOC,DAO_TAO,KHOA "
-                            + "MON_HOC.MA_MON = DAO_TAO.MA_MON AND "
-                            + "DAO_TAO.MA_KHOA = KHOA.MA_KHOA AND "
-                            + " KHOA.MA_KHOA = ? ";
-            SqlDataReader sqldtRd = null;
-            SqlCommand sqlcommand = null;
-            try
-            {
-                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
-                sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_KHOA", MaKhoa);
-                sqlcommand.Prepare();
-                sqldtRd = sqlcommand.ExecuteReader();
-                while (sqldtRd.Read())
-                {
-                    tblMonhoc monhoc = null;
-                    String MaMon = sqldtRd.GetString(0);
-                    String tenMon = sqldtRd.GetString(1);
-                    int sotclythuyet = sqldtRd.GetInt32(2);
-                    int sotcthuchanh = sqldtRd.GetInt32(3);
-
-                    monhoc = new tblMonhoc(MaMon, tenMon, sotclythuyet, sotcthuchanh);
-                    list.Add(monhoc);
-                }
-                if (!All)
-                {
-                    list.RemoveRange(end, list.Count - end);
-                    list.RemoveRange(0, begin);
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                if (sqlcommand != null)
-                    sqlcommand.Dispose();
-                if (sqldtRd != null)
-                    sqldtRd.Close();
-
-            }
-            return list;
-
-
-        }
-        public List<tblMonhoc> getAllMonHoc(String MaKhoa, int begin, int end)
-        {
-            return getAllMonHoc(MaKhoa,begin, end, false);
-        }
-        public List<tblMonhoc> getAllMonHoc(String MaKhoa)
-        {
-            return getAllMonHoc(MaKhoa, 0, 0, true);
-        }
-
-        public int CountMonHoc(String MaKhoa)
+        public  int CountLopQuanLy()
         {
             int result = 0;
 
 
-            string QueryStr = "SELECT COUNT(MON_HOC.MA_MON) AS COUNTMAMON"
-                            + "from MON_HOC,DAO_TAO,KHOA "
-                            + "MON_HOC.MA_MON = DAO_TAO.MA_MON AND "
-                            + "DAO_TAO.MA_KHOA = KHOA.MA_KHOA AND "
-                            + " KHOA.MA_KHOA = ? ";
+            string QueryStr = "Select * from LOP_QUAN_LY ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_KHOA", MaKhoa);
+
                 sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
                     result = sqldtRd.GetInt32(0);
+                    
                 }
             }
             catch (Exception e)
@@ -321,12 +221,129 @@ namespace DataAccessLayer
                     sqldtRd.Close();
 
             }
+
+
             return result;
 
 
         }
-         
-        */
+
+        public List<tblLopQuanLy> getAllLopQuanLy(int begin, int end)
+        {
+            return getAllLopQuanLy(begin, end, false);
+        }
+        public List<tblLopQuanLy> getAllLopQuanLy()
+        {
+            return getAllLopQuanLy(0, 0, true);
+        }
+
+        /*************************************************/
+
+        private List<tblLopQuanLy> getLopQuanLyByMaKhoa(String maKhoa,int begin, int end, Boolean All)
+        {
+            List<tblLopQuanLy> list = new List<tblLopQuanLy>();
+
+
+            string QueryStr = "Select * "
+                            + "from LOP_QUAN_LY "
+                            + "WHERE MA_KHOA = ? ";
+                           
+
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue("MA_KHOA", maKhoa);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    int malop = sqldtRd.GetInt32(0);
+                    String makhoa = sqldtRd.GetString(1);
+                    String tenlop = sqldtRd.GetString(2);
+
+                    tblLopQuanLy lop = new tblLopQuanLy(malop, makhoa, tenlop);
+                    list.Add(lop);
+                }
+                if (!All)
+                {
+                    list.RemoveRange(end, list.Count - end);
+                    list.RemoveRange(0, begin);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+
+
+            return list;
+
+
+        }
+
+        public int CountLopQuanLyByMaKhoa(String maKhoa)
+        {
+            int result = 0;
+
+
+            string QueryStr = "Select COUNT(MA_LOP_QUAN_LY) AS COUNTLOPQL "
+                            + "from LOP_QUAN_LY "
+                            + "WHERE MA_KHOA = ? ";
+
+
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue("MA_KHOA", maKhoa);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    result = sqldtRd.GetInt32(0);
+                   
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+
+
+            return result;
+
+
+        }
+
+        public List<tblLopQuanLy> getLopQuanLyByMaKhoa(String makhoa,int begin, int end)
+        {
+            return getLopQuanLyByMaKhoa(makhoa, begin, end, false);
+        }
+        public List<tblLopQuanLy> getLopQuanLyByMaKhoa(String makhoa)
+        {
+            return getLopQuanLyByMaKhoa(makhoa,0, 0, true);
+        }
 
     }
 }

@@ -7,7 +7,7 @@ using BussinessEntities;
 namespace DataAccessLayer
    
 {
-    class tblGiangVienDAO:BaseDAO
+    public class tblGiangVienDAO : BaseDAO
     {
         public tblGiangVienDAO()
             : base()
@@ -18,6 +18,106 @@ namespace DataAccessLayer
             : base(user,password)
         {
 
+        }
+
+        public void deleteTblGiangVien(String maGiangVien)
+        {
+            this.deleteObj("GIANG_VIEN", "MA_GIANG_VIEN", maGiangVien);
+        }
+        public void insertTblGiangVien(tblGiangVien giangvien)
+        {
+            string QueryStr = "INSERT INTO " + tblGiangVien.sTABLE_NAME
+                            + "("
+                            + tblGiangVien.sMA_GIANG_VIEN
+                            + ","
+                            + tblGiangVien.sCMND
+                            + ","
+                            + tblGiangVien.sHOC_VI
+                            + ","
+                            + tblGiangVien.sMA_KHOA
+                            + ","
+                            + tblGiangVien.sHO_GIANG_VIEN
+                            + ","
+                            + tblGiangVien.sTEN_GIANG_VIEN
+                            + ","
+                            + tblGiangVien.sNGAYSINH
+                            + ","
+                            + tblGiangVien.sNOISINH
+                            + ","
+                            + tblGiangVien.sGIOITINH
+                            + ","
+                            + tblGiangVien.sDIACHI
+                            + ") "
+                            + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
+
+
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_GIANG_VIEN, giangvien.MaGiangVien);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sCMND, giangvien.CMND);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sHOC_VI, giangvien.HocVi);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_KHOA, giangvien.MaKhoa);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sHO_GIANG_VIEN, giangvien.Ho);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sTEN_GIANG_VIEN, giangvien.Ten);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sNGAYSINH, giangvien.NgaySinh);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sNOISINH, giangvien.NoiSinh);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sGIOITINH, giangvien.GioiTinh);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sDIACHI, giangvien.DiaChi);
+                sqlcommand.Prepare();
+                sqlcommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+
+
+            }
+        }
+
+        public void updateTblGiangVien(tblGiangVien giangvien)
+        {
+            string QueryStr = "UPDATE GIANG_VIEN "
+                            + "WHERE "+tblGiangVien.sMA_GIANG_VIEN +" = ? "
+                            + "SET "
+                            + tblGiangVien.sCMND + "= " + giangvien.CMND
+                            + tblGiangVien.sHOC_VI + "= " + giangvien.HocVi
+                            + tblGiangVien.sMA_KHOA + "= " + giangvien.MaKhoa
+                            + tblGiangVien.sHO_GIANG_VIEN + "= " + giangvien.Ho
+                            + tblGiangVien.sTEN_GIANG_VIEN + "= " + giangvien.Ten
+                            + tblGiangVien.sNGAYSINH + "= " + giangvien.NgaySinh
+                            + tblGiangVien.sNOISINH + "= " + giangvien.NoiSinh
+                            + tblGiangVien.sGIOITINH + "= " + giangvien.GioiTinh
+                            + tblGiangVien.sDIACHI + "= " + giangvien.DiaChi;
+
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_GIANG_VIEN, giangvien.MaGiangVien);
+                sqlcommand.Prepare();
+                sqlcommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+
+
+            }
         }
         public tblGiangVien getbyMaGV(String MaGV)
         {
@@ -200,6 +300,110 @@ namespace DataAccessLayer
 
             }
             return result ;
+
+        }
+        /**********************************************/
+
+        private List<tblGiangVien> getGiangVienByMaMonHoc(String MaMonHoc,int begin, int end, Boolean All)
+        {
+
+            List<tblGiangVien> list = new List<tblGiangVien>();
+            string QueryStr = "Select GIANG_VIEN.* "
+                            + "from GIANG_VIEN,GIANG_DAY "
+                            + "WHERE "
+                            + "GIANG_VIEN.MA_GIANG_VIEN = GIANG_DAY.MA_GIANG_VIEN AND "
+                            + "GIANG_DAY.MA_MON = ?  ";
+                            
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue("MA_MON", MaMonHoc);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    tblGiangVien giangvien = null;
+                    String MaGiangVien = sqldtRd.GetString(0);
+                    String HocVi = sqldtRd.GetString(1);
+                    String MaKhoa = sqldtRd.GetString(2);
+                    String Ho = sqldtRd.GetString(3);
+                    String Ten = sqldtRd.GetString(4);
+                    String CMND = sqldtRd.GetString(5);
+                    DateTime NgaySinh = sqldtRd.GetDateTime(6);
+                    Boolean GioiTinh = sqldtRd.GetBoolean(7);
+                    String NoiSinh = sqldtRd.GetString(8);
+                    String DiaChi = sqldtRd.GetString(9);
+                    giangvien = new tblGiangVien(MaGiangVien, HocVi, MaKhoa, Ho, Ten, CMND, NgaySinh, GioiTinh, NoiSinh, DiaChi);
+                    list.Add(giangvien);
+                }
+                if (!All)
+                {
+                    list.RemoveRange(end, list.Count - end);
+                    list.RemoveRange(0, begin);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return list;
+
+        }
+        public List<tblGiangVien> getGiangVienByMaMonHoc(String mamon,int begin, int end)
+        {
+            return getGiangVienByMaMonHoc(mamon,begin, end, false);
+        }
+        public List<tblGiangVien> getGiangVienByMaMonHoc(String mamon)
+        {
+            return getGiangVienByMaMonHoc(mamon,0, 0, true);
+        }
+        public int CountGiangVienByMaMon(String mamon)
+        {
+
+            int result = 0;
+            string QueryStr = "Select GIANG_VIEN.* "
+                            + "from GIANG_VIEN,GIANG_DAY "
+                            + "WHERE "
+                            + "GIANG_VIEN.MA_GIANG_VIEN = GIANG_DAY.MA_GIANG_VIEN AND "
+                            + "GIANG_DAY.MA_MON = ?  ";
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    result = sqldtRd.GetInt32(0);
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return result;
 
         }
     }

@@ -7,7 +7,7 @@ using BussinessEntities;
 namespace DataAccessLayer
    
 {
-    class tblMonHocDAO:BaseDAO
+    public class tblMonHocDAO : BaseDAO
     {
         public tblMonHocDAO()
             : base()
@@ -18,6 +18,88 @@ namespace DataAccessLayer
             : base(user,password)
         {
 
+        }
+
+        public void insertTblMonHoc(tblMonhoc monhoc)
+        {
+            string QueryStr = "INSERT INTO "+tblMonhoc.sTABLE_NAME
+                +"("
+                            + tblMonhoc.sMA_MON 
+                            + ","
+                            + tblMonhoc.sMA_LOAI 
+                            + ","
+                            + tblMonhoc.sTEN_MON 
+                            + ","
+                            + tblMonhoc.sTIN_CHI_LY_THUYET 
+                            + ","
+                            + tblMonhoc.sTIN_CHI_THUC_HANH 
+                            +") "
+                            +"VALUES(?,?,?,?,?)";
+
+
+
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_MON, monhoc.MaMon);
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_LOAI, monhoc.MaLoai);
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTEN_MON, monhoc.TenMon);
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTIN_CHI_LY_THUYET, monhoc.TinchiLyThuyet);
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTIN_CHI_THUC_HANH, monhoc.TinchiThucHanh);
+
+                sqlcommand.Prepare();
+                sqlcommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+
+
+            }
+        }
+
+        public void updateTblMonHoc(tblMonhoc monhoc)
+        {
+            string QueryStr = "UPDATE MON_HOC "
+                            + "WHERE " + tblMonhoc.sMA_MON + " = ? "
+                            + "SET "
+                            + tblMonhoc.sMA_LOAI + "= " + monhoc.MaLoai
+                            + tblMonhoc.sTEN_MON + "= " + monhoc.TenMon
+                            + tblMonhoc.sTIN_CHI_LY_THUYET + "= " + monhoc.TinchiLyThuyet
+                            + tblMonhoc.sTIN_CHI_THUC_HANH + "= " + monhoc.TinchiThucHanh;
+
+
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_MON, monhoc.MaMon);
+                sqlcommand.Prepare();
+                sqlcommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+
+
+            }
+        }
+        public void deleteTblMonHoc(String mamonhoc)
+        {
+             this.deleteObj("MON_HOC", "MA_MON", mamonhoc);
         }
         /*
          *@ Lay Thong tin giang vien boi MaGV
@@ -33,17 +115,18 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MaMon", maMon);
+                sqlcommand.Parameters.AddWithValue("MA_MON", maMon);
                 sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
                     String MaMon = sqldtRd.GetString(0);
-                    String tenMon = sqldtRd.GetString(1);
-                    int sotclythuyet = sqldtRd.GetInt32(2);
-                    int sotcthuchanh = sqldtRd.GetInt32(3);
+                    int maloai = sqldtRd.GetInt32(1);
+                    String tenMon = sqldtRd.GetString(2);
+                    int sotclythuyet = sqldtRd.GetInt32(3);
+                    int sotcthuchanh = sqldtRd.GetInt32(4);
 
-                    monhoc = new tblMonhoc(MaMon, tenMon, sotclythuyet, sotcthuchanh);
+                    monhoc = new tblMonhoc(MaMon,maloai, tenMon, sotclythuyet, sotcthuchanh);
                 }
             }
             catch (Exception e)
@@ -80,12 +163,14 @@ namespace DataAccessLayer
                 while (sqldtRd.Read())
                 {
                     tblMonhoc monhoc = null;
-                    String MaMon = sqldtRd.GetString(0);
-                    String tenMon = sqldtRd.GetString(1);
-                    int sotclythuyet = sqldtRd.GetInt32(2);
-                    int sotcthuchanh = sqldtRd.GetInt32(3);
 
-                    monhoc = new tblMonhoc(MaMon, tenMon, sotclythuyet, sotcthuchanh);
+                    String MaMon = sqldtRd.GetString(0);
+                    int maloai = sqldtRd.GetInt32(1);
+                    String tenMon = sqldtRd.GetString(2);
+                    int sotclythuyet = sqldtRd.GetInt32(3);
+                    int sotcthuchanh = sqldtRd.GetInt32(4);
+
+                    monhoc = new tblMonhoc(MaMon,maloai, tenMon, sotclythuyet, sotcthuchanh);
                     list.Add(monhoc);
                 }
                 if (!All)
@@ -123,7 +208,7 @@ namespace DataAccessLayer
             int result = 0;
 
 
-            string QueryStr = "Select COUNT(MA_MON_HOC) AS COUNTMAMH from MON_HOC";
+            string QueryStr = "Select COUNT(MA_MON) AS COUNTMAMH from MON_HOC";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -161,11 +246,11 @@ namespace DataAccessLayer
             List<tblMonhoc> list = new List<tblMonhoc>();
 
 
-            string QueryStr = "SELECT MTQ.* "
-                            + "FROM MON_HOC MH,MON_HOC MTQ,MON_TIEN_QUYET "
-                            + "MH.MA_MON = MON_TIEN_QUYET.MA_MON AND "
-                            + "MON_TIEN_QUYET.MA_MON_TIEN_QUYET = MTQ.MA_MON "
-                            + "MH.MA_MON = ? " ;
+            string QueryStr = "SELECT MON_HOC.* "
+                            + "FROM MON_HOC ,MON_TIEN_QUYET "
+                            + "WHERE "
+                            + "MON_TIEN_QUYET.MA_MON_TIEN_QUYET = MON_HOC.MA_MON "
+                            + "MON_TIEN_QUYET.MA_MON = ? ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -179,11 +264,12 @@ namespace DataAccessLayer
                 {
                     tblMonhoc monhoc = null;
                     String MaMon = sqldtRd.GetString(0);
-                    String tenMon = sqldtRd.GetString(1);
-                    int sotclythuyet = sqldtRd.GetInt32(2);
-                    int sotcthuchanh = sqldtRd.GetInt32(3);
+                    int maloai = sqldtRd.GetInt32(1);
+                    String tenMon = sqldtRd.GetString(2);
+                    int sotclythuyet = sqldtRd.GetInt32(3);
+                    int sotcthuchanh = sqldtRd.GetInt32(4);
 
-                    monhoc = new tblMonhoc(MaMon, tenMon, sotclythuyet, sotcthuchanh);
+                    monhoc = new tblMonhoc(MaMon,maloai, tenMon, sotclythuyet, sotcthuchanh);
                     list.Add(monhoc);
                 }
             }

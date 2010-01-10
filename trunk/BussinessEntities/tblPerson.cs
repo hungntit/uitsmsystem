@@ -8,6 +8,12 @@ namespace BussinessEntities
     public class tblPerson
     {
         #region FIELD
+
+        public static String sCMND = "CMND";
+        public static String sNGAYSINH = "NGAY_SINH";
+        public static String sNOISINH = "NOI_SINH";
+        public static String sGIOITINH = "GIOI_TINH";
+        public static String sDIACHI = "DIA_CHI";
         protected String _ho;
         protected String _ten;
         protected String _cmnd;

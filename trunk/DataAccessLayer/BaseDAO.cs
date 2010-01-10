@@ -6,7 +6,7 @@ using System.Collections;
 namespace DataAccessLayer
 {
     
-    class BaseDAO
+   public class BaseDAO
     {
        protected internal  SqlConnection sqlCon;
        public BaseDAO()
@@ -42,6 +42,32 @@ namespace DataAccessLayer
                throw e;
            }
        }
+         protected void deleteObj(string TableName,string IDName,Object value)
+         {
+             string QueryStr = "Delete from " + TableName
+                                 + " where " + IDName + "= ? " ;
+
+             SqlCommand sqlcommand = null;
+             try
+             {
+                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                 sqlcommand.CommandType = System.Data.CommandType.Text;
+                 sqlcommand.Parameters.AddWithValue(IDName, value);
+                 sqlcommand.Prepare();
+                 sqlcommand.ExecuteNonQuery();
+             }
+             catch (Exception e)
+             {
+                 throw e;
+             }
+             finally
+             {
+                 if (sqlcommand != null)
+                     sqlcommand.Dispose();
+
+
+             }
+         }
          protected void getObjByAttribute(SqlDataReader sqldtrd,SqlCommand sqlcommand,ParamSQL[] paramSQLs, String tableName)
          {
              if (paramSQLs == null)
