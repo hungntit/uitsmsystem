@@ -39,6 +39,8 @@ namespace DataAccessLayer
                             + tblLopDangKy.sTHU
                             + ","
                             + tblLopDangKy.sCA
+                            + ","
+                            + tblLopDangKy.sMA_HOC_KY
                             + ") "
                             + "VALUES(?,?,?,?,?,?,?,?)";
 
@@ -58,6 +60,7 @@ namespace DataAccessLayer
                 sqlcommand.Parameters.AddWithValue(tblLopDangKy.sTEN_LOP, lopdangky.TenLop);
                 sqlcommand.Parameters.AddWithValue(tblLopDangKy.sTHU, lopdangky.Thu);
                 sqlcommand.Parameters.AddWithValue(tblLopDangKy.sCA, lopdangky.Ca);
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_HOC_KY, lopdangky.MaHocKy);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
@@ -85,7 +88,8 @@ namespace DataAccessLayer
                             + tblLopDangKy.sNGAY_MO_LOP + "= " + lopdangky.NgayMoLop
                             + tblLopDangKy.sTEN_LOP + "= " + lopdangky.TenLop
                             + tblLopDangKy.sTHU + "= " + lopdangky.Thu
-                            + tblLopDangKy.sCA + "= " + lopdangky.Ca;
+                            + tblLopDangKy.sCA + "= " + lopdangky.Ca
+                            + tblLopDangKy.sMA_HOC_KY + "= " + lopdangky.MaHocKy;
 
 
             SqlCommand sqlcommand = null;
@@ -111,13 +115,87 @@ namespace DataAccessLayer
         }
         public void deleteTblLopDangKy(int malop)
         {
-             this.deleteObj("LOP_DANG_KY", "MA_LOP_DANG_KY", malop);
+            try
+            {
+                this.deleteObj("BANG_DIEM", "MA_LOP_DANG_KY", malop);
+                this.deleteObj("CHI_TIET_DANG_KY", "MA_LOP_DANG_KY", malop);
+                this.deleteObj("LOP_DANG_KY", "MA_LOP_DANG_KY", malop);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
+        public void deleteTblLopDangKyByMamon(String mamon)
+        {
+            try
+            {
+
+                List<tblLopDangKy> lstLopDk = getLopDangKyByMaMonHoc(mamon);
+                tblLopDangKy[] arrlopdk = lstLopDk.ToArray();
+                for (int i = 0; i < lstLopDk.Count; i++)
+                {
+                    this.deleteTblLopDangKy(arrlopdk[i].MaLop);
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void deleteTblLopDangKyByMaGiangVien(String magiangvien)
+        {
+            try
+            {
+                List<tblLopDangKy> lstLopDk = getLopDangKyByMaGiangVien(magiangvien);
+                tblLopDangKy[] arrlopdk = lstLopDk.ToArray();
+                for (int i = 0; i < lstLopDk.Count; i++)
+                {
+                    this.deleteTblLopDangKy(arrlopdk[i].MaLop);
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void deleteTblLopDangKyByMaPhong(int maPhong)
+        {
+            try
+            {
+                List<tblLopDangKy> lstLopDk = getLopDangKyByMaPhong(maPhong);
+                tblLopDangKy[] arrlopdk = lstLopDk.ToArray();
+                for (int i = 0; i < lstLopDk.Count; i++)
+                {
+                    this.deleteTblLopDangKy(arrlopdk[i].MaLop);
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public tblLopDangKy getbyMaLop(String maLop)
         {
             tblLopDangKy lop = null;
 
-            string QueryStr = "Select * from LOP_DANG_KY where MA_LOP_DANG_KY  =   ?";
+            string QueryStr = "SELECT " + tblLopDangKy.sMA_LOP +","
+                                        +tblLopDangKy.sMA_GIANG_VIEN +","
+                                        +tblLopDangKy.sMA_PHONG +","
+                                        +tblLopDangKy.sMA_MON +","
+                                        +tblLopDangKy.sTEN_LOP +","
+                                        +tblLopDangKy.sTHU +","
+                                        +tblLopDangKy.sCA +","
+                                        +tblLopDangKy.sNGAY_MO_LOP
+                                        + "LOP_DANG_KY." + tblLopDangKy.sMA_HOC_KY + " "
+                            +"from LOP_DANG_KY where MA_LOP_DANG_KY  =   ?";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -142,7 +220,8 @@ namespace DataAccessLayer
                     
                     
                     DateTime ngaydatdau = sqldtRd.GetDateTime(7);
-                    lop = new tblLopDangKy(MaLop,MaGiangVien, MaPhong, MaMon,  TenLop, thu, Ca, ngaydatdau);
+                    int maHK = sqldtRd.GetInt32(8);
+                    lop = new tblLopDangKy(MaLop,MaGiangVien, MaPhong, MaMon,  TenLop, thu, Ca, ngaydatdau,maHK);
                 }
 
             }
@@ -167,7 +246,16 @@ namespace DataAccessLayer
         {
 
             List<tblLopDangKy> list = new List<tblLopDangKy>();
-            string QueryStr = "Select * from LOP_DANG_KY ";
+            string QueryStr = "SELECT " + tblLopDangKy.sMA_LOP +","
+                                        +tblLopDangKy.sMA_GIANG_VIEN +","
+                                        +tblLopDangKy.sMA_PHONG +","
+                                        +tblLopDangKy.sMA_MON +","
+                                        +tblLopDangKy.sTEN_LOP +","
+                                        +tblLopDangKy.sTHU +","
+                                        +tblLopDangKy.sCA +","
+                                         + tblLopDangKy.sNGAY_MO_LOP
+                                         + tblLopDangKy.sMA_HOC_KY + " "
+                            +"from LOP_DANG_KY ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -192,7 +280,8 @@ namespace DataAccessLayer
 
 
                     DateTime ngaydatdau = sqldtRd.GetDateTime(7);
-                    lop = new tblLopDangKy(MaLop, MaGiangVien, MaPhong, MaMon, TenLop, thu, Ca, ngaydatdau);
+                    int maHK = sqldtRd.GetInt32(8);
+                    lop = new tblLopDangKy(MaLop, MaGiangVien, MaPhong, MaMon, TenLop, thu, Ca, ngaydatdau, maHK);
                     list.Add(lop);
                 }
                 if (!All)
@@ -260,11 +349,19 @@ namespace DataAccessLayer
 
         }
         /***********************************************************************/
-        private List<tblLopDangKy> getLopDangKy(String maPhieuDK, int begin, int end, Boolean All)
+        private List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK, int begin, int end, Boolean All)
         {
             List<tblLopDangKy> list = new List<tblLopDangKy>();
 
-            string QueryStr = "SELECT LOP_DANG_KY.* "
+            string QueryStr = "SELECT " +"LOP_DANG_KY."+ tblLopDangKy.sMA_LOP +","
+                                        +"LOP_DANG_KY."+tblLopDangKy.sMA_GIANG_VIEN +","
+                                        +"LOP_DANG_KY."+tblLopDangKy.sMA_PHONG +","
+                                        +"LOP_DANG_KY."+tblLopDangKy.sMA_MON +","
+                                        +"LOP_DANG_KY."+tblLopDangKy.sTEN_LOP +","
+                                        +"LOP_DANG_KY."+tblLopDangKy.sTHU +","
+                                        +"LOP_DANG_KY."+tblLopDangKy.sCA +","
+                                        + "LOP_DANG_KY." + tblLopDangKy.sNGAY_MO_LOP
+                                        + "LOP_DANG_KY." + tblLopDangKy.sMA_HOC_KY + " "
                             + "FROM LOP_DANG_KY,CHI_TIET_DANG_KY "
                             + "WHERE "
                             + "LOP_DANG_KY.MA_LOP_DANG_KY = CHI_TIET_DANG_KY.MA_LOP_DANG_KY AND "
@@ -295,7 +392,8 @@ namespace DataAccessLayer
 
 
                     DateTime ngaydatdau = sqldtRd.GetDateTime(7);
-                    lop = new tblLopDangKy(MaLop, MaGiangVien, MaPhong, MaMon, TenLop, thu, Ca, ngaydatdau);
+                    int maHK = sqldtRd.GetInt32(8);
+                    lop = new tblLopDangKy(MaLop, MaGiangVien, MaPhong, MaMon, TenLop, thu, Ca, ngaydatdau, maHK);
                     list.Add(lop);
                 }
                 if (!All)
@@ -320,12 +418,12 @@ namespace DataAccessLayer
 
 
         }
-        public int CountLopDangKy(String maPhieuDK)
+        public int CountLopDangKyByMaPhieu(String maPhieuDK)
         {
             int result = 0;
             List<tblLopDangKy> list = new List<tblLopDangKy>();
 
-            string QueryStr = "SELECT LOP_DANG_KY.* "
+            string QueryStr = "Select COUNT(MA_LOP_DANG_KY) AS COUNTLOP "
                              + "FROM LOP_DANG_KY,CHI_TIET_DANG_KY "
                              + "WHERE "
                              + "LOP_DANG_KY.MA_LOP_DANG_KY = CHI_TIET_DANG_KY.MA_LOP_DANG_KY AND "
@@ -362,13 +460,375 @@ namespace DataAccessLayer
 
 
         }
-        public List<tblLopDangKy> getLopDangKy(String maPhieuDK, int begin, int end)
+        public List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK, int begin, int end)
         {
-            return getLopDangKy(maPhieuDK, begin, end, false);
+            return getLopDangKyByMaPhieu(maPhieuDK, begin, end, false);
         }
-        public List<tblLopDangKy> getLopDangKy(String maPhieuDK)
+        public List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK)
         {
-            return getLopDangKy(maPhieuDK, 0, 0, true);
+            return getLopDangKyByMaPhieu(maPhieuDK, 0, 0, true);
+        }
+
+
+        /*****************************************************************/
+
+        private List<tblLopDangKy> getLopDangKyByMaMonHoc(String mamon, int begin, int end, Boolean All)
+        {
+            List<tblLopDangKy> list = new List<tblLopDangKy>();
+
+            string QueryStr = "SELECT " + tblLopDangKy.sMA_LOP +","
+                                        +tblLopDangKy.sMA_GIANG_VIEN +","
+                                        +tblLopDangKy.sMA_PHONG +","
+                                        +tblLopDangKy.sMA_MON +","
+                                        +tblLopDangKy.sTEN_LOP +","
+                                        +tblLopDangKy.sTHU +","
+                                        +tblLopDangKy.sCA +","
+                                       +  tblLopDangKy.sNGAY_MO_LOP
+                                        + tblLopDangKy.sMA_HOC_KY + " "
+                            + "FROM LOP_DANG_KY "
+                            + "WHERE "
+                            +tblLopDangKy.sMA_MON+" =  ? ";
+
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_MON, mamon);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    tblLopDangKy lop = null;
+                    int MaLop = sqldtRd.GetInt32(0);
+                    String MaGiangVien = sqldtRd.GetString(1);
+                    String MaPhong = sqldtRd.GetString(2);
+                    String MaMon = sqldtRd.GetString(3);
+
+                    String TenLop = sqldtRd.GetString(4);
+                    DayOfWeek thu = (DayOfWeek)sqldtRd.GetInt32(5);
+
+                    int Ca = sqldtRd.GetInt32(6);
+
+
+
+                    DateTime ngaydatdau = sqldtRd.GetDateTime(7);
+                    int maHK = sqldtRd.GetInt32(8);
+                    lop = new tblLopDangKy(MaLop, MaGiangVien, MaPhong, MaMon, TenLop, thu, Ca, ngaydatdau, maHK);
+                    list.Add(lop);
+                }
+                if (!All)
+                {
+                    list.RemoveRange(end, list.Count - end);
+                    list.RemoveRange(0, begin);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return list;
+
+
+        }
+        public int CountLopDangKyByMaMon(String mamon)
+        {
+            int result = 0;
+            List<tblLopDangKy> list = new List<tblLopDangKy>();
+
+            string QueryStr = "Select COUNT(MA_LOP_DANG_KY) AS COUNTLOP "
+                            + "FROM LOP_DANG_KY "
+                            + "WHERE "
+                            +tblLopDangKy.sMA_MON+" =  ? ";
+
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_MON, mamon);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    result = sqldtRd.GetInt32(0);
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return result;
+
+
+        }
+        public List<tblLopDangKy> getLopDangKyByMaMonHoc(String mamon, int begin, int end)
+        {
+            return getLopDangKyByMaMonHoc(mamon, begin, end, false);
+        }
+        public List<tblLopDangKy> getLopDangKyByMaMonHoc(String mamon)
+        {
+            return getLopDangKyByMaMonHoc(mamon, 0, 0, true);
+        }
+        /*******************************************************************/
+        
+
+        private List<tblLopDangKy> getLopDangKyByMaPhong(int maphong, int begin, int end, Boolean All)
+        {
+            List<tblLopDangKy> list = new List<tblLopDangKy>();
+
+            string QueryStr = "SELECT " + tblLopDangKy.sMA_LOP + ","
+                                        + tblLopDangKy.sMA_GIANG_VIEN + ","
+                                        + tblLopDangKy.sMA_PHONG + ","
+                                        + tblLopDangKy.sMA_MON + ","
+                                        + tblLopDangKy.sTEN_LOP + ","
+                                        + tblLopDangKy.sTHU + ","
+                                        + tblLopDangKy.sCA + ","
+                                       + tblLopDangKy.sNGAY_MO_LOP
+                                        + tblLopDangKy.sMA_HOC_KY + " "
+                            + "FROM LOP_DANG_KY "
+                            + "WHERE "
+                            + tblLopDangKy.sMA_PHONG + " =  ? ";
+
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_PHONG, maphong);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    tblLopDangKy lop = null;
+                    int MaLop = sqldtRd.GetInt32(0);
+                    String MaGiangVien = sqldtRd.GetString(1);
+                    String MaPhong = sqldtRd.GetString(2);
+                    String MaMon = sqldtRd.GetString(3);
+
+                    String TenLop = sqldtRd.GetString(4);
+                    DayOfWeek thu = (DayOfWeek)sqldtRd.GetInt32(5);
+
+                    int Ca = sqldtRd.GetInt32(6);
+
+
+
+                    DateTime ngaydatdau = sqldtRd.GetDateTime(7);
+                    int maHK = sqldtRd.GetInt32(8);
+                    lop = new tblLopDangKy(MaLop, MaGiangVien, MaPhong, MaMon, TenLop, thu, Ca, ngaydatdau, maHK);
+                    list.Add(lop);
+                }
+                if (!All)
+                {
+                    list.RemoveRange(end, list.Count - end);
+                    list.RemoveRange(0, begin);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return list;
+
+
+        }
+        public int CountLopDangKyByMaPhong(int maphong)
+        {
+            int result = 0;
+            List<tblLopDangKy> list = new List<tblLopDangKy>();
+
+            string QueryStr = "Select COUNT(MA_LOP_DANG_KY) AS COUNTLOP "
+                            + "FROM LOP_DANG_KY "
+                            + "WHERE "
+                            + tblLopDangKy.sMA_PHONG + " =  ? ";
+
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_PHONG, maphong);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    result = sqldtRd.GetInt32(0);
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return result;
+
+
+        }
+        public List<tblLopDangKy> getLopDangKyByMaPhong(int maphong, int begin, int end)
+        {
+            return getLopDangKyByMaPhong(maphong, begin, end, false);
+        }
+        public List<tblLopDangKy> getLopDangKyByMaPhong(int maphong)
+        {
+            return getLopDangKyByMaPhong(maphong, 0, 0, true);
+        }
+
+        /*******************************************************************/
+
+
+        private List<tblLopDangKy> getLopDangKyByMaGiangVien(String maGV, int begin, int end, Boolean All)
+        {
+            List<tblLopDangKy> list = new List<tblLopDangKy>();
+
+            string QueryStr = "SELECT " + tblLopDangKy.sMA_LOP + ","
+                                        + tblLopDangKy.sMA_GIANG_VIEN + ","
+                                        + tblLopDangKy.sMA_PHONG + ","
+                                        + tblLopDangKy.sMA_MON + ","
+                                        + tblLopDangKy.sTEN_LOP + ","
+                                        + tblLopDangKy.sTHU + ","
+                                        + tblLopDangKy.sCA + ","
+                                        + tblLopDangKy.sNGAY_MO_LOP
+                                        + tblLopDangKy.sMA_HOC_KY + " "
+                            + "FROM LOP_DANG_KY "
+                            + "WHERE "
+                            + tblLopDangKy.sMA_GIANG_VIEN + " =  ? ";
+
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_GIANG_VIEN, maGV);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    tblLopDangKy lop = null;
+                    int MaLop = sqldtRd.GetInt32(0);
+                    String MaGiangVien = sqldtRd.GetString(1);
+                    String MaPhong = sqldtRd.GetString(2);
+                    String MaMon = sqldtRd.GetString(3);
+
+                    String TenLop = sqldtRd.GetString(4);
+                    DayOfWeek thu = (DayOfWeek)sqldtRd.GetInt32(5);
+
+                    int Ca = sqldtRd.GetInt32(6);
+
+
+
+                    DateTime ngaydatdau = sqldtRd.GetDateTime(7);
+                    int maHK = sqldtRd.GetInt32(8);
+                    lop = new tblLopDangKy(MaLop, MaGiangVien, MaPhong, MaMon, TenLop, thu, Ca, ngaydatdau, maHK);
+                    list.Add(lop);
+                }
+                if (!All)
+                {
+                    list.RemoveRange(end, list.Count - end);
+                    list.RemoveRange(0, begin);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return list;
+
+
+        }
+        public int CountLopDangKyByMaGiangVien(String maGV)
+        {
+            int result = 0;
+            List<tblLopDangKy> list = new List<tblLopDangKy>();
+
+            string QueryStr = "Select COUNT(MA_LOP_DANG_KY) AS COUNTLOP "
+                            + "FROM LOP_DANG_KY "
+                            + "WHERE "
+                            + tblLopDangKy.sMA_GIANG_VIEN + " =  ? ";
+
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_GIANG_VIEN, maGV);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    result = sqldtRd.GetInt32(0);
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return result;
+
+
+        }
+        public List<tblLopDangKy> getLopDangKyByMaGiangVien(String maGV, int begin, int end)
+        {
+            return getLopDangKyByMaGiangVien(maGV, begin, end, false);
+        }
+        public List<tblLopDangKy> getLopDangKyByMaGiangVien(String maGV)
+        {
+            return getLopDangKyByMaGiangVien(maGV, 0, 0, true);
         }
     }
 }

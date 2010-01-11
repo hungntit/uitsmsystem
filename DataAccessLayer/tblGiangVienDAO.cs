@@ -22,7 +22,11 @@ namespace DataAccessLayer
 
         public void deleteTblGiangVien(String maGiangVien)
         {
-            this.deleteObj("GIANG_VIEN", "MA_GIANG_VIEN", maGiangVien);
+            tblLopDangKyDAO lopdkDao = new tblLopDangKyDAO();
+            lopdkDao.deleteTblLopDangKyByMaGiangVien(maGiangVien);
+            this.deleteObj("GIANG_DAY",tblGiangVien.sMA_GIANG_VIEN, maGiangVien);
+            this.deleteObj("GIANG_VIEN", tblGiangVien.sMA_GIANG_VIEN, maGiangVien);
+            lopdkDao.CloseConection();
         }
         public void insertTblGiangVien(tblGiangVien giangvien)
         {
@@ -123,7 +127,18 @@ namespace DataAccessLayer
         {
             tblGiangVien giangvien = null;
             
-            string QueryStr = "Select * from GIANG_VIEN where MA_GIANG_VIEN  =   ?";
+            string QueryStr = "SELECT  "
+                             +tblGiangVien.sMA_GIANG_VIEN +","
+                             + tblGiangVien.sHOC_VI + ","
+                             + tblGiangVien.sMA_KHOA + ","
+                             + tblGiangVien.sHO_GIANG_VIEN + ","
+                             + tblGiangVien.sTEN_GIANG_VIEN + ","
+                             + tblGiangVien.sCMND + ","
+                             + tblGiangVien.sNGAYSINH + ","
+                             + tblGiangVien.sGIOITINH + ","
+                             + tblGiangVien.sNOISINH + ","
+                             + tblGiangVien.sDIACHI +" " 
+                             +"from GIANG_VIEN where MA_GIANG_VIEN  =   ?";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -214,7 +229,18 @@ namespace DataAccessLayer
         {
 
             List<tblGiangVien> list = new List<tblGiangVien>();
-            string QueryStr = "Select * from GIANG_VIEN ";
+            string QueryStr = "SELECT  "
+                              + tblGiangVien.sMA_GIANG_VIEN + ","
+                              + tblGiangVien.sHOC_VI + ","
+                              + tblGiangVien.sMA_KHOA + ","
+                              + tblGiangVien.sHO_GIANG_VIEN + ","
+                              + tblGiangVien.sTEN_GIANG_VIEN + ","
+                              + tblGiangVien.sCMND + ","
+                              + tblGiangVien.sNGAYSINH + ","
+                              + tblGiangVien.sGIOITINH + ","
+                              + tblGiangVien.sNOISINH + ","
+                              + tblGiangVien.sDIACHI + " " 
+                        +"from GIANG_VIEN ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -308,7 +334,17 @@ namespace DataAccessLayer
         {
 
             List<tblGiangVien> list = new List<tblGiangVien>();
-            string QueryStr = "Select GIANG_VIEN.* "
+            string QueryStr = "SELECT  "
+                             +"GIANG_VIEN."+ tblGiangVien.sMA_GIANG_VIEN + ","
+                             + "GIANG_VIEN." + tblGiangVien.sHOC_VI + ","
+                             + "GIANG_VIEN." + tblGiangVien.sMA_KHOA + ","
+                             + "GIANG_VIEN." + tblGiangVien.sHO_GIANG_VIEN + ","
+                             + "GIANG_VIEN." + tblGiangVien.sTEN_GIANG_VIEN + ","
+                             + "GIANG_VIEN." + tblGiangVien.sCMND + ","
+                             + "GIANG_VIEN." + tblGiangVien.sNGAYSINH + ","
+                             + "GIANG_VIEN." + tblGiangVien.sGIOITINH + ","
+                             + "GIANG_VIEN." + tblGiangVien.sNOISINH + ","
+                             + "GIANG_VIEN." + tblGiangVien.sDIACHI + " " 
                             + "from GIANG_VIEN,GIANG_DAY "
                             + "WHERE "
                             + "GIANG_VIEN.MA_GIANG_VIEN = GIANG_DAY.MA_GIANG_VIEN AND "
@@ -372,7 +408,17 @@ namespace DataAccessLayer
         {
 
             int result = 0;
-            string QueryStr = "Select GIANG_VIEN.* "
+            string QueryStr = "SELECT  "
+                              + tblGiangVien.sMA_GIANG_VIEN + ","
+                              + tblGiangVien.sHOC_VI + ","
+                              + tblGiangVien.sMA_KHOA + ","
+                              + tblGiangVien.sHO_GIANG_VIEN + ","
+                              + tblGiangVien.sTEN_GIANG_VIEN + ","
+                              + tblGiangVien.sCMND + ","
+                              + tblGiangVien.sNGAYSINH + ","
+                              + tblGiangVien.sGIOITINH + ","
+                              + tblGiangVien.sNOISINH + ","
+                              + tblGiangVien.sDIACHI + " " 
                             + "from GIANG_VIEN,GIANG_DAY "
                             + "WHERE "
                             + "GIANG_VIEN.MA_GIANG_VIEN = GIANG_DAY.MA_GIANG_VIEN AND "
