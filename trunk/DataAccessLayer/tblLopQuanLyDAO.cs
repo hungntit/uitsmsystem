@@ -92,7 +92,34 @@ namespace DataAccessLayer
 
         public void deleteTblLopQuanLy(int malop)
         {
-             this.deleteObj("LOP_QUAN_LY", "MA_LOP_QUAN_LY", malop);
+
+            try
+            {
+                tblSinhVienDAO svDao = new tblSinhVienDAO();
+                svDao.deleteTblSinhVienByMaLopQL(malop);
+                this.deleteObj("LOP_QUAN_LY", "MA_LOP_QUAN_LY", malop);
+                svDao.CloseConection();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void deleteTblLopQuanLyByMaKhoa(String maKhoa)
+        {
+
+            try
+            {
+                List<tblLopQuanLy> lstLopQl = getLopQuanLyByMaKhoa(maKhoa);
+                tblLopQuanLy[] arrLopQL = lstLopQl.ToArray();
+                for (int i = 0; i < lstLopQl.Count; i++)
+                    deleteTblLopQuanLy(arrLopQL[i].MaLopQuanLy);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         /*
          *@ Lay Thong tin giang vien boi MaGV

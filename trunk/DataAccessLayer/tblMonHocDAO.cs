@@ -99,7 +99,21 @@ namespace DataAccessLayer
         }
         public void deleteTblMonHoc(String mamonhoc)
         {
-             this.deleteObj("MON_HOC", "MA_MON", mamonhoc);
+            try
+            {
+                tblLopDangKyDAO lopdkDao = new tblLopDangKyDAO();
+                lopdkDao.deleteTblLopDangKyByMamon(mamonhoc);
+                
+                this.deleteObj("MON_TIEN_QUYET", tblMonhoc.sMA_MON, mamonhoc);
+                this.deleteObj("MON_TIEN_QUYET", "MA_MON_TIEN_QUYET", mamonhoc);
+                this.deleteObj("GIANG_DAY", tblMonhoc.sMA_MON, mamonhoc);
+                this.deleteObj("MON_HOC", tblMonhoc.sMA_MON, mamonhoc);
+                lopdkDao.CloseConection();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         /*
          *@ Lay Thong tin giang vien boi MaGV

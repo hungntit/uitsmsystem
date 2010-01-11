@@ -105,9 +105,38 @@ namespace DataAccessLayer
 
             }
         }
-        public void deleteTbleSinhVien(String maSv)
+        public void deleteTblSinhVien(String maSv)
         {
-            this.deleteObj("SINH_VIEN", "MA_SINH_VIEN", maSv);
+            try
+            {
+                tblPhieuDangKyDAO phieuDKDAO = new tblPhieuDangKyDAO();
+                phieuDKDAO.deleteTblPhieuDangKyByMaSinhVien(maSv);
+                this.deleteObj("BANG_DIEM", "MA_SINH_VIEN", maSv);
+                this.deleteObj("SINH_VIEN", "MA_SINH_VIEN", maSv);
+                phieuDKDAO.CloseConection();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void deleteTblSinhVienByMaLopQL(int maLop)
+        {
+            try
+            {
+                List<tblSinhVien> lstSV = getAllSinhVienByMaLopQuanLy(maLop);
+                tblSinhVien[] arrSV = lstSV.ToArray();
+                for (int i = 0; i < lstSV.Count; i++)
+                {
+                    deleteTblSinhVien( arrSV[i].MaSV);
+                    
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         /*
          *@ Lay Thong tin giang vien boi MaGV

@@ -21,13 +21,11 @@ namespace DataAccessLayer
                             +"("
                             + tblPhieuDangKy.sMA_PHIEU
                             +","
-                            + tblPhieuDangKy.sMA_HOC_KY 
-                            +","
                             + tblPhieuDangKy.sMA_SV 
                             + ","
                             + tblPhieuDangKy.sNGAY_DANG_KY 
                             +") "
-                            + "VALUES(?,?,?,?)";
+                            + "VALUES(?,?,?)";
 
 
 
@@ -37,7 +35,6 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_PHIEU, phieudangky.MaPhieuDK);
-                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_HOC_KY, phieudangky.MaHocKy);
                 sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_SV, phieudangky.MaSV);
                 sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sNGAY_DANG_KY, phieudangky.NgayDK);
                 sqlcommand.Prepare();
@@ -61,7 +58,6 @@ namespace DataAccessLayer
             string QueryStr = "UPDATE PHIEU_DANG_KY "
                             + "WHERE " + tblPhieuDangKy.sMA_PHIEU + " = ? "
                             + "SET "
-                            + tblPhieuDangKy.sMA_HOC_KY + "= " + phieudangky.MaHocKy
                             + tblPhieuDangKy.sMA_SV + "= " + phieudangky.MaSV
                             + tblPhieuDangKy.sNGAY_DANG_KY + "= " + phieudangky.NgayDK;
 
@@ -96,8 +92,32 @@ namespace DataAccessLayer
         }
         public void deleteTblPhieuDangKy(int maphieu)
         {
-             this.deleteObj("PHIEU_DANG_KY", "MA_PHIEU_DANG_KY", maphieu);
+            try
+            {
+                this.deleteObj("CHI_TIET_DANG_KY", "MA_PHIEU_DANG_KY", maphieu);
+                this.deleteObj("PHIEU_DANG_KY", "MA_PHIEU_DANG_KY", maphieu);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
+
+        public void deleteTblPhieuDangKyByMaSinhVien(String maSV)
+        {
+            try
+            {
+                List<tblPhieuDangKy> lstPhieuDK = getAllPhieuDangKyByMaSinhVien(maSV);
+                tblPhieuDangKy[] arrPhieuDk = lstPhieuDK.ToArray();
+                for(int i=0;i<lstPhieuDK.Count;i++)
+                    deleteTblPhieuDangKy(arrPhieuDk[i].MaPhieuDK);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         /*
          *@ Lay Thong tin giang vien boi MaGV
          *@ MaGV: maSV can tim 
@@ -105,7 +125,11 @@ namespace DataAccessLayer
         public tblPhieuDangKy getbyMaPhieuDKy(int MaPhieu)
         {
             tblPhieuDangKy phieudk = null;
-            string QueryStr = "Select * from PHIEU_DANG_KY where MA_PHIEU_DANG_KY  =   ?";
+            string QueryStr = "Select "
+                        +tblPhieuDangKy.sMA_PHIEU+","
+                        + tblPhieuDangKy.sMA_SV + ","
+                        + tblPhieuDangKy.sNGAY_DANG_KY + " "
+                        +"from PHIEU_DANG_KY where MA_PHIEU_DANG_KY  =   ?";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -119,11 +143,10 @@ namespace DataAccessLayer
                 {
                     int Maphieu = sqldtRd.GetInt32(0);
                     String MaSV = sqldtRd.GetString(1);
-                    int mahocky = sqldtRd.GetInt32(2);
-                    DateTime NgayDangKy = sqldtRd.GetDateTime(3);
+                    DateTime NgayDangKy = sqldtRd.GetDateTime(2);
                     
 
-                    phieudk = new tblPhieuDangKy(Maphieu, MaSV,mahocky, NgayDangKy);
+                    phieudk = new tblPhieuDangKy(Maphieu, MaSV, NgayDangKy);
                 }
             }
             catch (Exception e)
@@ -150,7 +173,11 @@ namespace DataAccessLayer
         {
             List<tblPhieuDangKy> list = new List<tblPhieuDangKy>();
 
-            string QueryStr = "Select * from PHIEU_DANG_KY ";
+            string QueryStr = "Select " 
+                        +tblPhieuDangKy.sMA_PHIEU + ","
+                        + tblPhieuDangKy.sMA_SV + ","
+                        + tblPhieuDangKy.sNGAY_DANG_KY + " "
+                    +"from PHIEU_DANG_KY ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
@@ -165,11 +192,10 @@ namespace DataAccessLayer
                     tblPhieuDangKy phieudk = null;
                     int MaPhieu = sqldtRd.GetInt32(0);
                     String MaSV = sqldtRd.GetString(1);
-                    int mahocky = sqldtRd.GetInt32(2);
-                    DateTime NgayDangKy = sqldtRd.GetDateTime(3);
+                    DateTime NgayDangKy = sqldtRd.GetDateTime(2);
                    
 
-                    phieudk = new tblPhieuDangKy(MaPhieu, MaSV,mahocky, NgayDangKy);
+                    phieudk = new tblPhieuDangKy(MaPhieu, MaSV, NgayDangKy);
                     list.Add(phieudk);
                 }
                 if (!All)
@@ -238,7 +264,106 @@ namespace DataAccessLayer
             }
             return result;
         }
+        /**************************************************************************/
 
+        private List<tblPhieuDangKy> getAllPhieuDangKyByMaSinhVien(String maSV,int begin, int end, Boolean All)
+        {
+            List<tblPhieuDangKy> list = new List<tblPhieuDangKy>();
+
+            string QueryStr = "Select " 
+                        +tblPhieuDangKy.sMA_PHIEU + ","
+                        + tblPhieuDangKy.sMA_SV + ","
+                        + tblPhieuDangKy.sNGAY_DANG_KY + " "
+                    + "from PHIEU_DANG_KY "
+                        +"WHERE " + tblPhieuDangKy.sMA_SV + " = ? ";
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_SV, maSV);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    tblPhieuDangKy phieudk = null;
+                    int MaPhieu = sqldtRd.GetInt32(0);
+                    String MaSV = sqldtRd.GetString(1);
+                    DateTime NgayDangKy = sqldtRd.GetDateTime(2);
+
+
+                    phieudk = new tblPhieuDangKy(MaPhieu, MaSV, NgayDangKy);
+                    list.Add(phieudk);
+                }
+                if (!All)
+                {
+                    list.RemoveRange(end, list.Count - end);
+                    list.RemoveRange(0, begin);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return list;
+
+
+        }
+
+        public List<tblPhieuDangKy> getAllPhieuDangKyByMaSinhVien(String maSV,int begin, int end)
+        {
+            return getAllPhieuDangKyByMaSinhVien(maSV,begin, end, false);
+        }
+        public List<tblPhieuDangKy> getAllPhieuDangKyByMaSinhVien(String maSV)
+        {
+            return getAllPhieuDangKyByMaSinhVien(maSV,0, 0, true);
+        }
+
+        public int CountPhieuDangKyByMaSV(String maSV)
+        {
+            int result = 0;
+
+            string QueryStr = "Select COUNT(MA_PHIEU_DANG_KY)"
+                            +" from PHIEU_DANG_KY "
+                            + "WHERE " + tblPhieuDangKy.sMA_SV + " = ? ";
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_SV, maSV);
+                sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    result = sqldtRd.GetInt32(0);
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return result;
+        }
         
     }
 }

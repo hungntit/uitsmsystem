@@ -15,7 +15,7 @@ namespace BussinessEntities
       public static String sMA_GIANG_VIEN = "MA_GIANG_VIEN";
       public static String sMA_PHONG = "MA_PHONG";
       public static String sMA_MON = "MA_MON";
-
+      public static String sMA_HOC_KY = "MA_HOC_KY";
       public static String sTEN_LOP = "TEN_LOP";
       public static String sTHU = "THU";
       public static String sCA = "CA";
@@ -28,13 +28,13 @@ namespace BussinessEntities
         private String _tenLop;
         private DayOfWeek _thu;
         private int _ca;
-       
+        private int _maHocKy;
         private DateTime _ngayMoLop;
         #endregion
 
         #region Constructor
 
-        public tblLopDangKy(int maLop, String maGiangVien, String maPhong, String maMon, String tenLop, DayOfWeek thu, int ca, DateTime ngaymolop)
+        public tblLopDangKy(int maLop, String maGiangVien, String maPhong, String maMon, String tenLop, DayOfWeek thu, int ca, DateTime ngaymolop,int maHocKy)
         {
             this._maLop = maLop;
             this._maMon = maMon;
@@ -44,6 +44,7 @@ namespace BussinessEntities
             this._thu = thu;
             this._ca = ca;
             this._ngayMoLop = ngaymolop;
+            this._maHocKy = maHocKy;
         }
         #endregion
         #region Properties
@@ -58,8 +59,12 @@ namespace BussinessEntities
             get { return _maMon; }
             set { _maMon = value; }
         }
-       
 
+        public int MaHocKy
+        {
+            get { return _maHocKy; }
+            set { _maHocKy = value; }
+        }
         public String MaGiangVien
         {
             get { return _maGiangVien; }

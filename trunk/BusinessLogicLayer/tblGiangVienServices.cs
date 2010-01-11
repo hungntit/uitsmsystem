@@ -41,10 +41,7 @@ namespace BusinessLogicLayer
            else
                 giangvienDao.deleteTblGiangVien(maGiangVien);
        }
-       public void updateTblGiangVien(tblGiangVien giangvien)
-       {
-
-       }
+      
        public tblGiangVien getbyMaGV(String MaGV)
        {
            if (giangvienDao == null)

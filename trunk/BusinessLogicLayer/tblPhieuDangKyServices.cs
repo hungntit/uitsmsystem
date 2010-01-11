@@ -71,6 +71,29 @@ namespace BusinessLogicLayer
                return phieuDkDAO.CountPhieuDangKy();
        }
        
+
+       public List<tblPhieuDangKy> getAllPhieuDangKyByMaSinhVien(String maSV,int begin, int end)
+        {
+            if (phieuDkDAO == null)
+               throw new Exception("Can't connect DAL");
+           else
+               return phieuDkDAO.getAllPhieuDangKyByMaSinhVien( maSV, begin,  end);
+        }
+       public List<tblPhieuDangKy> getAllPhieuDangKyByMaSinhVien(String maSV)
+        {
+            if (phieuDkDAO == null)
+               throw new Exception("Can't connect DAL");
+           else
+               return phieuDkDAO.getAllPhieuDangKyByMaSinhVien( maSV);
+        }
+
+        public int CountPhieuDangKyByMaSV(String maSV)
+        {
+            if (phieuDkDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return phieuDkDAO.CountPhieuDangKyByMaSV( maSV);
+        }
     }
   
 

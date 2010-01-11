@@ -34,12 +34,12 @@ namespace BusinessLogicLayer
             else
                 sinhvienDAO.updateTblSinhVien(sinhvien);
         }
-        public void deleteTbleSinhVien(String maSv)
+        public void deleteTblSinhVien(String maSv)
         {
             if (sinhvienDAO == null)
                 throw new Exception("Can't connect DAL");
             else
-                 sinhvienDAO.deleteTbleSinhVien(maSv);
+                 sinhvienDAO.deleteTblSinhVien(maSv);
         }
         public tblSinhVien getbyMaSV(String MaSV)
         {

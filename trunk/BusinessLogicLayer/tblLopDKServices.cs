@@ -70,26 +70,120 @@ namespace BusinessLogicLayer
                 return lopDAO.CountLopDK();
         }
 
-        public int CountLopDangKy(String maPhieuDK)
+        public int CountLopDangKyByMaPhieu(String maPhieuDK)
         {
             if (lopDAO == null)
                 throw new Exception("Can't connect DAL");
             else
-                return lopDAO.CountLopDangKy(maPhieuDK);
+                return lopDAO.CountLopDangKyByMaPhieu(maPhieuDK);
         }
-        public List<tblLopDangKy> getLopDangKy(String maPhieuDK, int begin, int end)
+        public List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK, int begin, int end)
         {
             if (lopDAO == null)
                 throw new Exception("Can't connect DAL");
             else
-                return lopDAO.getLopDangKy(maPhieuDK, begin, end);
+                return lopDAO.getLopDangKyByMaPhieu(maPhieuDK, begin, end);
         }
-        public List<tblLopDangKy> getLopDangKy(String maPhieuDK)
+        public List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK)
         {
             if (lopDAO == null)
                 throw new Exception("Can't connect DAL");
             else
-                return lopDAO.getLopDangKy(maPhieuDK);
+                return lopDAO.getLopDangKyByMaPhieu(maPhieuDK);
+        }
+
+        public int CountLopDangKyByMaPhong(int maPhong)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return lopDAO.CountLopDangKyByMaPhong(maPhong);
+        }
+        public List<tblLopDangKy> getLopDangKyByMaPhong(int maPhong, int begin, int end)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return lopDAO.getLopDangKyByMaPhong(maPhong, begin, end);
+        }
+        public List<tblLopDangKy> getLopDangKyByMaPhong(int maPhong)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return lopDAO.getLopDangKyByMaPhong(maPhong);
+        }
+
+
+        public int CountLopDangKyByMaMon(String maMon)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return lopDAO.CountLopDangKyByMaMon(maMon);
+        }
+        public List<tblLopDangKy> getLopDangKyByMaMonHoc(String maMon, int begin, int end)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return lopDAO.getLopDangKyByMaMonHoc(maMon, begin, end);
+        }
+        public List<tblLopDangKy> getLopDangKyByMaMonHoc(String maMon)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return lopDAO.getLopDangKyByMaMonHoc(maMon);
+        }
+
+
+
+        public int CountLopDangKyByMaGiangVien(String maGV)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return lopDAO.CountLopDangKyByMaGiangVien(maGV);
+        }
+        public List<tblLopDangKy> getLopDangKyByMaGiangVien(String maGV, int begin, int end)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return lopDAO.getLopDangKyByMaGiangVien(maGV, begin, end);
+        }
+        public List<tblLopDangKy> getLopDangKyByMaGiangVien(String maGV)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return lopDAO.getLopDangKyByMaGiangVien(maGV);
+        }
+
+
+        public void deleteTblLopDangKyByMamon(String mamon)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                 lopDAO.deleteTblLopDangKyByMamon(mamon);
+        }
+
+        public void deleteTblLopDangKyByMaGiangVien(String magiangvien)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                 lopDAO.deleteTblLopDangKyByMaGiangVien(magiangvien);
+        }
+
+        public void deleteTblLopDangKyByMaPhong(int maPhong)
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                 lopDAO.deleteTblLopDangKyByMaPhong(maPhong);
         }
     }
   

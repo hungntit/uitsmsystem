@@ -42,7 +42,7 @@ namespace DataAccessLayer
                throw e;
            }
        }
-         protected void deleteObj(string TableName,string IDName,Object value)
+         public void deleteObj(string TableName,string IDName,Object value)
          {
              string QueryStr = "Delete from " + TableName
                                  + " where " + IDName + "= ? " ;
