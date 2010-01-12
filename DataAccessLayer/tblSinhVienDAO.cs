@@ -35,7 +35,17 @@ namespace DataAccessLayer
                             + "," + tblSinhVien.sGIOITINH
                             + "," + tblSinhVien.sDIACHI
                             + ") "
-                            + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+                            + "VALUES(@" + tblSinhVien.sMASV
+                                         + ",@" + tblSinhVien.sCMND
+                                         + ",@" + tblSinhVien.sNIEN_KHOA
+                                         + ",@" + tblSinhVien.sMA_LOP_QUAN_LY
+                                         + ",@" + tblSinhVien.sHO_SINH_VIEN
+                                         + ",@" + tblSinhVien.sTEN_SINH_VIEN
+                                         + ",@" + tblSinhVien.sNGAYSINH
+                                         + ",@" + tblSinhVien.sNOISINH
+                                         + ",@" + tblSinhVien.sGIOITINH
+                                         + ",@" + tblSinhVien.sDIACHI 
+                                         + ")";
 
 
             SqlCommand sqlcommand = null;
@@ -43,17 +53,17 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sMASV, sinhvien.MaSV);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sCMND, sinhvien.CMND);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNIEN_KHOA, sinhvien.NienKhoa);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sMA_LOP_QUAN_LY, sinhvien.MaLopQuanLy);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sHO_SINH_VIEN, sinhvien.Ho);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sTEN_SINH_VIEN, sinhvien.Ten);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNGAYSINH, sinhvien.NgaySinh);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNOISINH, sinhvien.NoiSinh);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sGIOITINH, sinhvien.GioiTinh);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sDIACHI, sinhvien.DiaChi);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sMASV, sinhvien.MaSV);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sCMND, sinhvien.CMND);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sNIEN_KHOA, sinhvien.NienKhoa);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sMA_LOP_QUAN_LY, sinhvien.MaLopQuanLy);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sHO_SINH_VIEN, sinhvien.Ho);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sTEN_SINH_VIEN, sinhvien.Ten);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sNGAYSINH, sinhvien.NgaySinh);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sNOISINH, sinhvien.NoiSinh);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sGIOITINH, sinhvien.GioiTinh);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sDIACHI, sinhvien.DiaChi);
+                //sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -72,34 +82,34 @@ namespace DataAccessLayer
         public void updateTblSinhVien(tblSinhVien sinhvien)
         {
             string QueryStr = "UPDATE SINH_VIEN "
-                            + "WHERE " + tblSinhVien.sMASV + " = ? "
                             + "SET "
-                            + tblSinhVien.sCMND + " = ?,"
-                            + tblSinhVien.sNIEN_KHOA + " = ?,"
-                            + tblSinhVien.sMA_LOP_QUAN_LY + " = ?,"
-                            + tblSinhVien.sHO_SINH_VIEN + " = ?,"
-                            + tblSinhVien.sTEN_SINH_VIEN + " = ?,"
-                            + tblSinhVien.sNGAYSINH + " = ?,"
-                            + tblSinhVien.sNOISINH + " = ?," 
-                            + tblGiangVien.sGIOITINH + " = ?," 
-                            + tblGiangVien.sDIACHI + " = ?";
+                            + tblSinhVien.sCMND + " = @" + tblSinhVien.sCMND + ","
+                            + tblSinhVien.sNIEN_KHOA + " = @" + tblSinhVien.sNIEN_KHOA + ","
+                            + tblSinhVien.sMA_LOP_QUAN_LY + " = @" + tblSinhVien.sMA_LOP_QUAN_LY + ","
+                            + tblSinhVien.sHO_SINH_VIEN + " = @" + tblSinhVien.sHO_SINH_VIEN + ","
+                            + tblSinhVien.sTEN_SINH_VIEN + " = @" + tblSinhVien.sTEN_SINH_VIEN + ","
+                            + tblSinhVien.sNGAYSINH + " = @" + tblSinhVien.sNGAYSINH + ","
+                            + tblSinhVien.sNOISINH + " = @" + tblSinhVien.sNOISINH + ","
+                            + tblGiangVien.sGIOITINH + " = @" + tblSinhVien.sGIOITINH + ","
+                            + tblGiangVien.sDIACHI + " = @" + tblSinhVien.sDIACHI + " "
+                            + "WHERE " + tblSinhVien.sMASV + " = @" + tblSinhVien.sMASV;
 
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sMASV, sinhvien.MaSV);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sCMND, sinhvien.CMND);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNIEN_KHOA, sinhvien.NienKhoa);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sMA_LOP_QUAN_LY, sinhvien.MaLopQuanLy);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sHO_SINH_VIEN, sinhvien.Ho);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sTEN_SINH_VIEN, sinhvien.Ten);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNGAYSINH, sinhvien.NgaySinh);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNOISINH, sinhvien.NoiSinh);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sGIOITINH, sinhvien.GioiTinh);
-                sqlcommand.Parameters.AddWithValue(tblSinhVien.sDIACHI, sinhvien.DiaChi);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sMASV, sinhvien.MaSV);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sCMND, sinhvien.CMND);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sNIEN_KHOA, sinhvien.NienKhoa);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sMA_LOP_QUAN_LY, sinhvien.MaLopQuanLy);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sHO_SINH_VIEN, sinhvien.Ho);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sTEN_SINH_VIEN, sinhvien.Ten);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sNGAYSINH, sinhvien.NgaySinh);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sNOISINH, sinhvien.NoiSinh);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sGIOITINH, sinhvien.GioiTinh);
+                sqlcommand.Parameters.AddWithValue("@" + tblSinhVien.sDIACHI, sinhvien.DiaChi);
+                //sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -154,15 +164,15 @@ namespace DataAccessLayer
         public tblSinhVien getbyMaSV(String MaSV)
         {
             tblSinhVien sinhvien = null;
-            string QueryStr = "Select * from SINH_VIEN where MA_SINH_VIEN  =   ?";
+            string QueryStr = "Select * from SINH_VIEN where MA_SINH_VIEN  =  @MA_SINH_VIEN";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_SINH_VIEN", MaSV);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_SINH_VIEN", MaSV);
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -199,15 +209,15 @@ namespace DataAccessLayer
         public tblSinhVien getbyCMND(String cmnd)
         {
             tblSinhVien sinhvien = null;
-            string QueryStr = "Select * from SINH_VIEN where CMND  =   ?";
+            string QueryStr = "Select * from SINH_VIEN where CMND  = @CMNS";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("CMND", cmnd);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@CMND", cmnd);
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -254,7 +264,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 
-                sqlcommand.Prepare();
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -308,7 +318,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
 
-                sqlcommand.Prepare();
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -354,7 +364,7 @@ namespace DataAccessLayer
 
             string QueryStr = "Select  * from "
                             + "SINH_VIEN,LOP_QUAN_LY "
-                            + "WHERE MA_KHOA = ? AND "
+                            + "WHERE MA_KHOA = @MA_KHOA AND "
                             + "SINH_VIEN.MA_SINH_VIEN = LOP_QUAN_LY.MA_SINH_VIEN ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -362,8 +372,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_KHOA", makhoa);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_KHOA", makhoa);
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -420,7 +430,7 @@ namespace DataAccessLayer
 
             string QueryStr = "Select  COUNT(MA_SINH_VIEN) AS COUNTSV from "
                             + "SINH_VIEN,LOP_QUAN_LY "
-                            + "WHERE MA_KHOA = ? AND "
+                            + "WHERE MA_KHOA = @MA_KHOA AND "
                             + "SINH_VIEN.MA_SINH_VIEN = LOP_QUAN_LY.MA_SINH_VIEN ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -428,8 +438,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_KHOA", makhoa);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_KHOA", makhoa);
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -461,7 +471,7 @@ namespace DataAccessLayer
 
              string QueryStr = "Select  * from "
                              + "SINH_VIEN "
-                             + "WHERE MA_LOP_QUAN_LY = ?  ";
+                             + "WHERE MA_LOP_QUAN_LY = @MA_LOP_QUAN_LY  ";
                             
              SqlDataReader sqldtRd = null;
              SqlCommand sqlcommand = null;
@@ -469,8 +479,8 @@ namespace DataAccessLayer
              {
                  sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                  sqlcommand.CommandType = System.Data.CommandType.Text;
-                 sqlcommand.Parameters.AddWithValue("MA_LOP_QUAN_LY", malopQly);
-                 sqlcommand.Prepare();
+                 sqlcommand.Parameters.AddWithValue("@MA_LOP_QUAN_LY", malopQly);
+                 //sqlcommand.Prepare();
                  sqldtRd = sqlcommand.ExecuteReader();
                  while (sqldtRd.Read())
                  {
@@ -527,7 +537,7 @@ namespace DataAccessLayer
 
              string QueryStr = "Select  * from "
                               + "SINH_VIEN "
-                              + "WHERE MA_LOP_QUAN_LY = ?  ";
+                              + "WHERE MA_LOP_QUAN_LY = @MA_LOP_QUAN_LY  ";
                             
              SqlDataReader sqldtRd = null;
              SqlCommand sqlcommand = null;
@@ -535,8 +545,8 @@ namespace DataAccessLayer
              {
                  sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                  sqlcommand.CommandType = System.Data.CommandType.Text;
-                 sqlcommand.Parameters.AddWithValue("MA_LOP_QUAN_LY", malopQly);
-                 sqlcommand.Prepare();
+                 sqlcommand.Parameters.AddWithValue("@MA_LOP_QUAN_LY", malopQly);
+                 //sqlcommand.Prepare();
                  sqldtRd = sqlcommand.ExecuteReader();
                  while (sqldtRd.Read())
                  {

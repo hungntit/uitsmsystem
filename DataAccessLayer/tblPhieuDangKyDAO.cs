@@ -25,7 +25,9 @@ namespace DataAccessLayer
                             + ","
                             + tblPhieuDangKy.sNGAY_DANG_KY 
                             +") "
-                            + "VALUES(?,?,?)";
+                            + "VALUES(@"          + tblPhieuDangKy.sMA_PHIEU  
+                                            + ",@"+tblPhieuDangKy.sMA_SV
+                                            + ",@"+tblPhieuDangKy.sNGAY_DANG_KY+")";
 
 
 
@@ -34,10 +36,10 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_PHIEU, phieudangky.MaPhieuDK);
-                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_SV, phieudangky.MaSV);
-                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sNGAY_DANG_KY, phieudangky.NgayDK);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblPhieuDangKy.sMA_PHIEU, phieudangky.MaPhieuDK);
+                sqlcommand.Parameters.AddWithValue("@" + tblPhieuDangKy.sMA_SV, phieudangky.MaSV);
+                sqlcommand.Parameters.AddWithValue("@" + tblPhieuDangKy.sNGAY_DANG_KY, phieudangky.NgayDK);
+                //sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -56,10 +58,10 @@ namespace DataAccessLayer
         public void updateTblPhieuDangKy(tblPhieuDangKy phieudangky)
         {
             string QueryStr = "UPDATE PHIEU_DANG_KY "
-                            + "WHERE " + tblPhieuDangKy.sMA_PHIEU + " = ? "
                             + "SET "
-                            + tblPhieuDangKy.sMA_SV + " = ? ,"
-                            + tblPhieuDangKy.sNGAY_DANG_KY + " = ?";
+                            + tblPhieuDangKy.sMA_SV + " = @" + tblPhieuDangKy.sMA_SV + " ,"
+                            + tblPhieuDangKy.sNGAY_DANG_KY + " = @" + tblPhieuDangKy.sNGAY_DANG_KY +" "
+                            + "WHERE " + tblPhieuDangKy.sMA_PHIEU + " = @" + tblPhieuDangKy.sMA_PHIEU;
 
 
 
@@ -68,10 +70,10 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_PHIEU, phieudangky.MaPhieuDK);
-                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_SV, phieudangky.MaSV);
-                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sNGAY_DANG_KY, phieudangky.NgayDK);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblPhieuDangKy.sMA_PHIEU, phieudangky.MaPhieuDK);
+                sqlcommand.Parameters.AddWithValue("@" + tblPhieuDangKy.sMA_SV, phieudangky.MaSV);
+                sqlcommand.Parameters.AddWithValue("@" + tblPhieuDangKy.sNGAY_DANG_KY, phieudangky.NgayDK);
+                //sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -131,15 +133,15 @@ namespace DataAccessLayer
                         +tblPhieuDangKy.sMA_PHIEU+","
                         + tblPhieuDangKy.sMA_SV + ","
                         + tblPhieuDangKy.sNGAY_DANG_KY + " "
-                        +"from PHIEU_DANG_KY where MA_PHIEU_DANG_KY  =   ?";
+                        + "from PHIEU_DANG_KY where MA_PHIEU_DANG_KY  = @MA_PHIEU_DANG_KY";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_PHIEU_DANG_KY", MaPhieu);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_PHIEU_DANG_KY", MaPhieu);
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -187,7 +189,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 
-                sqlcommand.Prepare();
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -244,7 +246,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
 
-                sqlcommand.Prepare();
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -277,15 +279,15 @@ namespace DataAccessLayer
                         + tblPhieuDangKy.sMA_SV + ","
                         + tblPhieuDangKy.sNGAY_DANG_KY + " "
                     + "from PHIEU_DANG_KY "
-                        +"WHERE " + tblPhieuDangKy.sMA_SV + " = ? ";
+                        + "WHERE " + tblPhieuDangKy.sMA_SV + " = @" + tblPhieuDangKy.sMA_SV;
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_SV, maSV);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@"+tblPhieuDangKy.sMA_SV, maSV);
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -336,15 +338,15 @@ namespace DataAccessLayer
 
             string QueryStr = "Select COUNT(MA_PHIEU_DANG_KY)"
                             +" from PHIEU_DANG_KY "
-                            + "WHERE " + tblPhieuDangKy.sMA_SV + " = ? ";
+                            + "WHERE " + tblPhieuDangKy.sMA_SV + " = @" + tblPhieuDangKy.sMA_SV;
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_SV, maSV);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblPhieuDangKy.sMA_SV, maSV);
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
