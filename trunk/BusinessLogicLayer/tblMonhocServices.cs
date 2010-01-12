@@ -76,6 +76,13 @@ namespace BusinessLogicLayer
             else
                 return monhocDAO.getAllMonHocTienQuyet(MaMonhoc);
         }
+        public List<tblMonhoc> getAllMonHocByMaGiangVien(String maGV)
+        {
+            if (monhocDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return monhocDAO.getAllMonHocByMaGiangVien( maGV);
+        }
         public void CloseConection()
         {
             if (monhocDAO == null)

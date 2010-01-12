@@ -354,7 +354,7 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "Chọn";
-            this.columnHeader8.Width = 30;
+            this.columnHeader8.Width = 109;
             // 
             // columnHeader1
             // 

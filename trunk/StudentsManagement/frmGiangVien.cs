@@ -13,50 +13,104 @@ namespace StudentsManagement
 {
     public partial class frmGiangVien : Form
     {
-
+        
         tblMonhocServices monhocservices;
-        tblKhoaServices khoaServices ;
+        tblKhoaServices khoaServices;
         tblGiangDayServices giangdayServices;
         tblGiangVienServices giangvienServices;
         public frmGiangVien()
         {
             InitializeComponent();
-             monhocservices = new tblMonhocServices();
-             khoaServices = new tblKhoaServices();
-             giangdayServices = new tblGiangDayServices();
-             giangvienServices = new tblGiangVienServices();
+            monhocservices = new tblMonhocServices();
+            khoaServices = new tblKhoaServices();
+            giangdayServices = new tblGiangDayServices();
+            giangvienServices = new tblGiangVienServices();
         }
-
-        private void frmGiangVien_Load(object sender, EventArgs e)
+        public void loadInfoGV(String magv)
+        {
+            txtMGV.Text = magv;
+            tblGiangVien gv= giangvienServices.getbyMaGV(magv);
+            this.txtCmnd.Text = gv.CMND;
+            txtDiaChi.Text = gv.DiaChi;
+            txtHo.Text = gv.Ho;
+            txtNoiSinh.Text = gv.NoiSinh;
+            txtTen.Text = gv.Ten;
+            cmbGioiTinh.SelectedIndex = (gv.GioiTinh ? 0 : 1);
+            cmbHocVi.SelectedText = gv.HocVi;
+            tblKhoa khoa    =   khoaServices.getbyMaKhoa(gv.MaKhoa);
+            if (khoa != null)
+                cmbKhoa.SelectedText = khoa.TenKhoa;
+           
+        }
+        public frmGiangVien(String _maGV)
         {
             
+            InitializeComponent();
+            if (_maGV == null || _maGV.Trim().Equals(""))
+            {
+                txtMGV.Enabled = true;
+                
+            }
+            else
+            {
+                txtMGV.Enabled = false;
+            }
 
-            List<tblMonhoc> monhocs =   monhocservices.getAllMonHoc();
-            tblMonhoc[] arrMonhoc   =   monhocs.ToArray();
-            
+            monhocservices = new tblMonhocServices();
+            khoaServices = new tblKhoaServices();
+            giangdayServices = new tblGiangDayServices();
+            giangvienServices = new tblGiangVienServices();
+            loadInfoGV(_maGV);
+        }
+        private void frmGiangVien_Load(object sender, EventArgs e)
+        {
 
-            List<tblKhoa> lstKhoa   =   khoaServices.getAllKhoa();
-            tblKhoa[] arrKhoa   =   lstKhoa.ToArray();
 
-            for(int i = 0;i<monhocs.Count;i++)
+            List<tblMonhoc> monhocs = monhocservices.getAllMonHoc();
+            tblMonhoc[] arrMonhoc = monhocs.ToArray();
+
+
+            List<tblKhoa> lstKhoa = khoaServices.getAllKhoa();
+            tblKhoa[] arrKhoa = lstKhoa.ToArray();
+
+            for (int i = 0; i < monhocs.Count; i++)
             {
                 ListViewItem lvItm = new ListViewItem();
                 lvItm.Text = arrMonhoc[i].MaMon;
                 lvItm.SubItems.Add(arrMonhoc[i].TenMon);
-               // lvItm.SubItems.Add(arrMonhoc[i].TenMon);
+                // lvItm.SubItems.Add(arrMonhoc[i].TenMon);
                 lstDanhSachChuaChon.Items.Add(lvItm);
             }
-            for(int i = 0;i<lstKhoa.Count;i++)
+            for (int i = 0; i < lstKhoa.Count; i++)
             {
                 cmbKhoa.Items.Add(arrKhoa[i].TenKhoa);
             }
-            
+            if (!txtMGV.Enabled)
+            {
+                List<tblMonhoc> lstmonhocGV = monhocservices.getAllMonHocByMaGiangVien(txtMGV.Text.Trim());
+                tblMonhoc[] arrMonhocGV = lstmonhocGV.ToArray();
+
+
+                for (int i = 0; i < lstmonhocGV.Count; i++)
+                {
+                    foreach (ListViewItem lvitem in lstDanhSachChuaChon.Items)
+                    {
+                        if (lvitem.Text.Equals(arrMonhocGV[i].MaMon))
+                        {
+                            lstDanhSachChuaChon.Items.Remove(lvitem);
+                            lstDanhSachChon.Items.Add(lvitem);
+                        }
+                    }
+                }
+                
+            }
+
         }
 
         private void btnChon_Click(object sender, EventArgs e)
         {
-            
-            
+
+
             foreach (ListViewItem item in lstDanhSachChuaChon.SelectedItems)
             {
                 lstDanhSachChuaChon.Items.Remove(item);
@@ -86,14 +140,20 @@ namespace StudentsManagement
             giangvien.NoiSinh = txtNoiSinh.Text.Trim();
             giangvien.CMND = txtCmnd.Text.Trim();
             giangvien.DiaChi = txtDiaChi.Text.Trim();
-            giangvienServices.insertTblGiangVien(giangvien);
+            if(txtMGV.Enabled)
+                 giangvienServices.insertTblGiangVien(giangvien);
+            else
+            {
+                giangvienServices.updateTblGiangVien(giangvien);
+                giangdayServices.deleteTblGiangDay(txtMGV.Text.Trim());
+            }
             foreach (ListViewItem lvItem in lstDanhSachChon.SelectedItems)
             {
-                tblMonhoc monhoc    =   new tblMonhoc();
-                monhoc.MaMon    =   lvItem.Text.Trim();
+                tblMonhoc monhoc = new tblMonhoc();
+                monhoc.MaMon = lvItem.Text.Trim();
                 giangdayServices.insertTblGiangDay(giangvien, monhoc);
             }
-            
+
             this.Close();
         }
 

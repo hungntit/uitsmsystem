@@ -34,6 +34,13 @@ namespace BusinessLogicLayer
             else
                 giangdayDAO.deleteTblGiangDay(mamonhoc, maGV);
         }
+        public void deleteTblGiangDay( String maGV)
+        {
+            if (giangdayDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                giangdayDAO.deleteTblGiangDay( maGV);
+        }
         public void CloseConection()
         {
             if (giangdayDAO == null)

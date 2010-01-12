@@ -310,5 +310,56 @@ namespace DataAccessLayer
 
         }
 
+
+
+        public List<tblMonhoc> getAllMonHocByMaGiangVien(String maGV)
+        {
+            List<tblMonhoc> list = new List<tblMonhoc>();
+
+
+            string QueryStr = "SELECT MON_HOC.* "
+                            + "FROM MON_HOC,GIANG_DAY "
+                            + "WHERE "
+                            + "GIANG_DAY.MA_MON = MON_HOC.MA_MON AND "
+                            + "GIANG_DAY.MA_GIANG_VIEN = @MA_GV ";
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue("@MA_GV", maGV);
+                //sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    tblMonhoc monhoc = null;
+                    String MaMon = sqldtRd.GetString(0);
+                    int maloai = sqldtRd.GetInt32(1);
+                    String tenMon = sqldtRd.GetString(2);
+                    int sotclythuyet = sqldtRd.GetInt32(3);
+                    int sotcthuchanh = sqldtRd.GetInt32(4);
+
+                    monhoc = new tblMonhoc(MaMon, maloai, tenMon, sotclythuyet, sotcthuchanh);
+                    list.Add(monhoc);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return list;
+
+
+        }
+
     }
 }

@@ -11,9 +11,15 @@ namespace StudentsManagement
 {
     public partial class frmLopDangKy : Form
     {
+
         public frmLopDangKy()
         {
             InitializeComponent();
+            for (int i = 0; i < 100; i++)
+                cmbNamhoc.Items.Add(i + 1990);
+
         }
+
+        
     }
 }

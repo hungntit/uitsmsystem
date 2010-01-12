@@ -33,11 +33,14 @@
             this.btnTroVe = new System.Windows.Forms.Button();
             this.pnlMidle = new System.Windows.Forms.Panel();
             this.grbThongTinLopDangKy = new System.Windows.Forms.GroupBox();
+            this.cmbNamhoc = new System.Windows.Forms.ComboBox();
+            this.cmbHocky = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -50,9 +53,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlHead = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.pnlBottom.SuspendLayout();
             this.pnlMidle.SuspendLayout();
             this.grbThongTinLopDangKy.SuspendLayout();
@@ -96,14 +96,14 @@
             // 
             // grbThongTinLopDangKy
             // 
+            this.grbThongTinLopDangKy.Controls.Add(this.cmbNamhoc);
+            this.grbThongTinLopDangKy.Controls.Add(this.cmbHocky);
             this.grbThongTinLopDangKy.Controls.Add(this.comboBox3);
             this.grbThongTinLopDangKy.Controls.Add(this.comboBox2);
             this.grbThongTinLopDangKy.Controls.Add(this.label2);
             this.grbThongTinLopDangKy.Controls.Add(this.comboBox1);
             this.grbThongTinLopDangKy.Controls.Add(this.textBox11);
-            this.grbThongTinLopDangKy.Controls.Add(this.textBox8);
             this.grbThongTinLopDangKy.Controls.Add(this.label15);
-            this.grbThongTinLopDangKy.Controls.Add(this.textBox7);
             this.grbThongTinLopDangKy.Controls.Add(this.label14);
             this.grbThongTinLopDangKy.Controls.Add(this.comboBox4);
             this.grbThongTinLopDangKy.Controls.Add(this.label13);
@@ -121,10 +121,32 @@
             this.grbThongTinLopDangKy.TabStop = false;
             this.grbThongTinLopDangKy.Text = "Thông Tin Lớp Đăng Ký";
             // 
-            // comboBox1
+            // cmbNamhoc
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbNamhoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNamhoc.FormattingEnabled = true;
+            this.cmbNamhoc.Location = new System.Drawing.Point(146, 127);
+            this.cmbNamhoc.Name = "cmbNamhoc";
+            this.cmbNamhoc.Size = new System.Drawing.Size(109, 21);
+            this.cmbNamhoc.TabIndex = 60;
+            // 
+            // cmbHocky
+            // 
+            this.cmbHocky.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHocky.FormattingEnabled = true;
+            this.cmbHocky.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cmbHocky.Location = new System.Drawing.Point(146, 95);
+            this.cmbHocky.Name = "cmbHocky";
+            this.cmbHocky.Size = new System.Drawing.Size(109, 21);
+            this.cmbHocky.TabIndex = 59;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
             "2",
             "3",
             "4",
@@ -132,6 +154,31 @@
             "6",
             "7",
             "CN"});
+            this.comboBox3.Location = new System.Drawing.Point(716, 19);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(75, 21);
+            this.comboBox3.TabIndex = 58;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(394, 55);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(231, 21);
+            this.comboBox2.TabIndex = 57;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(324, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "Giảng viên :";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(394, 22);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(231, 21);
@@ -144,13 +191,6 @@
             this.textBox11.Size = new System.Drawing.Size(41, 20);
             this.textBox11.TabIndex = 54;
             // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(143, 122);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(63, 20);
-            this.textBox8.TabIndex = 53;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -159,13 +199,6 @@
             this.label15.Size = new System.Drawing.Size(56, 13);
             this.label15.TabIndex = 52;
             this.label15.Text = "Năm học :";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(144, 92);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(41, 20);
-            this.textBox7.TabIndex = 51;
             // 
             // label14
             // 
@@ -178,6 +211,7 @@
             // 
             // comboBox4
             // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
             "2",
@@ -277,47 +311,6 @@
             this.pnlHead.Size = new System.Drawing.Size(961, 38);
             this.pnlHead.TabIndex = 3;
             // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "CN"});
-            this.comboBox2.Location = new System.Drawing.Point(394, 55);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(231, 21);
-            this.comboBox2.TabIndex = 57;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(324, 63);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
-            this.label2.TabIndex = 56;
-            this.label2.Text = "Giảng viên :";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "CN"});
-            this.comboBox3.Location = new System.Drawing.Point(716, 19);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(75, 21);
-            this.comboBox3.TabIndex = 58;
-            // 
             // frmLopDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,9 +342,7 @@
         private System.Windows.Forms.GroupBox grbThongTinLopDangKy;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label13;
@@ -365,5 +356,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbHocky;
+        private System.Windows.Forms.ComboBox cmbNamhoc;
     }
 }
