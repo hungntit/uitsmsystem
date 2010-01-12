@@ -303,7 +303,8 @@ namespace DataAccessLayer
                 }
                 if (!All)
                 {
-                    list.RemoveRange(end, list.Count - end);
+                    if(list.Count>end)
+                        list.RemoveRange(end, list.Count - end);
                     list.RemoveRange(0, begin);
                 }
             }
