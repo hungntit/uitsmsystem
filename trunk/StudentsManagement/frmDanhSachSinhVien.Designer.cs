@@ -33,15 +33,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.btnXem = new System.Windows.Forms.Button();
             this.btnXuatDanhSach = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXemTatCa = new System.Windows.Forms.Button();
             this.pnlDanhSachSinhVien = new System.Windows.Forms.Panel();
-            this.btnChonTatCa = new System.Windows.Forms.Button();
             this.lstDanhSachSinhVien = new System.Windows.Forms.ListView();
-            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
@@ -119,7 +115,6 @@
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnSua);
-            this.panel2.Controls.Add(this.btnXem);
             this.panel2.Controls.Add(this.btnXuatDanhSach);
             this.panel2.Controls.Add(this.btnThem);
             this.panel2.Controls.Add(this.btnXemTatCa);
@@ -130,7 +125,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(358, 5);
+            this.btnXoa.Location = new System.Drawing.Point(278, 5);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(78, 26);
             this.btnXoa.TabIndex = 5;
@@ -139,21 +134,13 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(275, 5);
+            this.btnSua.Location = new System.Drawing.Point(194, 5);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(78, 26);
             this.btnSua.TabIndex = 4;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(193, 5);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(78, 26);
-            this.btnXem.TabIndex = 3;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXuatDanhSach
             // 
@@ -172,42 +159,31 @@
             this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXemTatCa
             // 
-            this.btnXemTatCa.Location = new System.Drawing.Point(12, 6);
+            this.btnXemTatCa.Location = new System.Drawing.Point(12, 5);
             this.btnXemTatCa.Name = "btnXemTatCa";
             this.btnXemTatCa.Size = new System.Drawing.Size(75, 26);
             this.btnXemTatCa.TabIndex = 0;
             this.btnXemTatCa.Text = "Xem tất cả";
             this.btnXemTatCa.UseVisualStyleBackColor = true;
+            this.btnXemTatCa.Click += new System.EventHandler(this.btnXemTatCa_Click);
             // 
             // pnlDanhSachSinhVien
             // 
             this.pnlDanhSachSinhVien.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlDanhSachSinhVien.Controls.Add(this.btnChonTatCa);
             this.pnlDanhSachSinhVien.Controls.Add(this.lstDanhSachSinhVien);
             this.pnlDanhSachSinhVien.Location = new System.Drawing.Point(13, 266);
             this.pnlDanhSachSinhVien.Name = "pnlDanhSachSinhVien";
             this.pnlDanhSachSinhVien.Size = new System.Drawing.Size(959, 240);
             this.pnlDanhSachSinhVien.TabIndex = 2;
             // 
-            // btnChonTatCa
-            // 
-            this.btnChonTatCa.Location = new System.Drawing.Point(3, 3);
-            this.btnChonTatCa.Name = "btnChonTatCa";
-            this.btnChonTatCa.Size = new System.Drawing.Size(75, 26);
-            this.btnChonTatCa.TabIndex = 1;
-            this.btnChonTatCa.Text = "Chọn tất cả";
-            this.btnChonTatCa.UseVisualStyleBackColor = true;
-            // 
             // lstDanhSachSinhVien
             // 
             this.lstDanhSachSinhVien.Alignment = System.Windows.Forms.ListViewAlignment.Default;
-            this.lstDanhSachSinhVien.CheckBoxes = true;
             this.lstDanhSachSinhVien.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader8,
-            this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
@@ -216,23 +192,13 @@
             this.columnHeader7});
             this.lstDanhSachSinhVien.FullRowSelect = true;
             this.lstDanhSachSinhVien.GridLines = true;
-            this.lstDanhSachSinhVien.Location = new System.Drawing.Point(3, 31);
+            this.lstDanhSachSinhVien.Location = new System.Drawing.Point(3, 3);
             this.lstDanhSachSinhVien.Name = "lstDanhSachSinhVien";
-            this.lstDanhSachSinhVien.Size = new System.Drawing.Size(953, 201);
+            this.lstDanhSachSinhVien.Size = new System.Drawing.Size(953, 229);
             this.lstDanhSachSinhVien.TabIndex = 0;
             this.lstDanhSachSinhVien.UseCompatibleStateImageBehavior = false;
             this.lstDanhSachSinhVien.View = System.Windows.Forms.View.Details;
             this.lstDanhSachSinhVien.VirtualListSize = 4;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Chọn";
-            this.columnHeader8.Width = 47;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "STT";
-            this.columnHeader1.Width = 46;
             // 
             // columnHeader2
             // 
@@ -357,7 +323,7 @@
             this.btnTimNangCao.TabIndex = 4;
             this.btnTimNangCao.Text = "Tìm nâng cao";
             this.btnTimNangCao.UseVisualStyleBackColor = true;
-            this.btnTimNangCao.Click += new System.EventHandler(this.button15_Click);
+            this.btnTimNangCao.Click += new System.EventHandler(this.btnTimNangCao_Click);
             // 
             // lblTuKhoa
             // 
@@ -422,7 +388,7 @@
             this.btnTimCoBan.TabIndex = 22;
             this.btnTimCoBan.Text = "Tìm cơ bản";
             this.btnTimCoBan.UseVisualStyleBackColor = true;
-            this.btnTimCoBan.Click += new System.EventHandler(this.button14_Click);
+            this.btnTimCoBan.Click += new System.EventHandler(this.btnTimCoBan_Click);
             // 
             // btnTimNC
             // 
@@ -660,6 +626,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmDanhSachSinhVien";
             this.Text = "frmDanhSachSinhVien";
+            this.Load += new System.EventHandler(this.frmDanhSachSinhVien_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -686,7 +653,6 @@
         private System.Windows.Forms.Button btnXemTatCa;
         private System.Windows.Forms.Panel pnlDanhSachSinhVien;
         private System.Windows.Forms.ListView lstDanhSachSinhVien;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
@@ -701,7 +667,6 @@
         private System.Windows.Forms.ComboBox cmbSoDongTrenTrang;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Panel pnlTimCB;
         private System.Windows.Forms.Panel pnlTimNC;
@@ -730,8 +695,6 @@
         private System.Windows.Forms.Button btnTimCoBan;
         private System.Windows.Forms.Label lblTuKhoa;
         private System.Windows.Forms.Button btnTimNangCao;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.Button btnChonTatCa;
         private System.Windows.Forms.Panel pnlKetQua;
         private System.Windows.Forms.TextBox txtTongSo;
         private System.Windows.Forms.Label label3;
