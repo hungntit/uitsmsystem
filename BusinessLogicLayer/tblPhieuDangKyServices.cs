@@ -101,6 +101,20 @@ namespace BusinessLogicLayer
             else
                 phieuDkDAO.CloseConection();
         }
+        public List<tblPhieuDangKy> getAllPhieuDangKyByMaLopDK(int maLop, int begin, int end)
+        {
+            if (phieuDkDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return phieuDkDAO.getAllPhieuDangKyByMaLopDK(maLop, begin, end);
+        }
+        public List<tblPhieuDangKy> getAllPhieuDangKyByMaLopDK(int maLop)
+        {
+            if (phieuDkDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                return phieuDkDAO.getAllPhieuDangKyByMaLopDK( maLop);
+        }
     }
   
 
