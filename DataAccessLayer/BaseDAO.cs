@@ -12,7 +12,7 @@ namespace DataAccessLayer
        public BaseDAO()
        {
            sqlCon = new SqlConnection();
-           string database = "QLDKMONHOC_HOCPHI";
+           string database = "QLSV";
            string strCon = "server=(local);database=" + database;
            sqlCon.ConnectionString = strCon;
            try
