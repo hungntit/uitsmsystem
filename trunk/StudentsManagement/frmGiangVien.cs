@@ -17,12 +17,14 @@ namespace StudentsManagement
         tblMonhocServices monhocservices;
         tblKhoaServices khoaServices ;
         tblGiangDayServices giangdayServices;
+        tblGiangVienServices giangvienServices;
         public frmGiangVien()
         {
             InitializeComponent();
              monhocservices = new tblMonhocServices();
              khoaServices = new tblKhoaServices();
              giangdayServices = new tblGiangDayServices();
+             giangvienServices = new tblGiangVienServices();
         }
 
         private void frmGiangVien_Load(object sender, EventArgs e)
@@ -83,7 +85,7 @@ namespace StudentsManagement
             giangvien.NgaySinh = dtNgaySinh.Value;
             giangvien.NoiSinh = txtNoiSinh.Text.Trim();
             giangvien.CMND = txtCmnd.Text.Trim();
-
+            giangvienServices.insertTblGiangVien(giangvien);
             foreach (ListViewItem lvItem in lstDanhSachChon.SelectedItems)
             {
                 tblMonhoc monhoc    =   new tblMonhoc();
