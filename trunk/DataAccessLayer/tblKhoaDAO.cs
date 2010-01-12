@@ -24,11 +24,11 @@ namespace DataAccessLayer
         {
             string QueryStr = "INSERT INTO " + tblKhoa.sTABLE_NAME 
                             +"("
-                            +tblKhoa.sMA_KHOA 
+                            + tblKhoa.sMA_KHOA 
                             + ","
                             + tblKhoa.sTEN_KHOA 
                             +") "
-                            + "VALUES(?,?)";
+                            + "VALUES(" + "@" + tblKhoa.sMA_KHOA + "," + "@" + tblKhoa.sTEN_KHOA +")";
 
 
 
@@ -39,7 +39,7 @@ namespace DataAccessLayer
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue(tblKhoa.sMA_KHOA, khoa.MaKhoa);
                 sqlcommand.Parameters.AddWithValue(tblKhoa.sTEN_KHOA, khoa.TenKhoa);
-                sqlcommand.Prepare();
+                
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -58,9 +58,9 @@ namespace DataAccessLayer
         public void updateTblKhoa(tblKhoa khoa)
         {
             string QueryStr = "UPDATE " + tblKhoa.sTABLE_NAME + " "
-                            + " WHERE " + tblKhoa.sMA_KHOA + " = ? "
                             + "SET "
-                            + tblKhoa.sTEN_KHOA + " = ?" ;
+                            + tblKhoa.sTEN_KHOA + " = " + "@" + tblKhoa.sTEN_KHOA
+                            + " WHERE " + tblKhoa.sMA_KHOA + " =  " + "@" + tblKhoa.sMA_KHOA;
 
 
             SqlCommand sqlcommand = null;
@@ -70,7 +70,7 @@ namespace DataAccessLayer
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue(tblKhoa.sMA_KHOA, khoa.MaKhoa);
                 sqlcommand.Parameters.AddWithValue(tblKhoa.sTEN_KHOA, khoa.TenKhoa);
-                sqlcommand.Prepare();
+               
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -96,15 +96,15 @@ namespace DataAccessLayer
         public tblKhoa getbyMaKhoa(String maKhoa)
         {
             tblKhoa khoa = null;
-            string QueryStr = "Select * from KHOA where MA_KHOA  =   ?";
+            string QueryStr = "Select * from KHOA where MA_KHOA  =   @MA_KHOA";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_KHOA", maKhoa);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_KHOA", maKhoa);
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -144,7 +144,7 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Prepare();
+              
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -199,7 +199,7 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Prepare();
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {

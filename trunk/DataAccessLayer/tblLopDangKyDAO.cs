@@ -42,7 +42,15 @@ namespace DataAccessLayer
                             + ","
                             + tblLopDangKy.sMA_HOC_KY
                             + ") "
-                            + "VALUES(?,?,?,?,?,?,?,?,?)";
+                            + "VALUES(" +  "@" + tblLopDangKy.sMA_LOP + "," 
+                                        +  "@" + tblLopDangKy.sMA_GIANG_VIEN + ","
+                                        +  "@" + tblLopDangKy.sMA_MON + ","
+                                        +  "@" + tblLopDangKy.sMA_PHONG + ","
+                                        +  "@" + tblLopDangKy.sNGAY_MO_LOP + ","
+                                        +  "@" + tblLopDangKy.sTEN_LOP + ","
+                                        +  "@" + tblLopDangKy.sTHU + ","
+                                        +  "@" + tblLopDangKy.sCA + ","
+                                        +  "@" + tblLopDangKy.sMA_HOC_KY + ")";
 
 
 
@@ -52,16 +60,16 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_LOP, lopdangky.MaLop);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_GIANG_VIEN, lopdangky.MaGiangVien);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_MON, lopdangky.MaMon);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_PHONG, lopdangky.MaPhong);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sNGAY_MO_LOP, lopdangky.NgayMoLop);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sTEN_LOP, lopdangky.TenLop);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sTHU, lopdangky.Thu);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sCA, lopdangky.Ca);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_HOC_KY, lopdangky.MaHocKy);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_LOP, lopdangky.MaLop);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_GIANG_VIEN, lopdangky.MaGiangVien);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_MON, lopdangky.MaMon);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_PHONG, lopdangky.MaPhong);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sNGAY_MO_LOP, lopdangky.NgayMoLop);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sTEN_LOP, lopdangky.TenLop);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sTHU, lopdangky.Thu);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sCA, lopdangky.Ca);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_HOC_KY, lopdangky.MaHocKy);
+                
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -80,16 +88,16 @@ namespace DataAccessLayer
         public void updateTblLopDangKy(tblLopDangKy lopdangky)
         {
             string QueryStr = "UPDATE " + tblLopDangKy.sTABLE_NAME + " "
-                            + " WHERE " + tblLopDangKy.sMA_LOP + " = ? "
                             + "SET "
-                            + tblLopDangKy.sMA_GIANG_VIEN + " = ?," 
-                            + tblLopDangKy.sMA_MON + " = ?," 
-                            + tblLopDangKy.sMA_PHONG + " = ?," 
-                            + tblLopDangKy.sNGAY_MO_LOP + " = ?," 
-                            + tblLopDangKy.sTEN_LOP + " = ?," 
-                            + tblLopDangKy.sTHU + " = ?," 
-                            + tblLopDangKy.sCA +  " = ?," 
-                            + tblLopDangKy.sMA_HOC_KY + " = ?" ;
+                            + tblLopDangKy.sMA_GIANG_VIEN + " = @" + tblLopDangKy.sMA_GIANG_VIEN + "," 
+                            + tblLopDangKy.sMA_MON + " = @" + tblLopDangKy.sMA_MON + "," 
+                            + tblLopDangKy.sMA_PHONG + " = @" + tblLopDangKy.sMA_PHONG + "," 
+                            + tblLopDangKy.sNGAY_MO_LOP + " = @" + tblLopDangKy.sNGAY_MO_LOP + "," 
+                            + tblLopDangKy.sTEN_LOP + " = @" + tblLopDangKy.sTEN_LOP + "," 
+                            + tblLopDangKy.sTHU + " = @" + tblLopDangKy.sTHU + "," 
+                            + tblLopDangKy.sCA +  " = @" + tblLopDangKy.sCA + ","
+                            + tblLopDangKy.sMA_HOC_KY + " = @" + tblLopDangKy.sMA_HOC_KY
+                            + " WHERE " + tblLopDangKy.sMA_LOP + " = @" + tblLopDangKy.sMA_LOP;
 
 
             SqlCommand sqlcommand = null;
@@ -97,16 +105,16 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_LOP, lopdangky.MaLop);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_GIANG_VIEN, lopdangky.MaGiangVien);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_MON, lopdangky.MaMon);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_PHONG, lopdangky.MaPhong);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sNGAY_MO_LOP, lopdangky.NgayMoLop);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sTEN_LOP, lopdangky.TenLop);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sTHU, lopdangky.Thu);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sCA, lopdangky.Ca);
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_HOC_KY, lopdangky.MaHocKy);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_LOP, lopdangky.MaLop);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_GIANG_VIEN, lopdangky.MaGiangVien);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_MON, lopdangky.MaMon);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_PHONG, lopdangky.MaPhong);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sNGAY_MO_LOP, lopdangky.NgayMoLop);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sTEN_LOP, lopdangky.TenLop);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sTHU, lopdangky.Thu);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sCA, lopdangky.Ca);
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_HOC_KY, lopdangky.MaHocKy);
+             
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -203,15 +211,15 @@ namespace DataAccessLayer
                                         +tblLopDangKy.sCA +","
                                         +tblLopDangKy.sNGAY_MO_LOP
                                         + "LOP_DANG_KY." + tblLopDangKy.sMA_HOC_KY + " "
-                            +"from LOP_DANG_KY where MA_LOP_DANG_KY  =   ?";
+                            + "from LOP_DANG_KY where MA_LOP_DANG_KY  =   @MA_LOP_DANG_KY";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_LOP_DANG_KY", maLop);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_LOP_DANG_KY", maLop);
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -270,7 +278,7 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Prepare();
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -373,7 +381,7 @@ namespace DataAccessLayer
                             + "FROM LOP_DANG_KY,CHI_TIET_DANG_KY "
                             + "WHERE "
                             + "LOP_DANG_KY.MA_LOP_DANG_KY = CHI_TIET_DANG_KY.MA_LOP_DANG_KY AND "
-                            + "CHI_TIET_DANG_KY.MA_PHIEU_DANG_KY =  ?";
+                            + "CHI_TIET_DANG_KY.MA_PHIEU_DANG_KY =  @MA_PHIEU_DANG_KY";
 
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -381,8 +389,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("PHIEU_DANG_KY.MA_PHIEU_DANG_KY", maPhieuDK);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_PHIEU_DANG_KY", maPhieuDK);
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -435,7 +443,7 @@ namespace DataAccessLayer
                              + "FROM LOP_DANG_KY,CHI_TIET_DANG_KY "
                              + "WHERE "
                              + "LOP_DANG_KY.MA_LOP_DANG_KY = CHI_TIET_DANG_KY.MA_LOP_DANG_KY AND "
-                             + "CHI_TIET_DANG_KY.MA_PHIEU_DANG_KY =  ?";
+                             + "CHI_TIET_DANG_KY.MA_PHIEU_DANG_KY =  @MA_PHIEU_DANG_KY";
 
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -443,8 +451,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("PHIEU_DANG_KY.MA_PHIEU_DANG_KY", maPhieuDK);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_PHIEU_DANG_KY", maPhieuDK);
+              
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -495,7 +503,7 @@ namespace DataAccessLayer
                                         + tblLopDangKy.sMA_HOC_KY + " "
                             + "FROM LOP_DANG_KY "
                             + "WHERE "
-                            +tblLopDangKy.sMA_MON+" =  ? ";
+                            + tblLopDangKy.sMA_MON + " =  @" + tblLopDangKy.sMA_MON;
 
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -503,8 +511,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_MON, mamon);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_MON, mamon);
+               
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -556,7 +564,7 @@ namespace DataAccessLayer
             string QueryStr = "Select COUNT(MA_LOP_DANG_KY) AS COUNTLOP "
                             + "FROM LOP_DANG_KY "
                             + "WHERE "
-                            +tblLopDangKy.sMA_MON+" =  ? ";
+                            + tblLopDangKy.sMA_MON + " =  @" + tblLopDangKy.sMA_MON;
 
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -564,8 +572,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_MON, mamon);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_MON, mamon);
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -615,7 +623,7 @@ namespace DataAccessLayer
                                         + tblLopDangKy.sMA_HOC_KY + " "
                             + "FROM LOP_DANG_KY "
                             + "WHERE "
-                            + tblLopDangKy.sMA_PHONG + " =  ? ";
+                            + tblLopDangKy.sMA_PHONG + " =  @" + tblLopDangKy.sMA_PHONG;
 
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -623,8 +631,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_PHONG, maphong);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_PHONG, maphong);
+             
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -676,7 +684,7 @@ namespace DataAccessLayer
             string QueryStr = "Select COUNT(MA_LOP_DANG_KY) AS COUNTLOP "
                             + "FROM LOP_DANG_KY "
                             + "WHERE "
-                            + tblLopDangKy.sMA_PHONG + " =  ? ";
+                            + tblLopDangKy.sMA_PHONG + " =  @" + tblLopDangKy.sMA_PHONG;
 
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -684,8 +692,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_PHONG, maphong);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_PHONG, maphong);
+               
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -736,7 +744,7 @@ namespace DataAccessLayer
                                         + tblLopDangKy.sMA_HOC_KY + " "
                             + "FROM LOP_DANG_KY "
                             + "WHERE "
-                            + tblLopDangKy.sMA_GIANG_VIEN + " =  ? ";
+                            + tblLopDangKy.sMA_GIANG_VIEN + " =  @" + tblLopDangKy.sMA_GIANG_VIEN;
 
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -744,8 +752,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_GIANG_VIEN, maGV);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_GIANG_VIEN, maGV);
+            
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -797,7 +805,7 @@ namespace DataAccessLayer
             string QueryStr = "Select COUNT(MA_LOP_DANG_KY) AS COUNTLOP "
                             + "FROM LOP_DANG_KY "
                             + "WHERE "
-                            + tblLopDangKy.sMA_GIANG_VIEN + " =  ? ";
+                            + tblLopDangKy.sMA_GIANG_VIEN + " =  @" + tblLopDangKy.sMA_GIANG_VIEN;
 
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -805,8 +813,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_GIANG_VIEN, maGV);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblLopDangKy.sMA_GIANG_VIEN, maGV);
+               
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
