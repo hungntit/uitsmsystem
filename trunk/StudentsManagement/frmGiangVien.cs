@@ -86,8 +86,7 @@ namespace StudentsManagement
             giangvien.NoiSinh = txtNoiSinh.Text.Trim();
             giangvien.CMND = txtCmnd.Text.Trim();
             giangvien.DiaChi = txtDiaChi.Text.Trim();
-            //giangvienServices.insertTblGiangVien(giangvien);
-            giangvienServices.updateTblGiangVien(giangvien);
+            giangvienServices.insertTblGiangVien(giangvien);
             foreach (ListViewItem lvItem in lstDanhSachChon.SelectedItems)
             {
                 tblMonhoc monhoc    =   new tblMonhoc();
