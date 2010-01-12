@@ -28,244 +28,78 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.listView3 = new System.Windows.Forms.ListView();
+            this.grbDanhSachKhoa = new System.Windows.Forms.GroupBox();
+            this.lstDanhSachKhoa = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.grbKhoa = new System.Windows.Forms.GroupBox();
+            this.btnCapNhatKhoa = new System.Windows.Forms.Button();
+            this.btnXoaKhoa = new System.Windows.Forms.Button();
+            this.txtTenKhoa = new System.Windows.Forms.TextBox();
+            this.txtMaKhoa = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnTaoKhoa = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.grbLopQuanLy = new System.Windows.Forms.GroupBox();
+            this.btnCapNhatLQL = new System.Windows.Forms.Button();
+            this.btnXoaLQL = new System.Windows.Forms.Button();
+            this.btnTaoLQL = new System.Windows.Forms.Button();
+            this.txtTenLopLQL = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbTenKhoaLQL = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.grbDanhSachLQL = new System.Windows.Forms.GroupBox();
+            this.lstDanhsachLQL = new System.Windows.Forms.ListView();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.grbPhong = new System.Windows.Forms.GroupBox();
+            this.btnCapNhatPhong = new System.Windows.Forms.Button();
+            this.btnXoaPhong = new System.Windows.Forms.Button();
+            this.btnTaoPhong = new System.Windows.Forms.Button();
+            this.txtTenPhong = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.grbDanhSachPhong = new System.Windows.Forms.GroupBox();
+            this.lstDanhSachPhong = new System.Windows.Forms.ListView();
             this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.grbHocKyHientai = new System.Windows.Forms.GroupBox();
+            this.btnLuuHocKy = new System.Windows.Forms.Button();
+            this.txtHocKy = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.grbDanhSachKhoa.SuspendLayout();
+            this.grbKhoa.SuspendLayout();
+            this.grbLopQuanLy.SuspendLayout();
+            this.grbDanhSachLQL.SuspendLayout();
+            this.grbPhong.SuspendLayout();
+            this.grbDanhSachPhong.SuspendLayout();
+            this.grbHocKyHientai.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox2
+            // grbDanhSachKhoa
             // 
-            this.groupBox2.Controls.Add(this.listView1);
-            this.groupBox2.Location = new System.Drawing.Point(408, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(564, 137);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Danh sách khoa";
+            this.grbDanhSachKhoa.Controls.Add(this.lstDanhSachKhoa);
+            this.grbDanhSachKhoa.Location = new System.Drawing.Point(408, 0);
+            this.grbDanhSachKhoa.Name = "grbDanhSachKhoa";
+            this.grbDanhSachKhoa.Size = new System.Drawing.Size(564, 137);
+            this.grbDanhSachKhoa.TabIndex = 7;
+            this.grbDanhSachKhoa.TabStop = false;
+            this.grbDanhSachKhoa.Text = "Danh sách khoa";
             // 
-            // groupBox1
+            // lstDanhSachKhoa
             // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(21, 1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(347, 137);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Khoa";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Mã Khoa :";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(95, 108);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Tạo";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Tên Khoa :";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(21, 143);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(347, 137);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Lớp quản lý";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Tên Khoa :";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(79, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(79, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(262, 20);
-            this.textBox2.TabIndex = 5;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(79, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(262, 21);
-            this.comboBox1.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Tên lớp :";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(79, 62);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(262, 20);
-            this.textBox3.TabIndex = 6;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.listView2);
-            this.groupBox4.Location = new System.Drawing.Point(408, 142);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(564, 137);
-            this.groupBox4.TabIndex = 9;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Danh sách lớp quản lý";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.button7);
-            this.groupBox5.Controls.Add(this.button8);
-            this.groupBox5.Controls.Add(this.button9);
-            this.groupBox5.Controls.Add(this.textBox4);
-            this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Location = new System.Drawing.Point(21, 286);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(347, 137);
-            this.groupBox5.TabIndex = 10;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Phòng";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.listView3);
-            this.groupBox6.Location = new System.Drawing.Point(408, 285);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(564, 137);
-            this.groupBox6.TabIndex = 11;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Danh sách phòng";
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstDanhSachKhoa.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.listView1.Location = new System.Drawing.Point(6, 22);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(552, 109);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // listView2
-            // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.listView2.Location = new System.Drawing.Point(6, 19);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(552, 109);
-            this.listView2.TabIndex = 1;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
-            // 
-            // listView3
-            // 
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8});
-            this.listView3.Location = new System.Drawing.Point(6, 14);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(552, 109);
-            this.listView3.TabIndex = 2;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
+            this.lstDanhSachKhoa.Location = new System.Drawing.Point(6, 22);
+            this.lstDanhSachKhoa.Name = "lstDanhSachKhoa";
+            this.lstDanhSachKhoa.Size = new System.Drawing.Size(552, 109);
+            this.lstDanhSachKhoa.TabIndex = 0;
+            this.lstDanhSachKhoa.UseCompatibleStateImageBehavior = false;
+            this.lstDanhSachKhoa.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -281,6 +115,181 @@
             this.columnHeader3.Text = "Tên khoa";
             this.columnHeader3.Width = 261;
             // 
+            // grbKhoa
+            // 
+            this.grbKhoa.Controls.Add(this.btnCapNhatKhoa);
+            this.grbKhoa.Controls.Add(this.btnXoaKhoa);
+            this.grbKhoa.Controls.Add(this.txtTenKhoa);
+            this.grbKhoa.Controls.Add(this.txtMaKhoa);
+            this.grbKhoa.Controls.Add(this.label2);
+            this.grbKhoa.Controls.Add(this.btnTaoKhoa);
+            this.grbKhoa.Controls.Add(this.label3);
+            this.grbKhoa.Location = new System.Drawing.Point(21, 1);
+            this.grbKhoa.Name = "grbKhoa";
+            this.grbKhoa.Size = new System.Drawing.Size(347, 137);
+            this.grbKhoa.TabIndex = 6;
+            this.grbKhoa.TabStop = false;
+            this.grbKhoa.Text = "Khoa";
+            // 
+            // btnCapNhatKhoa
+            // 
+            this.btnCapNhatKhoa.Location = new System.Drawing.Point(176, 108);
+            this.btnCapNhatKhoa.Name = "btnCapNhatKhoa";
+            this.btnCapNhatKhoa.Size = new System.Drawing.Size(75, 23);
+            this.btnCapNhatKhoa.TabIndex = 7;
+            this.btnCapNhatKhoa.Text = "Cập nhật";
+            this.btnCapNhatKhoa.UseVisualStyleBackColor = true;
+            // 
+            // btnXoaKhoa
+            // 
+            this.btnXoaKhoa.Location = new System.Drawing.Point(257, 108);
+            this.btnXoaKhoa.Name = "btnXoaKhoa";
+            this.btnXoaKhoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaKhoa.TabIndex = 6;
+            this.btnXoaKhoa.Text = "Xóa";
+            this.btnXoaKhoa.UseVisualStyleBackColor = true;
+            // 
+            // txtTenKhoa
+            // 
+            this.txtTenKhoa.Location = new System.Drawing.Point(79, 49);
+            this.txtTenKhoa.Name = "txtTenKhoa";
+            this.txtTenKhoa.Size = new System.Drawing.Size(262, 20);
+            this.txtTenKhoa.TabIndex = 5;
+            // 
+            // txtMaKhoa
+            // 
+            this.txtMaKhoa.Location = new System.Drawing.Point(79, 19);
+            this.txtMaKhoa.Name = "txtMaKhoa";
+            this.txtMaKhoa.Size = new System.Drawing.Size(100, 20);
+            this.txtMaKhoa.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Mã Khoa :";
+            // 
+            // btnTaoKhoa
+            // 
+            this.btnTaoKhoa.Location = new System.Drawing.Point(95, 108);
+            this.btnTaoKhoa.Name = "btnTaoKhoa";
+            this.btnTaoKhoa.Size = new System.Drawing.Size(75, 23);
+            this.btnTaoKhoa.TabIndex = 3;
+            this.btnTaoKhoa.Text = "Tạo";
+            this.btnTaoKhoa.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Tên Khoa :";
+            // 
+            // grbLopQuanLy
+            // 
+            this.grbLopQuanLy.Controls.Add(this.btnCapNhatLQL);
+            this.grbLopQuanLy.Controls.Add(this.btnXoaLQL);
+            this.grbLopQuanLy.Controls.Add(this.btnTaoLQL);
+            this.grbLopQuanLy.Controls.Add(this.txtTenLopLQL);
+            this.grbLopQuanLy.Controls.Add(this.label4);
+            this.grbLopQuanLy.Controls.Add(this.cmbTenKhoaLQL);
+            this.grbLopQuanLy.Controls.Add(this.label1);
+            this.grbLopQuanLy.Location = new System.Drawing.Point(21, 143);
+            this.grbLopQuanLy.Name = "grbLopQuanLy";
+            this.grbLopQuanLy.Size = new System.Drawing.Size(347, 137);
+            this.grbLopQuanLy.TabIndex = 8;
+            this.grbLopQuanLy.TabStop = false;
+            this.grbLopQuanLy.Text = "Lớp quản lý";
+            // 
+            // btnCapNhatLQL
+            // 
+            this.btnCapNhatLQL.Location = new System.Drawing.Point(176, 108);
+            this.btnCapNhatLQL.Name = "btnCapNhatLQL";
+            this.btnCapNhatLQL.Size = new System.Drawing.Size(75, 23);
+            this.btnCapNhatLQL.TabIndex = 10;
+            this.btnCapNhatLQL.Text = "Cập nhật";
+            this.btnCapNhatLQL.UseVisualStyleBackColor = true;
+            // 
+            // btnXoaLQL
+            // 
+            this.btnXoaLQL.Location = new System.Drawing.Point(257, 108);
+            this.btnXoaLQL.Name = "btnXoaLQL";
+            this.btnXoaLQL.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaLQL.TabIndex = 9;
+            this.btnXoaLQL.Text = "Xóa";
+            this.btnXoaLQL.UseVisualStyleBackColor = true;
+            // 
+            // btnTaoLQL
+            // 
+            this.btnTaoLQL.Location = new System.Drawing.Point(95, 108);
+            this.btnTaoLQL.Name = "btnTaoLQL";
+            this.btnTaoLQL.Size = new System.Drawing.Size(75, 23);
+            this.btnTaoLQL.TabIndex = 8;
+            this.btnTaoLQL.Text = "Tạo";
+            this.btnTaoLQL.UseVisualStyleBackColor = true;
+            // 
+            // txtTenLopLQL
+            // 
+            this.txtTenLopLQL.Location = new System.Drawing.Point(79, 62);
+            this.txtTenLopLQL.Name = "txtTenLopLQL";
+            this.txtTenLopLQL.Size = new System.Drawing.Size(262, 20);
+            this.txtTenLopLQL.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Tên lớp :";
+            // 
+            // cmbTenKhoaLQL
+            // 
+            this.cmbTenKhoaLQL.FormattingEnabled = true;
+            this.cmbTenKhoaLQL.Location = new System.Drawing.Point(79, 21);
+            this.cmbTenKhoaLQL.Name = "cmbTenKhoaLQL";
+            this.cmbTenKhoaLQL.Size = new System.Drawing.Size(262, 21);
+            this.cmbTenKhoaLQL.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Tên Khoa :";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // grbDanhSachLQL
+            // 
+            this.grbDanhSachLQL.Controls.Add(this.lstDanhsachLQL);
+            this.grbDanhSachLQL.Location = new System.Drawing.Point(408, 142);
+            this.grbDanhSachLQL.Name = "grbDanhSachLQL";
+            this.grbDanhSachLQL.Size = new System.Drawing.Size(564, 137);
+            this.grbDanhSachLQL.TabIndex = 9;
+            this.grbDanhSachLQL.TabStop = false;
+            this.grbDanhSachLQL.Text = "Danh sách lớp quản lý";
+            // 
+            // lstDanhsachLQL
+            // 
+            this.lstDanhsachLQL.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lstDanhsachLQL.Location = new System.Drawing.Point(6, 19);
+            this.lstDanhsachLQL.Name = "lstDanhsachLQL";
+            this.lstDanhsachLQL.Size = new System.Drawing.Size(552, 109);
+            this.lstDanhsachLQL.TabIndex = 1;
+            this.lstDanhsachLQL.UseCompatibleStateImageBehavior = false;
+            this.lstDanhsachLQL.View = System.Windows.Forms.View.Details;
+            // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "STT";
@@ -295,21 +304,53 @@
             this.columnHeader6.Text = "Tên khoa";
             this.columnHeader6.Width = 84;
             // 
-            // columnHeader7
+            // grbPhong
             // 
-            this.columnHeader7.Text = "STT";
+            this.grbPhong.Controls.Add(this.btnCapNhatPhong);
+            this.grbPhong.Controls.Add(this.btnXoaPhong);
+            this.grbPhong.Controls.Add(this.btnTaoPhong);
+            this.grbPhong.Controls.Add(this.txtTenPhong);
+            this.grbPhong.Controls.Add(this.label5);
+            this.grbPhong.Location = new System.Drawing.Point(21, 286);
+            this.grbPhong.Name = "grbPhong";
+            this.grbPhong.Size = new System.Drawing.Size(347, 137);
+            this.grbPhong.TabIndex = 10;
+            this.grbPhong.TabStop = false;
+            this.grbPhong.Text = "Phòng";
             // 
-            // columnHeader8
+            // btnCapNhatPhong
             // 
-            this.columnHeader8.Text = "Tên phòng";
-            this.columnHeader8.Width = 182;
+            this.btnCapNhatPhong.Location = new System.Drawing.Point(176, 99);
+            this.btnCapNhatPhong.Name = "btnCapNhatPhong";
+            this.btnCapNhatPhong.Size = new System.Drawing.Size(75, 23);
+            this.btnCapNhatPhong.TabIndex = 11;
+            this.btnCapNhatPhong.Text = "Cập nhật";
+            this.btnCapNhatPhong.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // btnXoaPhong
             // 
-            this.textBox4.Location = new System.Drawing.Point(79, 26);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(262, 20);
-            this.textBox4.TabIndex = 8;
+            this.btnXoaPhong.Location = new System.Drawing.Point(257, 99);
+            this.btnXoaPhong.Name = "btnXoaPhong";
+            this.btnXoaPhong.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaPhong.TabIndex = 10;
+            this.btnXoaPhong.Text = "Xóa";
+            this.btnXoaPhong.UseVisualStyleBackColor = true;
+            // 
+            // btnTaoPhong
+            // 
+            this.btnTaoPhong.Location = new System.Drawing.Point(95, 99);
+            this.btnTaoPhong.Name = "btnTaoPhong";
+            this.btnTaoPhong.Size = new System.Drawing.Size(75, 23);
+            this.btnTaoPhong.TabIndex = 9;
+            this.btnTaoPhong.Text = "Tạo";
+            this.btnTaoPhong.UseVisualStyleBackColor = true;
+            // 
+            // txtTenPhong
+            // 
+            this.txtTenPhong.Location = new System.Drawing.Point(79, 26);
+            this.txtTenPhong.Name = "txtTenPhong";
+            this.txtTenPhong.Size = new System.Drawing.Size(262, 20);
+            this.txtTenPhong.TabIndex = 8;
             // 
             // label5
             // 
@@ -320,89 +361,64 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Tên phòng :";
             // 
-            // button3
+            // grbDanhSachPhong
             // 
-            this.button3.Location = new System.Drawing.Point(257, 108);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Xóa";
-            this.button3.UseVisualStyleBackColor = true;
+            this.grbDanhSachPhong.Controls.Add(this.lstDanhSachPhong);
+            this.grbDanhSachPhong.Location = new System.Drawing.Point(408, 285);
+            this.grbDanhSachPhong.Name = "grbDanhSachPhong";
+            this.grbDanhSachPhong.Size = new System.Drawing.Size(564, 137);
+            this.grbDanhSachPhong.TabIndex = 11;
+            this.grbDanhSachPhong.TabStop = false;
+            this.grbDanhSachPhong.Text = "Danh sách phòng";
             // 
-            // button4
+            // lstDanhSachPhong
             // 
-            this.button4.Location = new System.Drawing.Point(176, 108);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Cập nhật";
-            this.button4.UseVisualStyleBackColor = true;
+            this.lstDanhSachPhong.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8});
+            this.lstDanhSachPhong.Location = new System.Drawing.Point(6, 14);
+            this.lstDanhSachPhong.Name = "lstDanhSachPhong";
+            this.lstDanhSachPhong.Size = new System.Drawing.Size(552, 109);
+            this.lstDanhSachPhong.TabIndex = 2;
+            this.lstDanhSachPhong.UseCompatibleStateImageBehavior = false;
+            this.lstDanhSachPhong.View = System.Windows.Forms.View.Details;
             // 
-            // button2
+            // columnHeader7
             // 
-            this.button2.Location = new System.Drawing.Point(176, 108);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Cập nhật";
-            this.button2.UseVisualStyleBackColor = true;
+            this.columnHeader7.Text = "STT";
             // 
-            // button5
+            // columnHeader8
             // 
-            this.button5.Location = new System.Drawing.Point(257, 108);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Xóa";
-            this.button5.UseVisualStyleBackColor = true;
+            this.columnHeader8.Text = "Tên phòng";
+            this.columnHeader8.Width = 182;
             // 
-            // button6
+            // grbHocKyHientai
             // 
-            this.button6.Location = new System.Drawing.Point(95, 108);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Tạo";
-            this.button6.UseVisualStyleBackColor = true;
+            this.grbHocKyHientai.Controls.Add(this.btnLuuHocKy);
+            this.grbHocKyHientai.Controls.Add(this.txtHocKy);
+            this.grbHocKyHientai.Controls.Add(this.label6);
+            this.grbHocKyHientai.Location = new System.Drawing.Point(21, 440);
+            this.grbHocKyHientai.Name = "grbHocKyHientai";
+            this.grbHocKyHientai.Size = new System.Drawing.Size(347, 110);
+            this.grbHocKyHientai.TabIndex = 12;
+            this.grbHocKyHientai.TabStop = false;
+            this.grbHocKyHientai.Text = "Học kỳ hiện tại";
             // 
-            // button7
+            // btnLuuHocKy
             // 
-            this.button7.Location = new System.Drawing.Point(176, 99);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "Cập nhật";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnLuuHocKy.Location = new System.Drawing.Point(257, 81);
+            this.btnLuuHocKy.Name = "btnLuuHocKy";
+            this.btnLuuHocKy.Size = new System.Drawing.Size(75, 23);
+            this.btnLuuHocKy.TabIndex = 4;
+            this.btnLuuHocKy.Text = "Lưu";
+            this.btnLuuHocKy.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // txtHocKy
             // 
-            this.button8.Location = new System.Drawing.Point(257, 99);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 10;
-            this.button8.Text = "Xóa";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(95, 99);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "Tạo";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.button10);
-            this.groupBox7.Controls.Add(this.textBox5);
-            this.groupBox7.Controls.Add(this.label6);
-            this.groupBox7.Location = new System.Drawing.Point(21, 440);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(347, 110);
-            this.groupBox7.TabIndex = 12;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Học kỳ hiện tại";
+            this.txtHocKy.Location = new System.Drawing.Point(69, 27);
+            this.txtHocKy.Name = "txtHocKy";
+            this.txtHocKy.Size = new System.Drawing.Size(47, 20);
+            this.txtHocKy.TabIndex = 1;
             // 
             // label6
             // 
@@ -412,22 +428,6 @@
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "Hoc kỳ :";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(69, 27);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(47, 20);
-            this.textBox5.TabIndex = 1;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(257, 81);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 4;
-            this.button10.Text = "Lưu";
-            this.button10.UseVisualStyleBackColor = true;
             // 
             // button11
             // 
@@ -444,71 +444,71 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 562);
             this.Controls.Add(this.button11);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grbHocKyHientai);
+            this.Controls.Add(this.grbDanhSachPhong);
+            this.Controls.Add(this.grbPhong);
+            this.Controls.Add(this.grbDanhSachLQL);
+            this.Controls.Add(this.grbLopQuanLy);
+            this.Controls.Add(this.grbDanhSachKhoa);
+            this.Controls.Add(this.grbKhoa);
             this.Name = "frmCauHinh";
             this.Text = "frmCauHinh";
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.grbDanhSachKhoa.ResumeLayout(false);
+            this.grbKhoa.ResumeLayout(false);
+            this.grbKhoa.PerformLayout();
+            this.grbLopQuanLy.ResumeLayout(false);
+            this.grbLopQuanLy.PerformLayout();
+            this.grbDanhSachLQL.ResumeLayout(false);
+            this.grbPhong.ResumeLayout(false);
+            this.grbPhong.PerformLayout();
+            this.grbDanhSachPhong.ResumeLayout(false);
+            this.grbHocKyHientai.ResumeLayout(false);
+            this.grbHocKyHientai.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox grbDanhSachKhoa;
+        private System.Windows.Forms.GroupBox grbKhoa;
+        private System.Windows.Forms.TextBox txtTenKhoa;
+        private System.Windows.Forms.TextBox txtMaKhoa;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTaoKhoa;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox grbLopQuanLy;
+        private System.Windows.Forms.ComboBox cmbTenKhoaLQL;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTenLopLQL;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox grbDanhSachLQL;
+        private System.Windows.Forms.GroupBox grbPhong;
+        private System.Windows.Forms.ListView lstDanhSachKhoa;
+        private System.Windows.Forms.ListView lstDanhsachLQL;
+        private System.Windows.Forms.GroupBox grbDanhSachPhong;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtTenPhong;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ListView lstDanhSachPhong;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button btnCapNhatKhoa;
+        private System.Windows.Forms.Button btnXoaKhoa;
+        private System.Windows.Forms.Button btnCapNhatLQL;
+        private System.Windows.Forms.Button btnXoaLQL;
+        private System.Windows.Forms.Button btnTaoLQL;
+        private System.Windows.Forms.Button btnCapNhatPhong;
+        private System.Windows.Forms.Button btnXoaPhong;
+        private System.Windows.Forms.Button btnTaoPhong;
+        private System.Windows.Forms.GroupBox grbHocKyHientai;
+        private System.Windows.Forms.Button btnLuuHocKy;
+        private System.Windows.Forms.TextBox txtHocKy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button11;
 

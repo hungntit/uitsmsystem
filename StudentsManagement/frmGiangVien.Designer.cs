@@ -66,6 +66,8 @@
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.pnlHead = new System.Windows.Forms.Panel();
             this.lblChiTietGiangVien = new System.Windows.Forms.Label();
+            this.lblDiaChi = new System.Windows.Forms.Label();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.grbThongTinGiangVien.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.pnlMidle.SuspendLayout();
@@ -75,6 +77,8 @@
             // 
             // grbThongTinGiangVien
             // 
+            this.grbThongTinGiangVien.Controls.Add(this.txtDiaChi);
+            this.grbThongTinGiangVien.Controls.Add(this.lblDiaChi);
             this.grbThongTinGiangVien.Controls.Add(this.txtNoiSinh);
             this.grbThongTinGiangVien.Controls.Add(this.lblNoiSinh);
             this.grbThongTinGiangVien.Controls.Add(this.cmbHocVi);
@@ -101,7 +105,7 @@
             // 
             // txtNoiSinh
             // 
-            this.txtNoiSinh.Location = new System.Drawing.Point(357, 138);
+            this.txtNoiSinh.Location = new System.Drawing.Point(592, 99);
             this.txtNoiSinh.Name = "txtNoiSinh";
             this.txtNoiSinh.Size = new System.Drawing.Size(124, 20);
             this.txtNoiSinh.TabIndex = 26;
@@ -109,7 +113,7 @@
             // lblNoiSinh
             // 
             this.lblNoiSinh.AutoSize = true;
-            this.lblNoiSinh.Location = new System.Drawing.Point(300, 145);
+            this.lblNoiSinh.Location = new System.Drawing.Point(531, 105);
             this.lblNoiSinh.Name = "lblNoiSinh";
             this.lblNoiSinh.Size = new System.Drawing.Size(51, 13);
             this.lblNoiSinh.TabIndex = 25;
@@ -130,7 +134,7 @@
             // lblHocVi
             // 
             this.lblHocVi.AutoSize = true;
-            this.lblHocVi.Location = new System.Drawing.Point(533, 64);
+            this.lblHocVi.Location = new System.Drawing.Point(540, 64);
             this.lblHocVi.Name = "lblHocVi";
             this.lblHocVi.Size = new System.Drawing.Size(44, 13);
             this.lblHocVi.TabIndex = 21;
@@ -415,6 +419,22 @@
             this.lblChiTietGiangVien.TabIndex = 0;
             this.lblChiTietGiangVien.Text = "Chi tiết Giảng viên ";
             // 
+            // lblDiaChi
+            // 
+            this.lblDiaChi.AutoSize = true;
+            this.lblDiaChi.Location = new System.Drawing.Point(305, 142);
+            this.lblDiaChi.Name = "lblDiaChi";
+            this.lblDiaChi.Size = new System.Drawing.Size(46, 13);
+            this.lblDiaChi.TabIndex = 27;
+            this.lblDiaChi.Text = "Địa chỉ :";
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Location = new System.Drawing.Point(357, 138);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(358, 20);
+            this.txtDiaChi.TabIndex = 28;
+            // 
             // frmGiangVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,5 +498,7 @@
         private System.Windows.Forms.Label lblDanhSachChon;
         private System.Windows.Forms.TextBox txtNoiSinh;
         private System.Windows.Forms.Label lblNoiSinh;
+        private System.Windows.Forms.TextBox txtDiaChi;
+        private System.Windows.Forms.Label lblDiaChi;
     }
 }
