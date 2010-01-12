@@ -70,12 +70,6 @@
     <Compile Include="frmDanhSachGiangVien.Designer.cs">
       <DependentUpon>frmDanhSachGiangVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDanhSachKhoa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDanhSachKhoa.Designer.cs">
-      <DependentUpon>frmDanhSachKhoa.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmDanhSachLopDangKy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,9 +141,6 @@
     <EmbeddedResource Include="frmDanhSachGiangVien.resx">
       <DependentUpon>frmDanhSachGiangVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDanhSachKhoa.resx">
-      <DependentUpon>frmDanhSachKhoa.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmDanhSachLopDangKy.resx">
       <DependentUpon>frmDanhSachLopDangKy.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,16 +190,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BussinessEntities\BussinessEntities.csproj">
-      <Project>{93006FF6-72F7-4AEF-B4BE-ACFF37C1FB1D}</Project>
-      <Name>BussinessEntities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
-      <Project>{D698A287-FD3E-4C73-9590-99898620F182}</Project>
-      <Name>DataAccessLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
