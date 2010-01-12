@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tblLoaiMonHoc.cs" />
     <Compile Include="DatabaseSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tblGiangVien.cs" />
