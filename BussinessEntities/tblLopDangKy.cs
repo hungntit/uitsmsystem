@@ -24,7 +24,7 @@ namespace BussinessEntities
         private int _maLop;
         private String _maMon;
         private String _maGiangVien;
-        private String _maPhong;
+        private int _maPhong;
         private String _tenLop;
         private DayOfWeek _thu;
         private int _ca;
@@ -34,7 +34,7 @@ namespace BussinessEntities
 
         #region Constructor
 
-        public tblLopDangKy(int maLop, String maGiangVien, String maPhong, String maMon, String tenLop, DayOfWeek thu, int ca, DateTime ngaymolop,int maHocKy)
+        public tblLopDangKy(int maLop, String maGiangVien, int maPhong, String maMon, String tenLop, DayOfWeek thu, int ca, DateTime ngaymolop,int maHocKy)
         {
             this._maLop = maLop;
             this._maMon = maMon;
@@ -72,7 +72,7 @@ namespace BussinessEntities
         }
        
 
-        public String MaPhong
+        public int MaPhong
         {
             get { return _maPhong; }
             set { _maPhong = value; }
