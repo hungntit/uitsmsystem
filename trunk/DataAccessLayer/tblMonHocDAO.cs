@@ -176,7 +176,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                
-                sqlcommand.Prepare();
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {

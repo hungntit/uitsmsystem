@@ -48,6 +48,13 @@ namespace BusinessLogicLayer
             else
                 return hockyDAO.getAllHocKy();
         }
+        public void CloseConection()
+        {
+            if (hockyDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                hockyDAO.CloseConection();
+        }
     }
   
 

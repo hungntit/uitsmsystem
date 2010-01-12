@@ -121,6 +121,13 @@ namespace BusinessLogicLayer
              else
                  return sinhvienDAO.CountSinhVienByMaLopQuanLy(malopQly);
          }
+         public void CloseConection()
+         {
+             if (sinhvienDAO == null)
+                 throw new Exception("Can't connect DAL");
+             else
+                 sinhvienDAO.CloseConection();
+         }
     }
   
 

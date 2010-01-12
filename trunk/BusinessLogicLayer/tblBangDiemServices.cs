@@ -41,5 +41,12 @@ namespace BusinessLogicLayer
             else
                 bangdiemDAO.updateTblBangDiem( MaSV,  maLopDK,  diem);
         }
+        public void CloseConection()
+        {
+            if (bangdiemDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                bangdiemDAO.CloseConection();
+        }
     }
 }

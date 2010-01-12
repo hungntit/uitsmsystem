@@ -34,5 +34,12 @@ namespace BusinessLogicLayer
             else
                 chitietdangkyDAO.deleteTblChiTietDangKy(maphieu, maLopDK);
         }
+        public void CloseConection()
+        {
+            if (chitietdangkyDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                chitietdangkyDAO.CloseConection();
+        }
     }
 }

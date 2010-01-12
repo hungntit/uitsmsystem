@@ -29,7 +29,7 @@ namespace DataAccessLayer
 
                            + tblLopDangKy.sMA_LOP
                            + ") "
-                           + "VALUES(?,?)";
+                           + "VALUES(@a,@b)";
 
 
 
@@ -38,8 +38,8 @@ namespace DataAccessLayer
            {
                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                sqlcommand.CommandType = System.Data.CommandType.Text;
-               sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_PHIEU, phieudk.MaPhieuDK);
-               sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_LOP, lopdk.MaLop);
+               sqlcommand.Parameters.AddWithValue("@a", phieudk.MaPhieuDK);
+               sqlcommand.Parameters.AddWithValue("@b", lopdk.MaLop);
               
 
                sqlcommand.Prepare();

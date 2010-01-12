@@ -185,6 +185,13 @@ namespace BusinessLogicLayer
             else
                  lopDAO.deleteTblLopDangKyByMaPhong(maPhong);
         }
+        public void CloseConection()
+        {
+            if (lopDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                lopDAO.CloseConection();
+        }
     }
   
 

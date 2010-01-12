@@ -34,5 +34,12 @@ namespace BusinessLogicLayer
             else
                 giangdayDAO.deleteTblGiangDay(mamonhoc, maGV);
         }
+        public void CloseConection()
+        {
+            if (giangdayDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                giangdayDAO.CloseConection();
+        }
     }
 }

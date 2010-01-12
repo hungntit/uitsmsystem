@@ -104,23 +104,25 @@ namespace DataAccessLayer
         public void updateTblGiangVien(tblGiangVien giangvien)
         {
             string QueryStr = "UPDATE GIANG_VIEN "
-                            + "WHERE "+tblGiangVien.sMA_GIANG_VIEN +" = ? "
+                            
                             + "SET "
-                            + tblGiangVien.sCMND + " = ?," 
-                            + tblGiangVien.sHOC_VI + " = ?," 
-                            + tblGiangVien.sMA_KHOA + " = ?," 
-                            + tblGiangVien.sHO_GIANG_VIEN + " = ?," 
-                            + tblGiangVien.sTEN_GIANG_VIEN + " = ?," 
-                            + tblGiangVien.sNGAYSINH + " = ?," 
-                            + tblGiangVien.sNOISINH + " = ?," 
-                            + tblGiangVien.sGIOITINH + " = ?," 
-                            + tblGiangVien.sDIACHI + " = " ;
+                            + tblGiangVien.sCMND + " = @b," 
+                            + tblGiangVien.sHOC_VI + " = @c," 
+                            + tblGiangVien.sMA_KHOA + " = @d," 
+                            + tblGiangVien.sHO_GIANG_VIEN + " = @e," 
+                            + tblGiangVien.sTEN_GIANG_VIEN + " = @f," 
+                            + tblGiangVien.sNGAYSINH + " = @g," 
+                            + tblGiangVien.sNOISINH + " = @h," 
+                            + tblGiangVien.sGIOITINH + " = @i," 
+                            + tblGiangVien.sDIACHI + " = @j " 
+                            +"WHERE " + tblGiangVien.sMA_GIANG_VIEN + " = @a ";
 
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
+                /*
                 sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_GIANG_VIEN, giangvien.MaGiangVien);
                 sqlcommand.Parameters.AddWithValue(tblGiangVien.sCMND, giangvien.CMND);
                 sqlcommand.Parameters.AddWithValue(tblGiangVien.sHOC_VI, giangvien.HocVi);
@@ -132,6 +134,17 @@ namespace DataAccessLayer
                 sqlcommand.Parameters.AddWithValue(tblGiangVien.sGIOITINH, giangvien.GioiTinh);
                 sqlcommand.Parameters.AddWithValue(tblGiangVien.sDIACHI, giangvien.DiaChi);
                 sqlcommand.Prepare();
+                 * */
+                sqlcommand.Parameters.AddWithValue("@a", giangvien.MaGiangVien);
+                sqlcommand.Parameters.AddWithValue("@b", giangvien.CMND);
+                sqlcommand.Parameters.AddWithValue("@c", giangvien.HocVi);
+                sqlcommand.Parameters.AddWithValue("@d", giangvien.MaKhoa);
+                sqlcommand.Parameters.AddWithValue("@e", giangvien.Ho);
+                sqlcommand.Parameters.AddWithValue("@f", giangvien.Ten);
+                sqlcommand.Parameters.AddWithValue("@g", giangvien.NgaySinh);
+                sqlcommand.Parameters.AddWithValue("@h", giangvien.NoiSinh);
+                sqlcommand.Parameters.AddWithValue("@i", giangvien.GioiTinh);
+                sqlcommand.Parameters.AddWithValue("@j", giangvien.DiaChi);
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -160,15 +173,15 @@ namespace DataAccessLayer
                              + tblGiangVien.sNGAYSINH + ","
                              + tblGiangVien.sGIOITINH + ","
                              + tblGiangVien.sNOISINH + ","
-                             + tblGiangVien.sDIACHI +" " 
-                             +"from GIANG_VIEN where MA_GIANG_VIEN  =   ?";
+                             + tblGiangVien.sDIACHI +" "
+                             + "from GIANG_VIEN where MA_GIANG_VIEN  =   @MA_GIANG_VIEN";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_GIANG_VIEN", MaGV);
+                sqlcommand.Parameters.AddWithValue("@MA_GIANG_VIEN", MaGV);
                 sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
@@ -371,7 +384,7 @@ namespace DataAccessLayer
                             + "from GIANG_VIEN,GIANG_DAY "
                             + "WHERE "
                             + "GIANG_VIEN.MA_GIANG_VIEN = GIANG_DAY.MA_GIANG_VIEN AND "
-                            + "GIANG_DAY.MA_MON = ?  ";
+                            + "GIANG_DAY.MA_MON = @MA_MON  ";
                             
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
@@ -379,7 +392,7 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_MON", MaMonHoc);
+                sqlcommand.Parameters.AddWithValue("@MA_MON", MaMonHoc);
                 sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
@@ -445,14 +458,14 @@ namespace DataAccessLayer
                             + "from GIANG_VIEN,GIANG_DAY "
                             + "WHERE "
                             + "GIANG_VIEN.MA_GIANG_VIEN = GIANG_DAY.MA_GIANG_VIEN AND "
-                            + "GIANG_DAY.MA_MON = ?  ";
+                            + "GIANG_DAY.MA_MON = @MA_MON  ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_MON", mamon);
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
