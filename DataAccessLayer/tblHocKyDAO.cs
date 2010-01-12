@@ -30,15 +30,15 @@ namespace DataAccessLayer
         public tblHocKy getbyMaHocKy(int maHK)
         {
             tblHocKy HKy = null;
-            string QueryStr = "Select * from HOC_KY where MA_HK  =   ?";
+            string QueryStr = "Select * from HOC_KY where MA_HK  =   @MA_HK";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_HK", maHK);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_HK", maHK);
+             
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -70,16 +70,16 @@ namespace DataAccessLayer
         public tblHocKy getbyHocKy_Namhoc(int hocky,int namhoc)
         {
             tblHocKy HKy = null;
-            string QueryStr = "Select * from HOC_KY where HOCKY  =   ? and NAM_HOC = ?";
+            string QueryStr = "Select * from HOC_KY where HOCKY  =   @HOCKY and NAM_HOC = @NAM_HOC";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("HOCKY", hocky);
-                sqlcommand.Parameters.AddWithValue("NAM_HOC", namhoc);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@HOCKY", hocky);
+                sqlcommand.Parameters.AddWithValue("@NAM_HOC", namhoc);
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -110,14 +110,13 @@ namespace DataAccessLayer
             List<tblHocKy> list = new List<tblHocKy>();
 
 
-            string QueryStr = "Select * from HOC_KY where MA_HOC_KY  =   ?";
+            string QueryStr = "Select * from HOC_KY";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {

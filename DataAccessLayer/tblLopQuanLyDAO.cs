@@ -29,7 +29,9 @@ namespace DataAccessLayer
                             + ","
                             + tblLopQuanLy.sTEN_LOP
                             + ") "
-                            + "VALUES(?,?,?) ";
+                            + "VALUES(" + "@"+tblLopQuanLy.sMA_LOP + ","
+                                        + "@"+tblLopQuanLy.sMA_KHOA + ","
+                                        + "@"+tblLopQuanLy.sTEN_LOP + ")";
 
 
 
@@ -39,9 +41,9 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sMA_LOP, lopQuanLy.MaLopQuanLy);
-                sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sMA_KHOA, lopQuanLy.MaKhoa);
-                sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sTEN_LOP, lopQuanLy.TenLopQuanLy);
+                sqlcommand.Parameters.AddWithValue("@"+tblLopQuanLy.sMA_LOP, lopQuanLy.MaLopQuanLy);
+                sqlcommand.Parameters.AddWithValue("@"+tblLopQuanLy.sMA_KHOA, lopQuanLy.MaKhoa);
+                sqlcommand.Parameters.AddWithValue("@"+tblLopQuanLy.sTEN_LOP, lopQuanLy.TenLopQuanLy);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
@@ -61,10 +63,10 @@ namespace DataAccessLayer
         public void updateTblLopQuanLy(tblLopQuanLy lopQuanLy)
         {
             string QueryStr = "UPDATE  " + tblLopQuanLy.sTABLE_NAME + " "
-                            + "WHERE " + tblLopQuanLy.sMA_LOP + " = ? "
-                            + "SET "
-                            + tblLopQuanLy.sMA_KHOA + " = ?,"
-                            + tblLopQuanLy.sTEN_LOP + " = ?";
+                            + " SET "
+                            + tblLopQuanLy.sMA_KHOA + " = @" + tblLopQuanLy.sMA_KHOA+","
+                            + tblLopQuanLy.sTEN_LOP + " = @" + tblLopQuanLy.sTEN_LOP
+                            + " WHERE " + tblLopQuanLy.sMA_LOP + " = @" + tblLopQuanLy.sMA_LOP;
 
 
 
@@ -76,7 +78,7 @@ namespace DataAccessLayer
                 sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sMA_LOP, lopQuanLy.MaLopQuanLy);
                 sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sMA_KHOA, lopQuanLy.MaKhoa);
                 sqlcommand.Parameters.AddWithValue(tblLopQuanLy.sTEN_LOP, lopQuanLy.TenLopQuanLy);
-                sqlcommand.Prepare();
+             
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -130,15 +132,15 @@ namespace DataAccessLayer
         public tblLopQuanLy getbyMaLopQuanLy(int maLopQL)
         {
             tblLopQuanLy lop = null;
-            string QueryStr = "Select * from LOP_QUAN_LY where MA_LOP_QUAN_LY  =   ?";
+            string QueryStr = "Select * from LOP_QUAN_LY where MA_LOP_QUAN_LY  =   @MA_LOP_QUAN_LY";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_LOP_QUAN_LY", maLopQL);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_LOP_QUAN_LY", maLopQL);
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -181,7 +183,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 
-                sqlcommand.Prepare();
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -230,7 +232,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
 
-                sqlcommand.Prepare();
+               
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -275,7 +277,7 @@ namespace DataAccessLayer
 
             string QueryStr = "Select * "
                             + "from LOP_QUAN_LY "
-                            + "WHERE MA_KHOA = ? ";
+                            + "WHERE MA_KHOA = @MA_KHOA";
                            
 
             SqlDataReader sqldtRd = null;
@@ -284,8 +286,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_KHOA", maKhoa);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_KHOA", maKhoa);
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -328,7 +330,7 @@ namespace DataAccessLayer
 
             string QueryStr = "Select COUNT(MA_LOP_QUAN_LY) AS COUNTLOPQL "
                             + "from LOP_QUAN_LY "
-                            + "WHERE MA_KHOA = ? ";
+                            + "WHERE MA_KHOA = @MA_KHOA";
 
 
             SqlDataReader sqldtRd = null;
@@ -337,8 +339,8 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_KHOA", maKhoa);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_KHOA", maKhoa);
+              
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
