@@ -345,6 +345,7 @@ create table GIANG_VIEN (
    NGAY_SINH            datetime             null,
    GIOI_TINH            bit                  null,
    DIA_CHI              varchar(255)         null,
+   NOI_SINH				varchar(255)         null,
    HOC_VI               varchar(30)          null,
    constraint PK_GIANG_VIEN primary key nonclustered (MA_GIANG_VIEN)
 )
@@ -395,12 +396,12 @@ go
 create table LOP_DANG_KY (
    MA_LOP_DANG_KY       int                  not null,
    MA_GIANG_VIEN        char(10)             not null,
-   MA_PHONG             smallint             not null,
+   MA_PHONG             int             not null,
    MA_MON               char(10)             not null,
    MA_HOC_KY            int                  not null,
    TEN_LOP              varchar(100)         null,
    THU                  int                  null,
-   CA                   tinyint              null,
+   CA                   int              null,
    NGAY_MO_LOP          datetime             null,
    constraint PK_LOP_DANG_KY primary key nonclustered (MA_LOP_DANG_KY)
 )
@@ -464,8 +465,8 @@ create table MON_HOC (
    MA_MON               char(10)             not null,
    MA_LOAI              int                  not null,
    TEN_MON              varchar(255)         null,
-   LY_THUYET            tinyint              null,
-   THUC_HANH            tinyint              null,
+   LY_THUYET            int              null,
+   THUC_HANH            int              null,
    constraint PK_MON_HOC primary key nonclustered (MA_MON)
 )
 go
@@ -501,7 +502,7 @@ go
 /* Table: PHONG_HOC                                             */
 /*==============================================================*/
 create table PHONG_HOC (
-   MA_PHONG             smallint             not null,
+   MA_PHONG             int             not null,
    TEN_PHONG            varchar(255)         null,
    constraint PK_PHONG_HOC primary key nonclustered (MA_PHONG)
 )
