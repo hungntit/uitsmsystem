@@ -438,6 +438,7 @@ create table LOP_QUAN_LY (
    MA_LOP_QUAN_LY       int                  not null,
    MA_KHOA              varchar(4)           not null,
    TEN_LOP_QUAN_LY      varchar(100)         null,
+   MA_HOC_KY            int                  not null,
    constraint PK_LOP_QUAN_LY primary key nonclustered (MA_LOP_QUAN_LY)
 )
 go
@@ -503,7 +504,7 @@ go
 create table PHIEU_DANG_KY (
    MA_PHIEU_DANG_KY     int                  not null,
    MA_SINH_VIEN         char(10)             not null,
-   MA_HOC_KY            int                  not null,
+   
    NGAY_DANG_KY         datetime             null,
    constraint PK_PHIEU_DANG_KY primary key nonclustered (MA_PHIEU_DANG_KY)
 )
