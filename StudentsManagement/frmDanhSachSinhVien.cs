@@ -15,6 +15,7 @@ namespace StudentsManagement
     {
         tblSinhVienServices sinhVienServices;
         tblKhoaServices khoaServices;
+        tblLopQuanLyServices lopQuanLyServices;
         List<tblSinhVien> lstSinhVien;
 
         public frmDanhSachSinhVien()
@@ -22,6 +23,7 @@ namespace StudentsManagement
             InitializeComponent();
             sinhVienServices = new tblSinhVienServices();
             khoaServices = new tblKhoaServices();
+            lopQuanLyServices = new tblLopQuanLyServices();
         }
 
         private void frmDanhSachSinhVien_Load(object sender, EventArgs e)
@@ -33,12 +35,16 @@ namespace StudentsManagement
             {
                 ListViewItem lvItm = new ListViewItem();
                 lvItm.Text = arrSinhVien[i].MaSV;
-                lvItm.SubItems.Add(arrSinhVien[i].MaSV);
                 lvItm.SubItems.Add(arrSinhVien[i].Ho);
                 lvItm.SubItems.Add(arrSinhVien[i].Ten);
-                lvItm.SubItems.Add(arrSinhVien[i].GioiTinh.ToString());
+                if (!arrSinhVien[i].GioiTinh)
+                    lvItm.SubItems.Add("Nam");
+                else
+                    lvItm.SubItems.Add("Nữ");
                 lvItm.SubItems.Add(arrSinhVien[i].NgaySinh.ToShortDateString());
-
+                tblLopQuanLy lopQuanLy = lopQuanLyServices.getbyMaLopQuanLy(arrSinhVien[i].MaLopQuanLy);
+                tblKhoa khoa = khoaServices.getbyMaKhoa(lopQuanLy.MaKhoa);
+                lvItm.SubItems.Add(khoa.TenKhoa);
                 lstDanhSachSinhVien.Items.Add(lvItm);
             }
         }
@@ -76,6 +82,19 @@ namespace StudentsManagement
             {
                 frmSinhVien frmEditSV = new frmSinhVien(lstDanhSachSinhVien.SelectedItems[0].Text,true);
                 frmEditSV.Show();
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn thật sự muốn xóa những dòng này ?", "Cảnh báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                foreach (ListViewItem lvItem in lstDanhSachSinhVien.SelectedItems)
+                {
+                    String maSV = lvItem.Text.Trim();
+                    sinhVienServices.deleteTblSinhVien(maSV);
+                }
+                this.Refresh();
             }
         }
     }

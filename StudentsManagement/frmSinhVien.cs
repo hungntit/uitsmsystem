@@ -64,7 +64,11 @@ namespace StudentsManagement
                 this.dtNgaySinh.Text = sinhvien.NgaySinh.ToShortDateString();
                 this.cmbKhoa.SelectedItem = khoa.TenKhoa;
                 this.cmbLopQuanLy.SelectedItem = lopQuanLy.TenLopQuanLy;
-                this.cmbNienKhoa.SelectedItem = sinhvien.NienKhoa;
+                this.cmbNienKhoa.Text = sinhvien.NienKhoa.ToString();
+                if (sinhvien.GioiTinh)
+                    this.cmbGioiTinh.Text = "Nữ";
+                else
+                    this.cmbGioiTinh.Text = "Nam";
                 this.txtMSSV.Enabled = false;
             }
         }
@@ -97,6 +101,11 @@ namespace StudentsManagement
                 sinhVienServices.updateTblSinhVien(sinhvien);
             else
                 sinhVienServices.insertTblSinhVien(sinhvien);
+            this.Close();
+        }
+
+        private void btnTroVe_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
 
