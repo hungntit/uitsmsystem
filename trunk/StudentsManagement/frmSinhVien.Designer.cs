@@ -363,6 +363,7 @@
             this.btnTroVe.TabIndex = 0;
             this.btnTroVe.Text = "Trở về";
             this.btnTroVe.UseVisualStyleBackColor = true;
+            this.btnTroVe.Click += new System.EventHandler(this.btnTroVe_Click);
             // 
             // frmSinhVien
             // 

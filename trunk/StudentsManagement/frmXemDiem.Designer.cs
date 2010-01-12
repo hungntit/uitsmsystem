@@ -31,6 +31,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnXem = new System.Windows.Forms.Button();
+            this.btnTroVe = new System.Windows.Forms.Button();
             this.txtKhoa = new System.Windows.Forms.TextBox();
             this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.txtHoVaTen = new System.Windows.Forms.TextBox();
@@ -50,8 +52,6 @@
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
-            this.btnTroVe = new System.Windows.Forms.Button();
-            this.btnXem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -90,6 +90,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(961, 123);
             this.panel2.TabIndex = 5;
+            // 
+            // btnXem
+            // 
+            this.btnXem.Location = new System.Drawing.Point(777, 87);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.TabIndex = 10;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
+            // 
+            // btnTroVe
+            // 
+            this.btnTroVe.Location = new System.Drawing.Point(865, 86);
+            this.btnTroVe.Name = "btnTroVe";
+            this.btnTroVe.Size = new System.Drawing.Size(75, 23);
+            this.btnTroVe.TabIndex = 9;
+            this.btnTroVe.Text = "Trở về";
+            this.btnTroVe.UseVisualStyleBackColor = true;
             // 
             // txtKhoa
             // 
@@ -236,24 +255,6 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Điểm";
-            // 
-            // btnTroVe
-            // 
-            this.btnTroVe.Location = new System.Drawing.Point(865, 86);
-            this.btnTroVe.Name = "btnTroVe";
-            this.btnTroVe.Size = new System.Drawing.Size(75, 23);
-            this.btnTroVe.TabIndex = 9;
-            this.btnTroVe.Text = "Trở về";
-            this.btnTroVe.UseVisualStyleBackColor = true;
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(777, 87);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
-            this.btnXem.TabIndex = 10;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
             // 
             // frmXemDiem
             // 
