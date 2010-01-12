@@ -274,6 +274,7 @@
             this.btnLuu.TabIndex = 1;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnTroVe
             // 
@@ -283,6 +284,7 @@
             this.btnTroVe.TabIndex = 0;
             this.btnTroVe.Text = "Trở về";
             this.btnTroVe.UseVisualStyleBackColor = true;
+            this.btnTroVe.Click += new System.EventHandler(this.btnTroVe_Click);
             // 
             // pnlMidle
             // 
@@ -359,6 +361,7 @@
             this.btnChon.TabIndex = 3;
             this.btnChon.Text = "<<";
             this.btnChon.UseVisualStyleBackColor = true;
+            this.btnChon.Click += new System.EventHandler(this.btnChon_Click);
             // 
             // btnBoChon
             // 
@@ -368,6 +371,7 @@
             this.btnBoChon.TabIndex = 2;
             this.btnBoChon.Text = ">>";
             this.btnBoChon.UseVisualStyleBackColor = true;
+            this.btnBoChon.Click += new System.EventHandler(this.btnBoChon_Click);
             // 
             // lstDanhSachChon
             // 

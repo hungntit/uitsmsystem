@@ -22,6 +22,9 @@ namespace BussinessEntities
         #endregion
         #region Constructors
 
+        public tblGiangVien()
+        {
+        }
         public tblGiangVien(String maGiangVien, String hocvi, String maKhoa, String hoGV, String tenGV, String cmnd, DateTime ngaysinh, Boolean gioitinh, String noisinh, String diachi)
             : base(hoGV, tenGV, cmnd, ngaysinh, gioitinh, noisinh, diachi)
         {

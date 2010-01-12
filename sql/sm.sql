@@ -261,8 +261,7 @@ go
 create table BANG_DIEM (
    MA_SINH_VIEN         char(10)             not null,
    MA_LOP_DANG_KY       int                  not null,
-   DIEM_LY_THUYET       float                null,
-   DIEM_THUC_HANH       float                null,
+   DIEM       float                null,
    constraint PK_BANG_DIEM primary key nonclustered (MA_SINH_VIEN, MA_LOP_DANG_KY)
 )
 go
