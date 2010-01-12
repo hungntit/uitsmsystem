@@ -1,8 +1,7 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     1/9/2010 10:12:47 PM                         */
+/* Created on:     1/12/2010 2:51:38 PM                         */
 /*==============================================================*/
-
 
 if exists (select 1
             from  sysindexes
@@ -119,6 +118,15 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('LOP_DANG_KY')
+            and   name  = 'RELATIONSHIP_17_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index LOP_DANG_KY.RELATIONSHIP_17_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('LOP_DANG_KY')
             and   name  = 'DAY_MON_FK'
             and   indid > 0
             and   indid < 255)
@@ -184,40 +192,6 @@ go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('MON_TIEN_QUYET')
-            and   name  = 'TIEN_QUYET_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index MON_TIEN_QUYET.TIEN_QUYET_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('MON_TIEN_QUYET')
-            and   name  = 'TIEN_QUYET2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index MON_TIEN_QUYET.TIEN_QUYET2_FK
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('MON_TIEN_QUYET')
-            and   type = 'U')
-   drop table MON_TIEN_QUYET
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('PHIEU_DANG_KY')
-            and   name  = 'RELATIONSHIP_10_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index PHIEU_DANG_KY.RELATIONSHIP_10_FK
-go
-
-if exists (select 1
-            from  sysindexes
            where  id    = object_id('PHIEU_DANG_KY')
             and   name  = 'RELATIONSHIP_5_FK'
             and   indid > 0
@@ -253,6 +227,31 @@ if exists (select 1
            where  id = object_id('SINH_VIEN')
             and   type = 'U')
    drop table SINH_VIEN
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('TIEN_QUYET')
+            and   name  = 'TIEN_QUYET_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index TIEN_QUYET.TIEN_QUYET_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('TIEN_QUYET')
+            and   name  = 'TIEN_QUYET2_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index TIEN_QUYET.TIEN_QUYET2_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TIEN_QUYET')
+            and   type = 'U')
+   drop table TIEN_QUYET
 go
 
 /*==============================================================*/
@@ -398,6 +397,7 @@ create table LOP_DANG_KY (
    MA_GIANG_VIEN        char(10)             not null,
    MA_PHONG             smallint             not null,
    MA_MON               char(10)             not null,
+   MA_HOC_KY            int                  not null,
    TEN_LOP              varchar(100)         null,
    THU                  int                  null,
    CA                   tinyint              null,
@@ -431,13 +431,20 @@ MA_MON ASC
 go
 
 /*==============================================================*/
+/* Index: RELATIONSHIP_17_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_17_FK on LOP_DANG_KY (
+MA_HOC_KY ASC
+)
+go
+
+/*==============================================================*/
 /* Table: LOP_QUAN_LY                                           */
 /*==============================================================*/
 create table LOP_QUAN_LY (
    MA_LOP_QUAN_LY       int                  not null,
    MA_KHOA              varchar(4)           not null,
    TEN_LOP_QUAN_LY      varchar(100)         null,
-   MA_HOC_KY            int                  not null,
    constraint PK_LOP_QUAN_LY primary key nonclustered (MA_LOP_QUAN_LY)
 )
 go
@@ -472,38 +479,11 @@ MA_LOAI ASC
 go
 
 /*==============================================================*/
-/* Table: MON_TIEN_QUYET                                        */
-/*==============================================================*/
-create table MON_TIEN_QUYET (
-   MA_MON               char(10)             not null,
-   MA_MON_TIEN_QUYET    char(10)             not null,
-   constraint PK_MON_TIEN_QUYET primary key nonclustered (MA_MON, MA_MON_TIEN_QUYET)
-)
-go
-
-/*==============================================================*/
-/* Index: TIEN_QUYET2_FK                                        */
-/*==============================================================*/
-create index TIEN_QUYET2_FK on MON_TIEN_QUYET (
-MA_MON ASC
-)
-go
-
-/*==============================================================*/
-/* Index: TIEN_QUYET_FK                                         */
-/*==============================================================*/
-create index TIEN_QUYET_FK on MON_TIEN_QUYET (
-MA_MON_TIEN_QUYET ASC
-)
-go
-
-/*==============================================================*/
 /* Table: PHIEU_DANG_KY                                         */
 /*==============================================================*/
 create table PHIEU_DANG_KY (
    MA_PHIEU_DANG_KY     int                  not null,
    MA_SINH_VIEN         char(10)             not null,
-   
    NGAY_DANG_KY         datetime             null,
    constraint PK_PHIEU_DANG_KY primary key nonclustered (MA_PHIEU_DANG_KY)
 )
@@ -514,14 +494,6 @@ go
 /*==============================================================*/
 create index RELATIONSHIP_5_FK on PHIEU_DANG_KY (
 MA_SINH_VIEN ASC
-)
-go
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_10_FK                                    */
-/*==============================================================*/
-create index RELATIONSHIP_10_FK on PHIEU_DANG_KY (
-MA_HOC_KY ASC
 )
 go
 
@@ -558,6 +530,32 @@ go
 /*==============================================================*/
 create index QUAN_LY_FK on SINH_VIEN (
 MA_LOP_QUAN_LY ASC
+)
+go
+
+/*==============================================================*/
+/* Table: TIEN_QUYET                                            */
+/*==============================================================*/
+create table TIEN_QUYET (
+   MA_MON               char(10)             not null,
+   MON_MA_MON           char(10)             not null,
+   constraint PK_TIEN_QUYET primary key nonclustered (MA_MON, MON_MA_MON)
+)
+go
+
+/*==============================================================*/
+/* Index: TIEN_QUYET2_FK                                        */
+/*==============================================================*/
+create index TIEN_QUYET2_FK on TIEN_QUYET (
+MA_MON ASC
+)
+go
+
+/*==============================================================*/
+/* Index: TIEN_QUYET_FK                                         */
+/*==============================================================*/
+create index TIEN_QUYET_FK on TIEN_QUYET (
+MON_MA_MON ASC
 )
 go
 
