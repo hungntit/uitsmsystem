@@ -292,8 +292,8 @@ namespace DataAccessLayer
                 while (sqldtRd.Read())
                 {
                     int malop = sqldtRd.GetInt32(0);
-                    String tenlop = sqldtRd.GetString(1);
-                    String makhoa = sqldtRd.GetString(2);
+                    String makhoa = sqldtRd.GetString(1);
+                    String tenlop = sqldtRd.GetString(2);
                     
                     tblLopQuanLy lop = new tblLopQuanLy(malop, makhoa, tenlop);
                     list.Add(lop);
