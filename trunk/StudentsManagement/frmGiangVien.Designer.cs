@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.grbThongTinGiangVien = new System.Windows.Forms.GroupBox();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.lblDiaChi = new System.Windows.Forms.Label();
             this.txtNoiSinh = new System.Windows.Forms.TextBox();
             this.lblNoiSinh = new System.Windows.Forms.Label();
             this.cmbHocVi = new System.Windows.Forms.ComboBox();
@@ -66,8 +68,6 @@
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.pnlHead = new System.Windows.Forms.Panel();
             this.lblChiTietGiangVien = new System.Windows.Forms.Label();
-            this.lblDiaChi = new System.Windows.Forms.Label();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.grbThongTinGiangVien.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.pnlMidle.SuspendLayout();
@@ -102,6 +102,22 @@
             this.grbThongTinGiangVien.Size = new System.Drawing.Size(935, 176);
             this.grbThongTinGiangVien.TabIndex = 3;
             this.grbThongTinGiangVien.TabStop = false;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Location = new System.Drawing.Point(357, 138);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(358, 20);
+            this.txtDiaChi.TabIndex = 28;
+            // 
+            // lblDiaChi
+            // 
+            this.lblDiaChi.AutoSize = true;
+            this.lblDiaChi.Location = new System.Drawing.Point(305, 142);
+            this.lblDiaChi.Name = "lblDiaChi";
+            this.lblDiaChi.Size = new System.Drawing.Size(46, 13);
+            this.lblDiaChi.TabIndex = 27;
+            this.lblDiaChi.Text = "Địa chỉ :";
             // 
             // txtNoiSinh
             // 
@@ -195,6 +211,8 @@
             // 
             // cmbGioiTinh
             // 
+            this.cmbGioiTinh.DisplayMember = "0";
+            this.cmbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGioiTinh.FormattingEnabled = true;
             this.cmbGioiTinh.Items.AddRange(new object[] {
             "Nam",
@@ -418,22 +436,6 @@
             this.lblChiTietGiangVien.Size = new System.Drawing.Size(96, 13);
             this.lblChiTietGiangVien.TabIndex = 0;
             this.lblChiTietGiangVien.Text = "Chi tiết Giảng viên ";
-            // 
-            // lblDiaChi
-            // 
-            this.lblDiaChi.AutoSize = true;
-            this.lblDiaChi.Location = new System.Drawing.Point(305, 142);
-            this.lblDiaChi.Name = "lblDiaChi";
-            this.lblDiaChi.Size = new System.Drawing.Size(46, 13);
-            this.lblDiaChi.TabIndex = 27;
-            this.lblDiaChi.Text = "Địa chỉ :";
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Location = new System.Drawing.Point(357, 138);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(358, 20);
-            this.txtDiaChi.TabIndex = 28;
             // 
             // frmGiangVien
             // 

@@ -29,7 +29,7 @@ namespace DataAccessLayer
 
                            + "MA_MON_TIEN_QUYET"
                            + ") "
-                           + "VALUES(?,?)";
+                           + "VALUES(@" + tblMonhoc.sMA_MON + ",@MA_MON_TIEN_QUYET)";
 
 
 
@@ -38,11 +38,11 @@ namespace DataAccessLayer
            {
                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                sqlcommand.CommandType = System.Data.CommandType.Text;
-               sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_MON, monhoc.MaMon);
-               sqlcommand.Parameters.AddWithValue("MA_MON_TIEN_QUYET", montienquyet.MaMon);
+               sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sMA_MON, monhoc.MaMon);
+               sqlcommand.Parameters.AddWithValue("@MA_MON_TIEN_QUYET", montienquyet.MaMon);
               
 
-               sqlcommand.Prepare();
+               ////sqlcommand.Prepare();
                sqlcommand.ExecuteNonQuery();
            }
            catch (Exception e)

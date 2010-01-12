@@ -34,7 +34,9 @@ namespace DataAccessLayer
                             + ","
                             + tblMonhoc.sTIN_CHI_THUC_HANH 
                             +") "
-                            +"VALUES(?,?,?,?,?)";
+                            + "VALUES(@" + tblMonhoc.sMA_MON + "," + "@" + tblMonhoc.sMA_LOAI + "," + "@" + tblMonhoc.sTIN_CHI_LY_THUYET + ","
+                            + "@" + tblMonhoc.sTIN_CHI_LY_THUYET + ","
+                            + "@" + tblMonhoc.sTIN_CHI_THUC_HANH + ")";
 
 
 
@@ -43,13 +45,13 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_MON, monhoc.MaMon);
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_LOAI, monhoc.MaLoai);
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTEN_MON, monhoc.TenMon);
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTIN_CHI_LY_THUYET, monhoc.TinchiLyThuyet);
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTIN_CHI_THUC_HANH, monhoc.TinchiThucHanh);
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sMA_MON, monhoc.MaMon);
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sMA_LOAI, monhoc.MaLoai);
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sTEN_MON, monhoc.TenMon);
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sTIN_CHI_LY_THUYET, monhoc.TinchiLyThuyet);
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sTIN_CHI_THUC_HANH, monhoc.TinchiThucHanh);
 
-                sqlcommand.Prepare();
+                ////sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -68,12 +70,12 @@ namespace DataAccessLayer
         public void updateTblMonHoc(tblMonhoc monhoc)
         {
             string QueryStr = "UPDATE MON_HOC "
-                            + "WHERE " + tblMonhoc.sMA_MON + " = ? "
                             + "SET "
-                            + tblMonhoc.sMA_LOAI + " = ?," 
-                            + tblMonhoc.sTEN_MON + " = ?," 
-                            + tblMonhoc.sTIN_CHI_LY_THUYET + " = ?,"
-                            + tblMonhoc.sTIN_CHI_THUC_HANH + " = ?";
+                            + tblMonhoc.sMA_LOAI + " = @" + tblMonhoc.sMA_LOAI + ","
+                            + tblMonhoc.sTEN_MON + " = @" + tblMonhoc.sTEN_MON + ","
+                            + tblMonhoc.sTIN_CHI_LY_THUYET + " = @" + tblMonhoc.sTIN_CHI_LY_THUYET + ","
+                            + tblMonhoc.sTIN_CHI_THUC_HANH + " = @" + tblMonhoc.sTIN_CHI_THUC_HANH
+                            + "WHERE " + tblMonhoc.sMA_MON + " = @" + tblMonhoc.sMA_MON +" ";
 
 
             SqlCommand sqlcommand = null;
@@ -81,12 +83,12 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_MON, monhoc.MaMon);
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_LOAI, monhoc.MaLoai);
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTEN_MON, monhoc.TenMon);
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTIN_CHI_LY_THUYET, monhoc.TinchiLyThuyet);
-                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTIN_CHI_THUC_HANH, monhoc.TinchiThucHanh);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sMA_MON, monhoc.MaMon);
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sMA_LOAI, monhoc.MaLoai);
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sTEN_MON, monhoc.TenMon);
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sTIN_CHI_LY_THUYET, monhoc.TinchiLyThuyet);
+                sqlcommand.Parameters.AddWithValue("@" + tblMonhoc.sTIN_CHI_THUC_HANH, monhoc.TinchiThucHanh);
+                //sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -126,15 +128,15 @@ namespace DataAccessLayer
         public tblMonhoc getbyMaMonHoc(String maMon)
         {
             tblMonhoc monhoc = null;
-            string QueryStr = "Select * from MON_HOC where MA_MON  =   ?";
+            string QueryStr = "Select * from MON_HOC where MA_MON  = @MA_MON";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_MON", maMon);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_MON", maMon);
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -234,7 +236,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
 
-                sqlcommand.Prepare();
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
@@ -268,15 +270,15 @@ namespace DataAccessLayer
                             + "FROM MON_HOC ,MON_TIEN_QUYET "
                             + "WHERE "
                             + "MON_TIEN_QUYET.MA_MON_TIEN_QUYET = MON_HOC.MA_MON "
-                            + "MON_TIEN_QUYET.MA_MON = ? ";
+                            + "MON_TIEN_QUYET.MA_MON = @MA_MON ";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue("MA_MON", MaMonhoc);
-                sqlcommand.Prepare();
+                sqlcommand.Parameters.AddWithValue("@MA_MON", MaMonhoc);
+                //sqlcommand.Prepare();
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {
