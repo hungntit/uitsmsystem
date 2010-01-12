@@ -5,3 +5,6 @@ D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\StudentsManagement\obj\Debug\Studen
 D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\StudentsManagement\obj\Debug\StudentsManagement.csproj.GenerateResource.Cache
 D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\StudentsManagement\obj\Debug\StudentsManagement.exe
 D:\UIT\Hocky7\ITPM\Cuoiky\StudentsManagement\StudentsManagement\obj\Debug\StudentsManagement.pdb
+D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\bin\Debug\StudentsManagement.exe.config
+D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\obj\Debug\StudentsManagement.exe
+D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\obj\Debug\StudentsManagement.pdb

@@ -74,15 +74,15 @@ namespace DataAccessLayer
             string QueryStr = "UPDATE SINH_VIEN "
                             + "WHERE " + tblSinhVien.sMASV + " = ? "
                             + "SET "
-                            + tblSinhVien.sCMND + "= " + sinhvien.CMND
-                            + tblSinhVien.sNIEN_KHOA + "= " + sinhvien.NienKhoa
-                            + tblSinhVien.sMA_LOP_QUAN_LY + "= " + sinhvien.MaLopQuanLy
-                            + tblSinhVien.sHO_SINH_VIEN+ "= " + sinhvien.Ho
-                            + tblSinhVien.sTEN_SINH_VIEN + "= " + sinhvien.Ten
-                            + tblSinhVien.sNGAYSINH + "= " + sinhvien.NgaySinh
-                            + tblSinhVien.sNOISINH + "= " + sinhvien.NoiSinh
-                            + tblGiangVien.sGIOITINH + "= " + sinhvien.GioiTinh
-                            + tblGiangVien.sDIACHI + "= " + sinhvien.DiaChi;
+                            + tblSinhVien.sCMND + " = ?,"
+                            + tblSinhVien.sNIEN_KHOA + " = ?,"
+                            + tblSinhVien.sMA_LOP_QUAN_LY + " = ?,"
+                            + tblSinhVien.sHO_SINH_VIEN + " = ?,"
+                            + tblSinhVien.sTEN_SINH_VIEN + " = ?,"
+                            + tblSinhVien.sNGAYSINH + " = ?,"
+                            + tblSinhVien.sNOISINH + " = ?," 
+                            + tblGiangVien.sGIOITINH + " = ?," 
+                            + tblGiangVien.sDIACHI + " = ?";
 
             SqlCommand sqlcommand = null;
             try
@@ -90,6 +90,15 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue(tblSinhVien.sMASV, sinhvien.MaSV);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sCMND, sinhvien.CMND);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNIEN_KHOA, sinhvien.NienKhoa);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sMA_LOP_QUAN_LY, sinhvien.MaLopQuanLy);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sHO_SINH_VIEN, sinhvien.Ho);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sTEN_SINH_VIEN, sinhvien.Ten);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNGAYSINH, sinhvien.NgaySinh);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sNOISINH, sinhvien.NoiSinh);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sGIOITINH, sinhvien.GioiTinh);
+                sqlcommand.Parameters.AddWithValue(tblSinhVien.sDIACHI, sinhvien.DiaChi);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
