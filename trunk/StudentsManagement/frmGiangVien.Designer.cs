@@ -421,6 +421,7 @@
             this.Controls.Add(this.pnlHead);
             this.Name = "frmGiangVien";
             this.Text = "frmGiangVien";
+            this.Load += new System.EventHandler(this.frmGiangVien_Load);
             this.grbThongTinGiangVien.ResumeLayout(false);
             this.grbThongTinGiangVien.PerformLayout();
             this.pnlBottom.ResumeLayout(false);

@@ -11,9 +11,15 @@ namespace StudentsManagement
 {
     public partial class frmGiangVien : Form
     {
+        
         public frmGiangVien()
         {
             InitializeComponent();
+        }
+
+        private void frmGiangVien_Load(object sender, EventArgs e)
+        {
+
         }
 
     }
