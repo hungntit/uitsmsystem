@@ -18,14 +18,14 @@ namespace StudentsManagement
 
         private void button15_Click(object sender, EventArgs e)
         {
-            this.panel6.Enabled = true;
-            this.panel5.Enabled = false;
+            this.pnlTimNC.Enabled = true;
+            this.pnlTimCB.Enabled = false;
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            this.panel6.Enabled = false;
-            this.panel5.Enabled = true;
+            this.pnlTimNC.Enabled = false;
+            this.pnlTimCB.Enabled = true;
         }
     }
 }
