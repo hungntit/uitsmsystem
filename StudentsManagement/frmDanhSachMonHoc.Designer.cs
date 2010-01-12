@@ -54,8 +54,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lstDanhSachMonHoc = new System.Windows.Forms.ListView();
-            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
@@ -265,6 +263,7 @@
             this.btnXoa.TabIndex = 5;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -274,6 +273,7 @@
             this.btnSua.TabIndex = 4;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXem
             // 
@@ -283,6 +283,7 @@
             this.btnXem.TabIndex = 3;
             this.btnXem.Text = "Xem";
             this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click_1);
             // 
             // btnXuatDanhSach
             // 
@@ -301,6 +302,7 @@
             this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXemTatCa
             // 
@@ -332,10 +334,7 @@
             // lstDanhSachMonHoc
             // 
             this.lstDanhSachMonHoc.Alignment = System.Windows.Forms.ListViewAlignment.Default;
-            this.lstDanhSachMonHoc.CheckBoxes = true;
             this.lstDanhSachMonHoc.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader8,
-            this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
@@ -350,16 +349,6 @@
             this.lstDanhSachMonHoc.UseCompatibleStateImageBehavior = false;
             this.lstDanhSachMonHoc.View = System.Windows.Forms.View.Details;
             this.lstDanhSachMonHoc.VirtualListSize = 4;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Chọn";
-            this.columnHeader8.Width = 109;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "STT";
-            this.columnHeader1.Width = 46;
             // 
             // columnHeader2
             // 
@@ -425,7 +414,7 @@
             // 
             // btnTruoc
             // 
-            this.btnTruoc.Location = new System.Drawing.Point(291, 12);
+            this.btnTruoc.Location = new System.Drawing.Point(291, 13);
             this.btnTruoc.Name = "btnTruoc";
             this.btnTruoc.Size = new System.Drawing.Size(51, 23);
             this.btnTruoc.TabIndex = 7;
@@ -581,6 +570,7 @@
             this.Controls.Add(this.pnlKetQua);
             this.Name = "frmDanhSachMonHoc";
             this.Text = "frmDanhSachMonHoc";
+            this.Load += new System.EventHandler(this.frmDanhSachMonHoc_Load);
             this.pnlTimNC.ResumeLayout(false);
             this.pnlTimNC.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -620,8 +610,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView lstDanhSachMonHoc;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
