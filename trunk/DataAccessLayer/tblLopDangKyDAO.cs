@@ -42,7 +42,7 @@ namespace DataAccessLayer
                             + ","
                             + tblLopDangKy.sMA_HOC_KY
                             + ") "
-                            + "VALUES(?,?,?,?,?,?,?,?)";
+                            + "VALUES(?,?,?,?,?,?,?,?,?)";
 
 
 
@@ -82,14 +82,14 @@ namespace DataAccessLayer
             string QueryStr = "UPDATE " + tblLopDangKy.sTABLE_NAME + " "
                             + " WHERE " + tblLopDangKy.sMA_LOP + " = ? "
                             + "SET "
-                            + tblLopDangKy.sMA_GIANG_VIEN + "= " + lopdangky.MaGiangVien
-                            + tblLopDangKy.sMA_MON + "= " + lopdangky.MaMon
-                            + tblLopDangKy.sMA_PHONG + "= " + lopdangky.MaPhong
-                            + tblLopDangKy.sNGAY_MO_LOP + "= " + lopdangky.NgayMoLop
-                            + tblLopDangKy.sTEN_LOP + "= " + lopdangky.TenLop
-                            + tblLopDangKy.sTHU + "= " + lopdangky.Thu
-                            + tblLopDangKy.sCA + "= " + lopdangky.Ca
-                            + tblLopDangKy.sMA_HOC_KY + "= " + lopdangky.MaHocKy;
+                            + tblLopDangKy.sMA_GIANG_VIEN + " = ?," 
+                            + tblLopDangKy.sMA_MON + " = ?," 
+                            + tblLopDangKy.sMA_PHONG + " = ?," 
+                            + tblLopDangKy.sNGAY_MO_LOP + " = ?," 
+                            + tblLopDangKy.sTEN_LOP + " = ?," 
+                            + tblLopDangKy.sTHU + " = ?," 
+                            + tblLopDangKy.sCA +  " = ?," 
+                            + tblLopDangKy.sMA_HOC_KY + " = ?" ;
 
 
             SqlCommand sqlcommand = null;
@@ -98,6 +98,14 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_LOP, lopdangky.MaLop);
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_GIANG_VIEN, lopdangky.MaGiangVien);
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_MON, lopdangky.MaMon);
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_PHONG, lopdangky.MaPhong);
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sNGAY_MO_LOP, lopdangky.NgayMoLop);
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sTEN_LOP, lopdangky.TenLop);
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sTHU, lopdangky.Thu);
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sCA, lopdangky.Ca);
+                sqlcommand.Parameters.AddWithValue(tblLopDangKy.sMA_HOC_KY, lopdangky.MaHocKy);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }

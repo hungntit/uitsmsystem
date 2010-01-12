@@ -60,7 +60,7 @@ namespace DataAccessLayer
             string QueryStr = "UPDATE " + tblKhoa.sTABLE_NAME + " "
                             + " WHERE " + tblKhoa.sMA_KHOA + " = ? "
                             + "SET "
-                            + tblKhoa.sTEN_KHOA + "= " + khoa.TenKhoa;
+                            + tblKhoa.sTEN_KHOA + " = ?" ;
 
 
             SqlCommand sqlcommand = null;
@@ -69,6 +69,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue(tblKhoa.sMA_KHOA, khoa.MaKhoa);
+                sqlcommand.Parameters.AddWithValue(tblKhoa.sTEN_KHOA, khoa.TenKhoa);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }

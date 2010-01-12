@@ -58,8 +58,8 @@ namespace DataAccessLayer
             string QueryStr = "UPDATE PHIEU_DANG_KY "
                             + "WHERE " + tblPhieuDangKy.sMA_PHIEU + " = ? "
                             + "SET "
-                            + tblPhieuDangKy.sMA_SV + "= " + phieudangky.MaSV
-                            + tblPhieuDangKy.sNGAY_DANG_KY + "= " + phieudangky.NgayDK;
+                            + tblPhieuDangKy.sMA_SV + " = ? ,"
+                            + tblPhieuDangKy.sNGAY_DANG_KY + " = ?";
 
 
 
@@ -69,6 +69,8 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_PHIEU, phieudangky.MaPhieuDK);
+                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sMA_SV, phieudangky.MaSV);
+                sqlcommand.Parameters.AddWithValue(tblPhieuDangKy.sNGAY_DANG_KY, phieudangky.NgayDK);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }

@@ -68,6 +68,37 @@ namespace DataAccessLayer
 
              }
          }
+
+
+         public void deleteObj(string TableName, string IDName1, Object value1, string IDName2, Object value2)
+         {
+             string QueryStr = "Delete from " + TableName
+                                 + " where " + IDName1 + "= ? AND "
+                                 + IDName2 + "= ?  ";
+
+             SqlCommand sqlcommand = null;
+             try
+             {
+                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                 sqlcommand.CommandType = System.Data.CommandType.Text;
+                 sqlcommand.Parameters.AddWithValue(IDName1, value1);
+                 sqlcommand.Parameters.AddWithValue(IDName2, value2);
+                 sqlcommand.Prepare();
+                 sqlcommand.ExecuteNonQuery();
+             }
+             catch (Exception e)
+             {
+                 throw e;
+             }
+             finally
+             {
+                 if (sqlcommand != null)
+                     sqlcommand.Dispose();
+
+
+             }
+         }
+
          protected void getObjByAttribute(SqlDataReader sqldtrd,SqlCommand sqlcommand,ParamSQL[] paramSQLs, String tableName)
          {
              if (paramSQLs == null)

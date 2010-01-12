@@ -70,10 +70,10 @@ namespace DataAccessLayer
             string QueryStr = "UPDATE MON_HOC "
                             + "WHERE " + tblMonhoc.sMA_MON + " = ? "
                             + "SET "
-                            + tblMonhoc.sMA_LOAI + "= " + monhoc.MaLoai
-                            + tblMonhoc.sTEN_MON + "= " + monhoc.TenMon
-                            + tblMonhoc.sTIN_CHI_LY_THUYET + "= " + monhoc.TinchiLyThuyet
-                            + tblMonhoc.sTIN_CHI_THUC_HANH + "= " + monhoc.TinchiThucHanh;
+                            + tblMonhoc.sMA_LOAI + " = ?," 
+                            + tblMonhoc.sTEN_MON + " = ?," 
+                            + tblMonhoc.sTIN_CHI_LY_THUYET + " = ?,"
+                            + tblMonhoc.sTIN_CHI_THUC_HANH + " = ?";
 
 
             SqlCommand sqlcommand = null;
@@ -82,6 +82,10 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_MON, monhoc.MaMon);
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_LOAI, monhoc.MaLoai);
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTEN_MON, monhoc.TenMon);
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTIN_CHI_LY_THUYET, monhoc.TinchiLyThuyet);
+                sqlcommand.Parameters.AddWithValue(tblMonhoc.sTIN_CHI_THUC_HANH, monhoc.TinchiThucHanh);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }

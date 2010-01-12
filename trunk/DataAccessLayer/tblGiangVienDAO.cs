@@ -92,15 +92,15 @@ namespace DataAccessLayer
             string QueryStr = "UPDATE GIANG_VIEN "
                             + "WHERE "+tblGiangVien.sMA_GIANG_VIEN +" = ? "
                             + "SET "
-                            + tblGiangVien.sCMND + "= " + giangvien.CMND
-                            + tblGiangVien.sHOC_VI + "= " + giangvien.HocVi
-                            + tblGiangVien.sMA_KHOA + "= " + giangvien.MaKhoa
-                            + tblGiangVien.sHO_GIANG_VIEN + "= " + giangvien.Ho
-                            + tblGiangVien.sTEN_GIANG_VIEN + "= " + giangvien.Ten
-                            + tblGiangVien.sNGAYSINH + "= " + giangvien.NgaySinh
-                            + tblGiangVien.sNOISINH + "= " + giangvien.NoiSinh
-                            + tblGiangVien.sGIOITINH + "= " + giangvien.GioiTinh
-                            + tblGiangVien.sDIACHI + "= " + giangvien.DiaChi;
+                            + tblGiangVien.sCMND + " = ?," 
+                            + tblGiangVien.sHOC_VI + " = ?," 
+                            + tblGiangVien.sMA_KHOA + " = ?," 
+                            + tblGiangVien.sHO_GIANG_VIEN + " = ?," 
+                            + tblGiangVien.sTEN_GIANG_VIEN + " = ?," 
+                            + tblGiangVien.sNGAYSINH + " = ?," 
+                            + tblGiangVien.sNOISINH + " = ?," 
+                            + tblGiangVien.sGIOITINH + " = ?," 
+                            + tblGiangVien.sDIACHI + " = " ;
 
             SqlCommand sqlcommand = null;
             try
@@ -108,6 +108,15 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_GIANG_VIEN, giangvien.MaGiangVien);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sCMND, giangvien.CMND);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sHOC_VI, giangvien.HocVi);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_KHOA, giangvien.MaKhoa);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sHO_GIANG_VIEN, giangvien.Ho);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sTEN_GIANG_VIEN, giangvien.Ten);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sNGAYSINH, giangvien.NgaySinh);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sNOISINH, giangvien.NoiSinh);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sGIOITINH, giangvien.GioiTinh);
+                sqlcommand.Parameters.AddWithValue(tblGiangVien.sDIACHI, giangvien.DiaChi);
                 sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
