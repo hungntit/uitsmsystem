@@ -61,17 +61,14 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.pnlDanhSachGiangVien = new System.Windows.Forms.Panel();
-            this.btnChonTatCa = new System.Windows.Forms.Button();
             this.lstDanhSachGiangVien = new System.Windows.Forms.ListView();
             this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
-            this.btnXem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnXuatDanhSach = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -381,40 +378,32 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(358, 5);
+            this.btnXoa.Location = new System.Drawing.Point(275, 6);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(78, 26);
             this.btnXoa.TabIndex = 5;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(275, 5);
+            this.btnSua.Location = new System.Drawing.Point(194, 6);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(78, 26);
             this.btnSua.TabIndex = 4;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // pnlDanhSachGiangVien
             // 
             this.pnlDanhSachGiangVien.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlDanhSachGiangVien.Controls.Add(this.btnChonTatCa);
             this.pnlDanhSachGiangVien.Controls.Add(this.lstDanhSachGiangVien);
             this.pnlDanhSachGiangVien.Location = new System.Drawing.Point(13, 264);
             this.pnlDanhSachGiangVien.Name = "pnlDanhSachGiangVien";
             this.pnlDanhSachGiangVien.Size = new System.Drawing.Size(959, 240);
             this.pnlDanhSachGiangVien.TabIndex = 9;
-            // 
-            // btnChonTatCa
-            // 
-            this.btnChonTatCa.Location = new System.Drawing.Point(3, 3);
-            this.btnChonTatCa.Name = "btnChonTatCa";
-            this.btnChonTatCa.Size = new System.Drawing.Size(75, 26);
-            this.btnChonTatCa.TabIndex = 1;
-            this.btnChonTatCa.Text = "Chọn tất cả";
-            this.btnChonTatCa.UseVisualStyleBackColor = true;
             // 
             // lstDanhSachGiangVien
             // 
@@ -422,7 +411,6 @@
             this.lstDanhSachGiangVien.CheckBoxes = true;
             this.lstDanhSachGiangVien.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader8,
-            this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
@@ -443,11 +431,6 @@
             // 
             this.columnHeader8.Text = "";
             this.columnHeader8.Width = 30;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "STT";
-            this.columnHeader1.Width = 46;
             // 
             // columnHeader2
             // 
@@ -479,21 +462,11 @@
             this.columnHeader7.Text = "Khoa";
             this.columnHeader7.Width = 264;
             // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(193, 5);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(78, 26);
-            this.btnXem.TabIndex = 3;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnSua);
-            this.panel2.Controls.Add(this.btnXem);
             this.panel2.Controls.Add(this.btnXuatDanhSach);
             this.panel2.Controls.Add(this.btnThem);
             this.panel2.Controls.Add(this.btnXemTatCa);
@@ -519,6 +492,7 @@
             this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXemTatCa
             // 
@@ -528,6 +502,7 @@
             this.btnXemTatCa.TabIndex = 0;
             this.btnXemTatCa.Text = "Xem tất cả";
             this.btnXemTatCa.UseVisualStyleBackColor = true;
+            this.btnXemTatCa.Click += new System.EventHandler(this.btnXemTatCa_Click);
             // 
             // panel1
             // 
@@ -555,6 +530,7 @@
             this.btnCuoi.TabIndex = 9;
             this.btnCuoi.Text = "Cuối";
             this.btnCuoi.UseVisualStyleBackColor = true;
+            this.btnCuoi.Click += new System.EventHandler(this.btnCuoi_Click);
             // 
             // btnSau
             // 
@@ -564,6 +540,7 @@
             this.btnSau.TabIndex = 8;
             this.btnSau.Text = "Sau";
             this.btnSau.UseVisualStyleBackColor = true;
+            this.btnSau.Click += new System.EventHandler(this.btnSau_Click);
             // 
             // btnTruoc
             // 
@@ -573,6 +550,7 @@
             this.btnTruoc.TabIndex = 7;
             this.btnTruoc.Text = "Trước";
             this.btnTruoc.UseVisualStyleBackColor = true;
+            this.btnTruoc.Click += new System.EventHandler(this.btnTruoc_Click);
             // 
             // btnDau
             // 
@@ -582,6 +560,7 @@
             this.btnDau.TabIndex = 6;
             this.btnDau.Text = "Đầu";
             this.btnDau.UseVisualStyleBackColor = true;
+            this.btnDau.Click += new System.EventHandler(this.btnDau_Click);
             // 
             // cmbDongTrenTrang
             // 
@@ -596,6 +575,7 @@
             this.cmbDongTrenTrang.Name = "cmbDongTrenTrang";
             this.cmbDongTrenTrang.Size = new System.Drawing.Size(41, 21);
             this.cmbDongTrenTrang.TabIndex = 5;
+            this.cmbDongTrenTrang.SelectedIndexChanged += new System.EventHandler(this.cmbDongTrenTrang_SelectedIndexChanged);
             // 
             // pnlDieuHuong
             // 
@@ -687,9 +667,7 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Panel pnlDanhSachGiangVien;
-        private System.Windows.Forms.Button btnChonTatCa;
         private System.Windows.Forms.ListView lstDanhSachGiangVien;
-        private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnXuatDanhSach;
         private System.Windows.Forms.Button btnThem;
@@ -705,7 +683,6 @@
         private System.Windows.Forms.Panel pnlTimCoBan;
         private System.Windows.Forms.ComboBox cmbHocVi;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;

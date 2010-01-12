@@ -42,7 +42,7 @@ namespace DataAccessLayer
                sqlcommand.Parameters.AddWithValue("@b", giangvien.MaGiangVien);
               
 
-               sqlcommand.Prepare();
+               
                sqlcommand.ExecuteNonQuery();
            }
            catch (Exception e)
@@ -71,6 +71,19 @@ namespace DataAccessLayer
                  throw e;
              }
              
+       }
+       public void deleteTblGiangDay( String maGV)
+       {
+
+           try
+           {
+               deleteObj("GIANG_DAY", tblGiangVien.sMA_GIANG_VIEN, maGV);
+           }
+           catch (Exception e)
+           {
+               throw e;
+           }
+
        }
     }
 }

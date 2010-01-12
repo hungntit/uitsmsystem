@@ -53,7 +53,7 @@ namespace DataAccessLayer
                  sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                  sqlcommand.CommandType = System.Data.CommandType.Text;
                  sqlcommand.Parameters.AddWithValue("@IDName", value);
-                 sqlcommand.Prepare();
+                 
                  sqlcommand.ExecuteNonQuery();
              }
              catch (Exception e)
@@ -83,7 +83,7 @@ namespace DataAccessLayer
                  sqlcommand.CommandType = System.Data.CommandType.Text;
                  sqlcommand.Parameters.AddWithValue("@a", value1);
                  sqlcommand.Parameters.AddWithValue("@b", value2);
-                 sqlcommand.Prepare();
+                 
                  sqlcommand.ExecuteNonQuery();
              }
              catch (Exception e)
