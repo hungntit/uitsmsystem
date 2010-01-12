@@ -52,7 +52,9 @@ namespace DataAccessLayer
                             + ","
                             + tblGiangVien.sDIACHI
                             + ") "
-                            + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+                            + "VALUES(" + "@" +tblGiangVien.sMA_GIANG_VIEN+ "," + "@" +tblGiangVien.sCMND+ "," + "@" + tblGiangVien.sHOC_VI+"," + "@" + tblGiangVien.sMA_KHOA+"," + "@" 
+                            + tblGiangVien.sHO_GIANG_VIEN+"," 
+                            + "@" +tblGiangVien.sTEN_GIANG_VIEN+ "," + "@" + tblGiangVien.sNGAYSINH+"," + "@" +tblGiangVien.sNOISINH+ "," + "@" + tblGiangVien.sGIOITINH+"," + "@" +tblGiangVien.sDIACHI+ ")";
 
 
 
@@ -61,17 +63,29 @@ namespace DataAccessLayer
             {
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_GIANG_VIEN, giangvien.MaGiangVien);
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sCMND, giangvien.CMND);
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sHOC_VI, giangvien.HocVi);
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_KHOA, giangvien.MaKhoa);
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sHO_GIANG_VIEN, giangvien.Ho);
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sTEN_GIANG_VIEN, giangvien.Ten);
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sNGAYSINH, giangvien.NgaySinh);
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sNOISINH, giangvien.NoiSinh);
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sGIOITINH, giangvien.GioiTinh);
-                sqlcommand.Parameters.AddWithValue(tblGiangVien.sDIACHI, giangvien.DiaChi);
-                sqlcommand.Prepare();
+                
+                sqlcommand.Parameters.AddWithValue("@"+tblGiangVien.sMA_GIANG_VIEN, giangvien.MaGiangVien);
+                sqlcommand.Parameters.AddWithValue("@" + tblGiangVien.sCMND, giangvien.CMND);
+                sqlcommand.Parameters.AddWithValue("@" + tblGiangVien.sHOC_VI, giangvien.HocVi);
+                sqlcommand.Parameters.AddWithValue("@" + tblGiangVien.sMA_KHOA, giangvien.MaKhoa);
+                sqlcommand.Parameters.AddWithValue("@" + tblGiangVien.sHO_GIANG_VIEN, giangvien.Ho);
+                sqlcommand.Parameters.AddWithValue("@" + tblGiangVien.sTEN_GIANG_VIEN, giangvien.Ten);
+                sqlcommand.Parameters.AddWithValue("@" + tblGiangVien.sNGAYSINH, giangvien.NgaySinh);
+                sqlcommand.Parameters.AddWithValue("@" + tblGiangVien.sNOISINH, giangvien.NoiSinh);
+                sqlcommand.Parameters.AddWithValue("@" + tblGiangVien.sGIOITINH, giangvien.GioiTinh);
+                sqlcommand.Parameters.AddWithValue("@" + tblGiangVien.sDIACHI, giangvien.DiaChi);
+                 /*
+                sqlcommand.Parameters.AddWithValue("@a", giangvien.MaGiangVien);
+                sqlcommand.Parameters.AddWithValue("@b", giangvien.CMND);
+                sqlcommand.Parameters.AddWithValue("@c", giangvien.HocVi);
+                sqlcommand.Parameters.AddWithValue("@d", giangvien.MaKhoa);
+                sqlcommand.Parameters.AddWithValue("@e", giangvien.Ho);
+                sqlcommand.Parameters.AddWithValue("@f", giangvien.Ten);
+                sqlcommand.Parameters.AddWithValue("@g", giangvien.NgaySinh);
+                sqlcommand.Parameters.AddWithValue("@h", giangvien.NoiSinh);
+                sqlcommand.Parameters.AddWithValue("@i", giangvien.GioiTinh);
+                sqlcommand.Parameters.AddWithValue("@j", giangvien.DiaChi);*/
+               // sqlcommand.Prepare();
                 sqlcommand.ExecuteNonQuery();
             }
             catch (Exception e)
