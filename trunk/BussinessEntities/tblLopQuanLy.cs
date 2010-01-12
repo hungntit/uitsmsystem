@@ -16,7 +16,7 @@ namespace BussinessEntities
          private String _tenLopQuanLy;
          private String _maKhoa;
 
-         public tblLopQuanLy(int malop,String tenlopQL,String makhoa)
+         public tblLopQuanLy(int malop,String makhoa,String tenlopQL)
          {
              this._maKhoa = makhoa;
              this._maLopQuanLy = malop;

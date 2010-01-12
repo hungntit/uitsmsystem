@@ -23,7 +23,8 @@ namespace BussinessEntities
 
         #endregion
         #region Constructor
-        
+        public tblSinhVien()
+        { }
         public tblSinhVien(String maSV, int malopquanly, String hoSV, String tenSV, String cmnd, DateTime ngaysinh, Boolean gioitinh, String noisinh, String diachi, int nienkhoa):base(hoSV,tenSV,cmnd,ngaysinh,gioitinh,noisinh,diachi)
         {
             this._maSV          = maSV;
