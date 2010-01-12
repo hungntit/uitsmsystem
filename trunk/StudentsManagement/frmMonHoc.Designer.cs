@@ -94,9 +94,6 @@
             // cmbLoaiMon
             // 
             this.cmbLoaiMon.FormattingEnabled = true;
-            this.cmbLoaiMon.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
             this.cmbLoaiMon.Location = new System.Drawing.Point(355, 58);
             this.cmbLoaiMon.Name = "cmbLoaiMon";
             this.cmbLoaiMon.Size = new System.Drawing.Size(160, 21);
@@ -165,6 +162,7 @@
             this.lstDanhSachChuaChon.TabIndex = 4;
             this.lstDanhSachChuaChon.UseCompatibleStateImageBehavior = false;
             this.lstDanhSachChuaChon.View = System.Windows.Forms.View.Details;
+            this.lstDanhSachChuaChon.SelectedIndexChanged += new System.EventHandler(this.lstDanhSachChuaChon_SelectedIndexChanged);
             // 
             // columnHeader4
             // 
@@ -186,6 +184,7 @@
             this.btnChon.TabIndex = 3;
             this.btnChon.Text = "<<";
             this.btnChon.UseVisualStyleBackColor = true;
+            this.btnChon.Click += new System.EventHandler(this.btnChon_Click);
             // 
             // btnBoChon
             // 
@@ -195,6 +194,7 @@
             this.btnBoChon.TabIndex = 2;
             this.btnBoChon.Text = ">>";
             this.btnBoChon.UseVisualStyleBackColor = true;
+            this.btnBoChon.Click += new System.EventHandler(this.btnBoChon_Click);
             // 
             // lstDanhSachChon
             // 
@@ -302,6 +302,7 @@
             this.btnTroVe.TabIndex = 0;
             this.btnTroVe.Text = "Trở về";
             this.btnTroVe.UseVisualStyleBackColor = true;
+            this.btnTroVe.Click += new System.EventHandler(this.btnTroVe_Click);
             // 
             // btnLuu
             // 
@@ -311,6 +312,7 @@
             this.btnLuu.TabIndex = 1;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // pnlBottom
             // 
@@ -331,6 +333,7 @@
             this.Controls.Add(this.pnlBottom);
             this.Name = "frmMonHoc";
             this.Text = "frmMonHoc";
+            this.Load += new System.EventHandler(this.frmMonHoc_Load);
             this.pnlHead.ResumeLayout(false);
             this.pnlHead.PerformLayout();
             this.pnlMidle.ResumeLayout(false);
