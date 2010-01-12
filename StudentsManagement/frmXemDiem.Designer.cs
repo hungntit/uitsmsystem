@@ -33,20 +33,18 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnXem = new System.Windows.Forms.Button();
             this.btnTroVe = new System.Windows.Forms.Button();
-            this.txtKhoa = new System.Windows.Forms.TextBox();
             this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.txtHoVaTen = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMSSV = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlBangDiem = new System.Windows.Forms.Panel();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtTongTinChi = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstBangDiem = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
@@ -54,7 +52,7 @@
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlBangDiem.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -78,10 +76,8 @@
             // 
             this.panel2.Controls.Add(this.btnXem);
             this.panel2.Controls.Add(this.btnTroVe);
-            this.panel2.Controls.Add(this.txtKhoa);
             this.panel2.Controls.Add(this.txtNgaySinh);
             this.panel2.Controls.Add(this.txtHoVaTen);
-            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txtMSSV);
@@ -110,18 +106,10 @@
             this.btnTroVe.Text = "Trở về";
             this.btnTroVe.UseVisualStyleBackColor = true;
             // 
-            // txtKhoa
-            // 
-            this.txtKhoa.Enabled = false;
-            this.txtKhoa.Location = new System.Drawing.Point(90, 88);
-            this.txtKhoa.Name = "txtKhoa";
-            this.txtKhoa.Size = new System.Drawing.Size(278, 20);
-            this.txtKhoa.TabIndex = 7;
-            // 
             // txtNgaySinh
             // 
             this.txtNgaySinh.Enabled = false;
-            this.txtNgaySinh.Location = new System.Drawing.Point(90, 62);
+            this.txtNgaySinh.Location = new System.Drawing.Point(90, 86);
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(180, 20);
             this.txtNgaySinh.TabIndex = 6;
@@ -129,24 +117,15 @@
             // txtHoVaTen
             // 
             this.txtHoVaTen.Enabled = false;
-            this.txtHoVaTen.Location = new System.Drawing.Point(90, 36);
+            this.txtHoVaTen.Location = new System.Drawing.Point(90, 47);
             this.txtHoVaTen.Name = "txtHoVaTen";
             this.txtHoVaTen.Size = new System.Drawing.Size(180, 20);
             this.txtHoVaTen.TabIndex = 5;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(34, 95);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Khoa :";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 68);
+            this.label4.Location = new System.Drawing.Point(13, 92);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 3;
@@ -155,7 +134,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 39);
+            this.label3.Location = new System.Drawing.Point(10, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 2;
@@ -177,17 +156,17 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "MSSV :";
             // 
-            // panel3
+            // pnlBangDiem
             // 
-            this.panel3.Controls.Add(this.textBox6);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.txtTongTinChi);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.listView1);
-            this.panel3.Location = new System.Drawing.Point(11, 185);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(961, 344);
-            this.panel3.TabIndex = 6;
+            this.pnlBangDiem.Controls.Add(this.textBox6);
+            this.pnlBangDiem.Controls.Add(this.label7);
+            this.pnlBangDiem.Controls.Add(this.txtTongTinChi);
+            this.pnlBangDiem.Controls.Add(this.label6);
+            this.pnlBangDiem.Controls.Add(this.lstBangDiem);
+            this.pnlBangDiem.Location = new System.Drawing.Point(11, 185);
+            this.pnlBangDiem.Name = "pnlBangDiem";
+            this.pnlBangDiem.Size = new System.Drawing.Size(961, 344);
+            this.pnlBangDiem.TabIndex = 6;
             // 
             // textBox6
             // 
@@ -221,20 +200,20 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Tổng số tín chỉ :";
             // 
-            // listView1
+            // lstBangDiem
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstBangDiem.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.listView1.Location = new System.Drawing.Point(16, 14);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(924, 292);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lstBangDiem.Location = new System.Drawing.Point(16, 14);
+            this.lstBangDiem.Name = "lstBangDiem";
+            this.lstBangDiem.Size = new System.Drawing.Size(924, 292);
+            this.lstBangDiem.TabIndex = 0;
+            this.lstBangDiem.UseCompatibleStateImageBehavior = false;
+            this.lstBangDiem.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -247,21 +226,24 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "Tên môn";
+            this.columnHeader3.Width = 105;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Số tín chỉ";
+            this.columnHeader4.Width = 134;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Điểm";
+            this.columnHeader5.Width = 147;
             // 
             // frmXemDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 562);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pnlBangDiem);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmXemDiem";
@@ -270,8 +252,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlBangDiem.ResumeLayout(false);
+            this.pnlBangDiem.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -285,12 +267,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMSSV;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtKhoa;
         private System.Windows.Forms.TextBox txtNgaySinh;
         private System.Windows.Forms.TextBox txtHoVaTen;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Panel pnlBangDiem;
+        private System.Windows.Forms.ListView lstBangDiem;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
