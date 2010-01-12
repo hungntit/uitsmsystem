@@ -70,7 +70,7 @@ namespace DataAccessLayer
         public tblHocKy getbyHocKy_Namhoc(int hocky,int namhoc)
         {
             tblHocKy HKy = null;
-            string QueryStr = "Select * from HOC_KY where HOCKY  =   @HOCKY and NAM_HOC = @NAM_HOC";
+            string QueryStr = "Select * from HOC_KY where HOC_KY  =   @HOCKY and NAM_HOC = @NAM_HOC";
             SqlDataReader sqldtRd = null;
             SqlCommand sqlcommand = null;
             try
