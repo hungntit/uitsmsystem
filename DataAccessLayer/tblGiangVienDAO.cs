@@ -394,7 +394,7 @@ namespace DataAccessLayer
                 sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                 sqlcommand.CommandType = System.Data.CommandType.Text;
                 sqlcommand.Parameters.AddWithValue("@MA_MON", MaMonHoc);
-                sqlcommand.Prepare();
+                
                 sqldtRd = sqlcommand.ExecuteReader();
                 while (sqldtRd.Read())
                 {

@@ -331,6 +331,69 @@ namespace DataAccessLayer
         {
             return getAllPhieuDangKyByMaSinhVien(maSV,0, 0, true);
         }
+        private List<tblPhieuDangKy> getAllPhieuDangKyByMaLopDK(int maLop, int begin, int end, Boolean All)
+        {
+            List<tblPhieuDangKy> list = new List<tblPhieuDangKy>();
+
+            string QueryStr = "Select "
+                        + "PHIEU_DANG_KY." + tblPhieuDangKy.sMA_PHIEU + ","
+                        + "PHIEU_DANG_KY." + tblPhieuDangKy.sMA_SV + ","
+                        + "PHIEU_DANG_KY." + tblPhieuDangKy.sNGAY_DANG_KY + " "
+                    + "from PHIEU_DANG_KY,CHI_TIET_DANG_KY "
+                        + "WHERE " + tblPhieuDangKy.sTABLE_NAME + "." + tblPhieuDangKy.sMA_PHIEU + " = CHI_TIET_DANG_KY.MA_PHIEU_DANG_KY AND "
+                        + "CHI_TIET_DANG_KY.MA_LOP_DANG_KY"
+                        + " = @" + "MA_LOP_DANG_KY ";
+            SqlDataReader sqldtRd = null;
+            SqlCommand sqlcommand = null;
+            try
+            {
+                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+                sqlcommand.CommandType = System.Data.CommandType.Text;
+                sqlcommand.Parameters.AddWithValue("@" + "MA_LOP_DANG_KY", maLop);
+                //sqlcommand.Prepare();
+                sqldtRd = sqlcommand.ExecuteReader();
+                while (sqldtRd.Read())
+                {
+                    tblPhieuDangKy phieudk = null;
+                    int MaPhieu = sqldtRd.GetInt32(0);
+                    String MaSV = sqldtRd.GetString(1);
+                    DateTime NgayDangKy = sqldtRd.GetDateTime(2);
+
+
+                    phieudk = new tblPhieuDangKy(MaPhieu, MaSV, NgayDangKy);
+                    list.Add(phieudk);
+                }
+                if (!All)
+                {
+                    list.RemoveRange(end, list.Count - end);
+                    list.RemoveRange(0, begin);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (sqlcommand != null)
+                    sqlcommand.Dispose();
+                if (sqldtRd != null)
+                    sqldtRd.Close();
+
+            }
+            return list;
+
+
+        }
+
+        public List<tblPhieuDangKy> getAllPhieuDangKyByMaLopDK(int maLop, int begin, int end)
+        {
+            return getAllPhieuDangKyByMaLopDK(maLop, begin, end, false);
+        }
+        public List<tblPhieuDangKy> getAllPhieuDangKyByMaLopDK(int maLop)
+        {
+            return getAllPhieuDangKyByMaLopDK(maLop, 0, 0, true);
+        }
 
         public int CountPhieuDangKyByMaSV(String maSV)
         {

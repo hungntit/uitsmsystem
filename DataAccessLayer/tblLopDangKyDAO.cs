@@ -225,7 +225,7 @@ namespace DataAccessLayer
                 {
                     int MaLop = sqldtRd.GetInt32(0);
                     String MaGiangVien = sqldtRd.GetString(1);
-                    String MaPhong = sqldtRd.GetString(2);
+                    int MaPhong = sqldtRd.GetInt32(2);
                     String MaMon = sqldtRd.GetString(3);
                     
                     String TenLop = sqldtRd.GetString(4);
@@ -285,7 +285,7 @@ namespace DataAccessLayer
                     tblLopDangKy lop = null;
                     int MaLop = sqldtRd.GetInt32(0);
                     String MaGiangVien = sqldtRd.GetString(1);
-                    String MaPhong = sqldtRd.GetString(2);
+                    int MaPhong = sqldtRd.GetInt32(2);
                     String MaMon = sqldtRd.GetString(3);
 
                     String TenLop = sqldtRd.GetString(4);
@@ -397,7 +397,7 @@ namespace DataAccessLayer
                     tblLopDangKy lop = null;
                     int MaLop = sqldtRd.GetInt32(0);
                     String MaGiangVien = sqldtRd.GetString(1);
-                    String MaPhong = sqldtRd.GetString(2);
+                    int MaPhong = sqldtRd.GetInt32(2);
                     String MaMon = sqldtRd.GetString(3);
 
                     String TenLop = sqldtRd.GetString(4);
@@ -519,7 +519,7 @@ namespace DataAccessLayer
                     tblLopDangKy lop = null;
                     int MaLop = sqldtRd.GetInt32(0);
                     String MaGiangVien = sqldtRd.GetString(1);
-                    String MaPhong = sqldtRd.GetString(2);
+                    int MaPhong = sqldtRd.GetInt32(2);
                     String MaMon = sqldtRd.GetString(3);
 
                     String TenLop = sqldtRd.GetString(4);
@@ -639,7 +639,7 @@ namespace DataAccessLayer
                     tblLopDangKy lop = null;
                     int MaLop = sqldtRd.GetInt32(0);
                     String MaGiangVien = sqldtRd.GetString(1);
-                    String MaPhong = sqldtRd.GetString(2);
+                    int MaPhong = sqldtRd.GetInt32(2);
                     String MaMon = sqldtRd.GetString(3);
 
                     String TenLop = sqldtRd.GetString(4);
@@ -760,7 +760,7 @@ namespace DataAccessLayer
                     tblLopDangKy lop = null;
                     int MaLop = sqldtRd.GetInt32(0);
                     String MaGiangVien = sqldtRd.GetString(1);
-                    String MaPhong = sqldtRd.GetString(2);
+                    int MaPhong = sqldtRd.GetInt32(2);
                     String MaMon = sqldtRd.GetString(3);
 
                     String TenLop = sqldtRd.GetString(4);
