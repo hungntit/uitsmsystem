@@ -94,6 +94,13 @@ namespace BusinessLogicLayer
             else
                 return phieuDkDAO.CountPhieuDangKyByMaSV( maSV);
         }
+        public void CloseConection()
+        {
+            if (phieuDkDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                phieuDkDAO.CloseConection();
+        }
     }
   
 

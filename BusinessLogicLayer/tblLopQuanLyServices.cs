@@ -90,6 +90,13 @@ namespace BusinessLogicLayer
             else
                 return lopquanlyDAO.getLopQuanLyByMaKhoa( makhoa);
         }
+        public void CloseConection()
+        {
+            if (lopquanlyDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                lopquanlyDAO.CloseConection();
+        }
 
     }
   

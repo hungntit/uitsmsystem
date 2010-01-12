@@ -76,6 +76,13 @@ namespace BusinessLogicLayer
             else
                 return monhocDAO.getAllMonHocTienQuyet(MaMonhoc);
         }
+        public void CloseConection()
+        {
+            if (monhocDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                monhocDAO.CloseConection();
+        }
     }
   
 

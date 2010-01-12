@@ -34,5 +34,12 @@ namespace BusinessLogicLayer
             else
                 montienquyetDAO.deleteTblMonTienQuyet( mamonhoc,  mamontienquyet);
         }
+       public void CloseConection()
+       {
+           if (montienquyetDAO == null)
+               throw new Exception("Can't connect DAL");
+           else
+               montienquyetDAO.CloseConection();
+       }
     }
 }

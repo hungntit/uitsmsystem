@@ -31,7 +31,7 @@ namespace DataAccessLayer
                            + ","
                            +"DIEM"
                            + ") "
-                           + "VALUES(?,?,?)";
+                           + "VALUES(@a,@b,@c)";
 
 
 
@@ -40,9 +40,9 @@ namespace DataAccessLayer
            {
                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                sqlcommand.CommandType = System.Data.CommandType.Text;
-               sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_MON, MaSV);
-               sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_GIANG_VIEN, maLopDK);
-               sqlcommand.Parameters.AddWithValue("DIEM", diem);
+               sqlcommand.Parameters.AddWithValue("@a", MaSV);
+               sqlcommand.Parameters.AddWithValue("@b", maLopDK);
+               sqlcommand.Parameters.AddWithValue("@c", diem);
               
 
                sqlcommand.Prepare();
@@ -80,19 +80,20 @@ namespace DataAccessLayer
        public void updateTblBangDiem(String MaSV, String maLopDK, float diem)
        {
            string QueryStr = "UPDATE BANG_DIEM "
-                           + "WHERE " + tblLopDangKy.sMA_LOP + " = ? AND "
-                           + tblSinhVien.sMASV + " = ?  "
+
                            + "SET "
-                           + "DIEM" + " = ?";
+                           + "DIEM" + " = @c"
+                           + "WHERE " + tblLopDangKy.sMA_LOP + " = @a AND "
+                           + tblSinhVien.sMASV + " = @b  ";
 
            SqlCommand sqlcommand = null;
            try
            {
                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                sqlcommand.CommandType = System.Data.CommandType.Text;
-               sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_MON, MaSV);
-               sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_GIANG_VIEN, maLopDK);
-               sqlcommand.Parameters.AddWithValue("DIEM", diem);
+               sqlcommand.Parameters.AddWithValue("@a", MaSV);
+               sqlcommand.Parameters.AddWithValue("@b", maLopDK);
+               sqlcommand.Parameters.AddWithValue("@c", diem);
                sqlcommand.Prepare();
                sqlcommand.ExecuteNonQuery();
            }

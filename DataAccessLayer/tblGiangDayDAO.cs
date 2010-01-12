@@ -29,7 +29,7 @@ namespace DataAccessLayer
 
                            + tblGiangVien.sMA_GIANG_VIEN
                            + ") "
-                           + "VALUES(?,?)";
+                           + "VALUES(@a,@b)";
 
 
 
@@ -38,8 +38,8 @@ namespace DataAccessLayer
            {
                sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                sqlcommand.CommandType = System.Data.CommandType.Text;
-               sqlcommand.Parameters.AddWithValue(tblMonhoc.sMA_MON, monhoc.MaMon);
-               sqlcommand.Parameters.AddWithValue(tblGiangVien.sMA_GIANG_VIEN, giangvien.MaGiangVien);
+               sqlcommand.Parameters.AddWithValue("@a", monhoc.MaMon);
+               sqlcommand.Parameters.AddWithValue("@b", giangvien.MaGiangVien);
               
 
                sqlcommand.Prepare();

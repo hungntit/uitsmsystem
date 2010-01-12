@@ -70,6 +70,13 @@ namespace BusinessLogicLayer
             else
                 return khoaDAO.CountKhoa();
         }
+        public void CloseConection()
+        {
+            if (khoaDAO == null)
+                throw new Exception("Can't connect DAL");
+            else
+                khoaDAO.CloseConection();
+        }
        /*
         public List<tblMonhoc> getAllMonHoc(String MaKhoa, int begin, int end)
         {

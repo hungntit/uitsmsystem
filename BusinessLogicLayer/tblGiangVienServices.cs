@@ -100,5 +100,12 @@ namespace BusinessLogicLayer
             else
                 return giangvienDao.CountGiangVienByMaMon( mamon);
         }
+        public void CloseConection()
+        {
+            if (giangvienDao == null)
+                throw new Exception("Can't connect DAL");
+            else
+                giangvienDao.CloseConection();
+        }
     }
 }

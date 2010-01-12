@@ -13,7 +13,7 @@ namespace DataAccessLayer
        {
            sqlCon = new SqlConnection();
            string database = "QLSV";
-           string strCon = "server=(local);database=" + database;
+           string strCon = "server= anhhai-PC;database=" + database + ";Trusted_Connection=True"; 
            sqlCon.ConnectionString = strCon;
            try
            {
@@ -28,7 +28,7 @@ namespace DataAccessLayer
          public BaseDAO(string user,string password)
        {
            sqlCon = new SqlConnection();
-           string database = "QLDKMONHOC_HOCPHI";
+           string database = "QLSV";
            string strCon = "server=(local);database=" + database;
            strCon += ";uid=" + user + ";pwd=" + password;
            sqlCon.ConnectionString = strCon;
@@ -45,14 +45,14 @@ namespace DataAccessLayer
          public void deleteObj(string TableName,string IDName,Object value)
          {
              string QueryStr = "Delete from " + TableName
-                                 + " where " + IDName + "= ? " ;
+                                 + " where " + IDName + "= @IDName ";
 
              SqlCommand sqlcommand = null;
              try
              {
                  sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                  sqlcommand.CommandType = System.Data.CommandType.Text;
-                 sqlcommand.Parameters.AddWithValue(IDName, value);
+                 sqlcommand.Parameters.AddWithValue("@IDName", value);
                  sqlcommand.Prepare();
                  sqlcommand.ExecuteNonQuery();
              }
@@ -73,16 +73,16 @@ namespace DataAccessLayer
          public void deleteObj(string TableName, string IDName1, Object value1, string IDName2, Object value2)
          {
              string QueryStr = "Delete from " + TableName
-                                 + " where " + IDName1 + "= ? AND "
-                                 + IDName2 + "= ?  ";
+                                 + " where " + IDName1 + "= @a AND "
+                                 + IDName2 + "= @b  ";
 
              SqlCommand sqlcommand = null;
              try
              {
                  sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
                  sqlcommand.CommandType = System.Data.CommandType.Text;
-                 sqlcommand.Parameters.AddWithValue(IDName1, value1);
-                 sqlcommand.Parameters.AddWithValue(IDName2, value2);
+                 sqlcommand.Parameters.AddWithValue("@a", value1);
+                 sqlcommand.Parameters.AddWithValue("@b", value2);
                  sqlcommand.Prepare();
                  sqlcommand.ExecuteNonQuery();
              }
