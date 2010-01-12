@@ -271,6 +271,7 @@
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(358, 21);
             this.cmbKhoa.TabIndex = 13;
+            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -284,6 +285,27 @@
             // cmbNienKhoa
             // 
             this.cmbNienKhoa.FormattingEnabled = true;
+            this.cmbNienKhoa.Items.AddRange(new object[] {
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"});
             this.cmbNienKhoa.Location = new System.Drawing.Point(82, 58);
             this.cmbNienKhoa.Name = "cmbNienKhoa";
             this.cmbNienKhoa.Size = new System.Drawing.Size(81, 21);
@@ -331,6 +353,7 @@
             this.btnLuu.TabIndex = 1;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnTroVe
             // 
@@ -351,6 +374,7 @@
             this.Controls.Add(this.pnlHead);
             this.Name = "frmSinhVien";
             this.Text = "frmSinhVien";
+            this.Load += new System.EventHandler(this.frmSinhVien_Load);
             this.pnlHead.ResumeLayout(false);
             this.pnlHead.PerformLayout();
             this.pnlMidle.ResumeLayout(false);
