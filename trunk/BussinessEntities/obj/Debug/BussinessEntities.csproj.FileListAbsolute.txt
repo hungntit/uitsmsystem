@@ -8,3 +8,4 @@ D:\UIT\Hocky7\ITPM\Cuoiky\source\BussinessEntities\bin\Debug\BussinessEntities.p
 D:\UIT\Hocky7\ITPM\Cuoiky\source\BussinessEntities\obj\Debug\ResolveAssemblyReference.cache
 D:\UIT\Hocky7\ITPM\Cuoiky\source\BussinessEntities\obj\Debug\BussinessEntities.dll
 D:\UIT\Hocky7\ITPM\Cuoiky\source\BussinessEntities\obj\Debug\BussinessEntities.pdb
+D:\UIT\Hocky7\ITPM\Cuoiky\source\BussinessEntities\bin\Debug\BussinessEntities.dll.config

@@ -27,3 +27,9 @@ D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\obj\Debug\StudentsManagement
 D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\obj\Debug\StudentsManagement.frmLopDangKy.resources
 D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\obj\Debug\StudentsManagement.Properties.Resources.resources
 D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\obj\Debug\StudentsManagement.csproj.GenerateResource.Cache
+D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\bin\Debug\BusinessLogicLayer.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\bin\Debug\BussinessEntities.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\bin\Debug\DataAccessLayer.dll
+D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\bin\Debug\BusinessLogicLayer.pdb
+D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\bin\Debug\DataAccessLayer.pdb
+D:\UIT\Hocky7\ITPM\Cuoiky\source\StudentsManagement\bin\Debug\BussinessEntities.pdb

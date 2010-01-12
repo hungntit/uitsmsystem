@@ -24,6 +24,9 @@ namespace BussinessEntities
         #endregion
 
         #region Constructors
+        public tblPerson()
+        {
+        }
         public tblPerson( String ho, String ten, String cmnd, DateTime ngaysinh, Boolean gioitinh, String noisinh, String diachi)
         {
             

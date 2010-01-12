@@ -25,6 +25,8 @@ namespace BussinessEntities
         private int _tinchiThucHanh;
         #endregion
         #region Constructors
+        public tblMonhoc()
+        { }
         public tblMonhoc(String maMon,int MaLoai, String tenMon, int soTinchiLythuyet, int soTinchiThucHanh)
         {
             this._maMon = maMon;
