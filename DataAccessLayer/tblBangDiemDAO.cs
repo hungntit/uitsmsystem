@@ -45,7 +45,7 @@ namespace DataAccessLayer
                sqlcommand.Parameters.AddWithValue("@c", diem);
               
 
-               sqlcommand.Prepare();
+            
                sqlcommand.ExecuteNonQuery();
            }
            catch (Exception e)
@@ -94,7 +94,7 @@ namespace DataAccessLayer
                sqlcommand.Parameters.AddWithValue("@a", MaSV);
                sqlcommand.Parameters.AddWithValue("@b", maLopDK);
                sqlcommand.Parameters.AddWithValue("@c", diem);
-               sqlcommand.Prepare();
+          
                sqlcommand.ExecuteNonQuery();
            }
            catch (Exception e)
@@ -110,5 +110,38 @@ namespace DataAccessLayer
            }
        }
 
+       public float getDiem(String MaSV, String maLopDK)
+       {
+           float diem = 0;
+           string QueryStr = "Select DIEM from BANG_DIEM where MA_SINH_VIEN  =   @MA_SINH_VIEN and MA_LOP_DANG_KY = @MA_LOP_DANG_KY";
+           SqlDataReader sqldtRd = null;
+           SqlCommand sqlcommand = null;
+           try
+           {
+               sqlcommand = new SqlCommand(QueryStr, this.sqlCon);
+               sqlcommand.CommandType = System.Data.CommandType.Text;
+               sqlcommand.Parameters.AddWithValue("@MA_SINH_VIEN", MaSV);
+               sqlcommand.Parameters.AddWithValue("@MA_LOP_DANG_KY", maLopDK);
+
+               sqldtRd = sqlcommand.ExecuteReader();
+               while (sqldtRd.Read())
+               {
+                   diem = sqldtRd.GetFloat(0);
+               }
+           }
+           catch (Exception e)
+           {
+               throw e;
+           }
+           finally
+           {
+               if (sqlcommand != null)
+                   sqlcommand.Dispose();
+               if (sqldtRd != null)
+                   sqldtRd.Close();
+
+           }
+           return diem;
+       }
     }
 }
