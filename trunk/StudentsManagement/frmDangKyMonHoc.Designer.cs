@@ -37,16 +37,18 @@
             this.btnTroVe = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.grbThongTinSinhVien = new System.Windows.Forms.GroupBox();
+            this.txtNienKhoa = new System.Windows.Forms.TextBox();
+            this.txtLopQl = new System.Windows.Forms.TextBox();
+            this.txtKhoa = new System.Windows.Forms.TextBox();
+            this.btnTim = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtMSSV = new System.Windows.Forms.TextBox();
             this.pnlMidle = new System.Windows.Forms.Panel();
             this.grbDanhSachLopDangKy = new System.Windows.Forms.GroupBox();
-            this.btnChonTatCa = new System.Windows.Forms.Button();
             this.lstDanhSachLopDangKy = new System.Windows.Forms.ListView();
             this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
@@ -58,10 +60,6 @@
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.pnlHead = new System.Windows.Forms.Panel();
             this.lblChiTietDangKy = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.txtKhoa = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtNienKhoa = new System.Windows.Forms.TextBox();
             this.pnlBottom.SuspendLayout();
             this.grbThongTinSinhVien.SuspendLayout();
             this.pnlMidle.SuspendLayout();
@@ -118,6 +116,7 @@
             this.btnLuu.TabIndex = 1;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnTroVe
             // 
@@ -127,6 +126,7 @@
             this.btnTroVe.TabIndex = 0;
             this.btnTroVe.Text = "Trở về";
             this.btnTroVe.UseVisualStyleBackColor = true;
+            this.btnTroVe.Click += new System.EventHandler(this.btnTroVe_Click);
             // 
             // label5
             // 
@@ -140,9 +140,9 @@
             // grbThongTinSinhVien
             // 
             this.grbThongTinSinhVien.Controls.Add(this.txtNienKhoa);
-            this.grbThongTinSinhVien.Controls.Add(this.textBox1);
+            this.grbThongTinSinhVien.Controls.Add(this.txtLopQl);
             this.grbThongTinSinhVien.Controls.Add(this.txtKhoa);
-            this.grbThongTinSinhVien.Controls.Add(this.button3);
+            this.grbThongTinSinhVien.Controls.Add(this.btnTim);
             this.grbThongTinSinhVien.Controls.Add(this.label5);
             this.grbThongTinSinhVien.Controls.Add(this.label4);
             this.grbThongTinSinhVien.Controls.Add(this.label3);
@@ -157,6 +157,37 @@
             this.grbThongTinSinhVien.Size = new System.Drawing.Size(935, 128);
             this.grbThongTinSinhVien.TabIndex = 2;
             this.grbThongTinSinhVien.TabStop = false;
+            // 
+            // txtNienKhoa
+            // 
+            this.txtNienKhoa.Location = new System.Drawing.Point(80, 58);
+            this.txtNienKhoa.Name = "txtNienKhoa";
+            this.txtNienKhoa.Size = new System.Drawing.Size(124, 20);
+            this.txtNienKhoa.TabIndex = 19;
+            // 
+            // txtLopQl
+            // 
+            this.txtLopQl.Location = new System.Drawing.Point(359, 60);
+            this.txtLopQl.Name = "txtLopQl";
+            this.txtLopQl.Size = new System.Drawing.Size(357, 20);
+            this.txtLopQl.TabIndex = 18;
+            // 
+            // txtKhoa
+            // 
+            this.txtKhoa.Location = new System.Drawing.Point(359, 17);
+            this.txtKhoa.Name = "txtKhoa";
+            this.txtKhoa.Size = new System.Drawing.Size(357, 20);
+            this.txtKhoa.TabIndex = 17;
+            // 
+            // btnTim
+            // 
+            this.btnTim.Location = new System.Drawing.Point(844, 14);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(75, 23);
+            this.btnTim.TabIndex = 16;
+            this.btnTim.Text = "Tìm";
+            this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // label4
             // 
@@ -203,7 +234,6 @@
             // 
             // grbDanhSachLopDangKy
             // 
-            this.grbDanhSachLopDangKy.Controls.Add(this.btnChonTatCa);
             this.grbDanhSachLopDangKy.Controls.Add(this.lstDanhSachLopDangKy);
             this.grbDanhSachLopDangKy.Location = new System.Drawing.Point(10, 137);
             this.grbDanhSachLopDangKy.Name = "grbDanhSachLopDangKy";
@@ -212,22 +242,12 @@
             this.grbDanhSachLopDangKy.TabStop = false;
             this.grbDanhSachLopDangKy.Text = "Danh sách Lớp Đăng ký học";
             // 
-            // btnChonTatCa
-            // 
-            this.btnChonTatCa.Location = new System.Drawing.Point(5, 21);
-            this.btnChonTatCa.Name = "btnChonTatCa";
-            this.btnChonTatCa.Size = new System.Drawing.Size(75, 26);
-            this.btnChonTatCa.TabIndex = 5;
-            this.btnChonTatCa.Text = "Chọn tất cả";
-            this.btnChonTatCa.UseVisualStyleBackColor = true;
-            // 
             // lstDanhSachLopDangKy
             // 
             this.lstDanhSachLopDangKy.Alignment = System.Windows.Forms.ListViewAlignment.Default;
             this.lstDanhSachLopDangKy.CheckBoxes = true;
             this.lstDanhSachLopDangKy.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader8,
-            this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader9,
@@ -239,7 +259,7 @@
             this.columnHeader4});
             this.lstDanhSachLopDangKy.FullRowSelect = true;
             this.lstDanhSachLopDangKy.GridLines = true;
-            this.lstDanhSachLopDangKy.Location = new System.Drawing.Point(6, 53);
+            this.lstDanhSachLopDangKy.Location = new System.Drawing.Point(-4, 53);
             this.lstDanhSachLopDangKy.Name = "lstDanhSachLopDangKy";
             this.lstDanhSachLopDangKy.Size = new System.Drawing.Size(923, 223);
             this.lstDanhSachLopDangKy.TabIndex = 4;
@@ -251,11 +271,6 @@
             // 
             this.columnHeader8.Text = "Chọn";
             this.columnHeader8.Width = 39;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "STT";
-            this.columnHeader1.Width = 46;
             // 
             // columnHeader2
             // 
@@ -297,6 +312,7 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "Ngày bắt đầu";
+            this.columnHeader4.Width = 87;
             // 
             // pnlHead
             // 
@@ -315,36 +331,6 @@
             this.lblChiTietDangKy.TabIndex = 0;
             this.lblChiTietDangKy.Text = "Chi tiết Đăng Ký Môn học";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(844, 14);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 16;
-            this.button3.Text = "Tìm";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // txtKhoa
-            // 
-            this.txtKhoa.Location = new System.Drawing.Point(359, 17);
-            this.txtKhoa.Name = "txtKhoa";
-            this.txtKhoa.Size = new System.Drawing.Size(357, 20);
-            this.txtKhoa.TabIndex = 17;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(359, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(357, 20);
-            this.textBox1.TabIndex = 18;
-            // 
-            // txtNienKhoa
-            // 
-            this.txtNienKhoa.Location = new System.Drawing.Point(80, 58);
-            this.txtNienKhoa.Name = "txtNienKhoa";
-            this.txtNienKhoa.Size = new System.Drawing.Size(124, 20);
-            this.txtNienKhoa.TabIndex = 19;
-            // 
             // frmDangKyMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,6 +341,7 @@
             this.Controls.Add(this.pnlHead);
             this.Name = "frmDangKyMonHoc";
             this.Text = "frmDangKyMonHoc";
+            this.Load += new System.EventHandler(this.frmDangKyMonHoc_Load);
             this.pnlBottom.ResumeLayout(false);
             this.grbThongTinSinhVien.ResumeLayout(false);
             this.grbThongTinSinhVien.PerformLayout();
@@ -387,7 +374,6 @@
         private System.Windows.Forms.GroupBox grbDanhSachLopDangKy;
         private System.Windows.Forms.ListView lstDanhSachLopDangKy;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader9;
@@ -396,11 +382,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.Button btnChonTatCa;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLopQl;
         private System.Windows.Forms.TextBox txtKhoa;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.TextBox txtNienKhoa;
     }
 }

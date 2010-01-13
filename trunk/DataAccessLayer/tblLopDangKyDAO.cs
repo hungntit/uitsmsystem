@@ -269,7 +269,7 @@ namespace DataAccessLayer
                                         +tblLopDangKy.sTEN_LOP +","
                                         +tblLopDangKy.sTHU +","
                                         +tblLopDangKy.sCA +","
-                                         + tblLopDangKy.sNGAY_MO_LOP
+                                         + tblLopDangKy.sNGAY_MO_LOP +","
                                          + tblLopDangKy.sMA_HOC_KY + " "
                             +"from LOP_DANG_KY ";
             SqlDataReader sqldtRd = null;
@@ -302,7 +302,8 @@ namespace DataAccessLayer
                 }
                 if (!All)
                 {
-                    list.RemoveRange(end, list.Count - end);
+                    if (list.Count > end)
+                         list.RemoveRange(end, list.Count - end);
                     list.RemoveRange(0, begin);
                 }
             }
@@ -365,7 +366,7 @@ namespace DataAccessLayer
 
         }
         /***********************************************************************/
-        private List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK, int begin, int end, Boolean All)
+        private List<tblLopDangKy> getLopDangKyByMaPhieu(int maPhieuDK, int begin, int end, Boolean All)
         {
             List<tblLopDangKy> list = new List<tblLopDangKy>();
 
@@ -434,7 +435,7 @@ namespace DataAccessLayer
 
 
         }
-        public int CountLopDangKyByMaPhieu(String maPhieuDK)
+        public int CountLopDangKyByMaPhieu(int maPhieuDK)
         {
             int result = 0;
             List<tblLopDangKy> list = new List<tblLopDangKy>();
@@ -476,11 +477,11 @@ namespace DataAccessLayer
 
 
         }
-        public List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK, int begin, int end)
+        public List<tblLopDangKy> getLopDangKyByMaPhieu(int maPhieuDK, int begin, int end)
         {
             return getLopDangKyByMaPhieu(maPhieuDK, begin, end, false);
         }
-        public List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK)
+        public List<tblLopDangKy> getLopDangKyByMaPhieu(int maPhieuDK)
         {
             return getLopDangKyByMaPhieu(maPhieuDK, 0, 0, true);
         }

@@ -70,21 +70,21 @@ namespace BusinessLogicLayer
                 return lopDAO.CountLopDK();
         }
 
-        public int CountLopDangKyByMaPhieu(String maPhieuDK)
+        public int CountLopDangKyByMaPhieu(int maPhieuDK)
         {
             if (lopDAO == null)
                 throw new Exception("Can't connect DAL");
             else
                 return lopDAO.CountLopDangKyByMaPhieu(maPhieuDK);
         }
-        public List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK, int begin, int end)
+        public List<tblLopDangKy> getLopDangKyByMaPhieu(int maPhieuDK, int begin, int end)
         {
             if (lopDAO == null)
                 throw new Exception("Can't connect DAL");
             else
                 return lopDAO.getLopDangKyByMaPhieu(maPhieuDK, begin, end);
         }
-        public List<tblLopDangKy> getLopDangKyByMaPhieu(String maPhieuDK)
+        public List<tblLopDangKy> getLopDangKyByMaPhieu(int maPhieuDK)
         {
             if (lopDAO == null)
                 throw new Exception("Can't connect DAL");

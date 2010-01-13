@@ -71,6 +71,7 @@
     <Compile Include="Util\StringPool.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tblPhongDAO.cs" />
     <Compile Include="tblLoaiMonHocDAO.cs" />
     <Compile Include="tblMonTienQuyetDAO.cs" />
     <Compile Include="ParamSQL.cs" />

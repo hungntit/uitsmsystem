@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tblPhongServices.cs" />
     <Compile Include="tblLoaiMonHocServices.cs" />
     <Compile Include="tblMonTienQuyetServices.cs" />
     <Compile Include="tblBangDiemServices.cs" />

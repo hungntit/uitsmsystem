@@ -103,7 +103,7 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "STT";
+            this.columnHeader1.Text = "Chọn";
             // 
             // columnHeader2
             // 
@@ -180,6 +180,7 @@
             this.btnTaoKhoa.TabIndex = 3;
             this.btnTaoKhoa.Text = "Tạo";
             this.btnTaoKhoa.UseVisualStyleBackColor = true;
+            this.btnTaoKhoa.Click += new System.EventHandler(this.btnTaoKhoa_Click);
             // 
             // label3
             // 
@@ -232,6 +233,7 @@
             this.btnTaoLQL.TabIndex = 8;
             this.btnTaoLQL.Text = "Tạo";
             this.btnTaoLQL.UseVisualStyleBackColor = true;
+            this.btnTaoLQL.Click += new System.EventHandler(this.btnTaoLQL_Click);
             // 
             // txtTenLopLQL
             // 
@@ -292,7 +294,7 @@
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "STT";
+            this.columnHeader4.Text = "Chọn";
             // 
             // columnHeader5
             // 
@@ -344,6 +346,7 @@
             this.btnTaoPhong.TabIndex = 9;
             this.btnTaoPhong.Text = "Tạo";
             this.btnTaoPhong.UseVisualStyleBackColor = true;
+            this.btnTaoPhong.Click += new System.EventHandler(this.btnTaoPhong_Click);
             // 
             // txtTenPhong
             // 
@@ -385,7 +388,7 @@
             // 
             // columnHeader7
             // 
-            this.columnHeader7.Text = "STT";
+            this.columnHeader7.Text = "Chọn";
             // 
             // columnHeader8
             // 
@@ -453,6 +456,7 @@
             this.Controls.Add(this.grbKhoa);
             this.Name = "frmCauHinh";
             this.Text = "frmCauHinh";
+            this.Load += new System.EventHandler(this.frmCauHinh_Load);
             this.grbDanhSachKhoa.ResumeLayout(false);
             this.grbKhoa.ResumeLayout(false);
             this.grbKhoa.PerformLayout();

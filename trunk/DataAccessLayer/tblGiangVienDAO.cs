@@ -414,6 +414,7 @@ namespace DataAccessLayer
                 }
                 if (!All)
                 {
+                    if (list.Count > end)
                     list.RemoveRange(end, list.Count - end);
                     list.RemoveRange(0, begin);
                 }
