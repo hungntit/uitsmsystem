@@ -35,28 +35,31 @@
             this.grbThongTinLopDangKy = new System.Windows.Forms.GroupBox();
             this.cmbNamhoc = new System.Windows.Forms.ComboBox();
             this.cmbHocky = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbPhong = new System.Windows.Forms.ComboBox();
+            this.cmbGiangVien = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.cmbTenMon = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cmbThu = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtTenLop = new System.Windows.Forms.TextBox();
+            this.txtMaLop = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlHead = new System.Windows.Forms.Panel();
+            this.dtNgayMoLop = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numCa = new System.Windows.Forms.NumericUpDown();
             this.pnlBottom.SuspendLayout();
             this.pnlMidle.SuspendLayout();
             this.grbThongTinLopDangKy.SuspendLayout();
             this.pnlHead.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCa)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLuu
@@ -67,6 +70,7 @@
             this.btnLuu.TabIndex = 1;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // pnlBottom
             // 
@@ -96,23 +100,25 @@
             // 
             // grbThongTinLopDangKy
             // 
+            this.grbThongTinLopDangKy.Controls.Add(this.numCa);
+            this.grbThongTinLopDangKy.Controls.Add(this.label3);
+            this.grbThongTinLopDangKy.Controls.Add(this.dtNgayMoLop);
             this.grbThongTinLopDangKy.Controls.Add(this.cmbNamhoc);
             this.grbThongTinLopDangKy.Controls.Add(this.cmbHocky);
-            this.grbThongTinLopDangKy.Controls.Add(this.comboBox3);
-            this.grbThongTinLopDangKy.Controls.Add(this.comboBox2);
+            this.grbThongTinLopDangKy.Controls.Add(this.cmbPhong);
+            this.grbThongTinLopDangKy.Controls.Add(this.cmbGiangVien);
             this.grbThongTinLopDangKy.Controls.Add(this.label2);
-            this.grbThongTinLopDangKy.Controls.Add(this.comboBox1);
-            this.grbThongTinLopDangKy.Controls.Add(this.textBox11);
+            this.grbThongTinLopDangKy.Controls.Add(this.cmbTenMon);
             this.grbThongTinLopDangKy.Controls.Add(this.label15);
             this.grbThongTinLopDangKy.Controls.Add(this.label14);
-            this.grbThongTinLopDangKy.Controls.Add(this.comboBox4);
+            this.grbThongTinLopDangKy.Controls.Add(this.cmbThu);
             this.grbThongTinLopDangKy.Controls.Add(this.label13);
             this.grbThongTinLopDangKy.Controls.Add(this.label12);
             this.grbThongTinLopDangKy.Controls.Add(this.label10);
             this.grbThongTinLopDangKy.Controls.Add(this.label8);
             this.grbThongTinLopDangKy.Controls.Add(this.label9);
-            this.grbThongTinLopDangKy.Controls.Add(this.textBox6);
-            this.grbThongTinLopDangKy.Controls.Add(this.textBox4);
+            this.grbThongTinLopDangKy.Controls.Add(this.txtTenLop);
+            this.grbThongTinLopDangKy.Controls.Add(this.txtMaLop);
             this.grbThongTinLopDangKy.Controls.Add(this.label7);
             this.grbThongTinLopDangKy.Location = new System.Drawing.Point(10, 3);
             this.grbThongTinLopDangKy.Name = "grbThongTinLopDangKy";
@@ -143,10 +149,10 @@
             this.cmbHocky.Size = new System.Drawing.Size(109, 21);
             this.cmbHocky.TabIndex = 59;
             // 
-            // comboBox3
+            // cmbPhong
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cmbPhong.FormattingEnabled = true;
+            this.cmbPhong.Items.AddRange(new object[] {
             "2",
             "3",
             "4",
@@ -154,18 +160,18 @@
             "6",
             "7",
             "CN"});
-            this.comboBox3.Location = new System.Drawing.Point(716, 19);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(75, 21);
-            this.comboBox3.TabIndex = 58;
+            this.cmbPhong.Location = new System.Drawing.Point(716, 19);
+            this.cmbPhong.Name = "cmbPhong";
+            this.cmbPhong.Size = new System.Drawing.Size(75, 21);
+            this.cmbPhong.TabIndex = 58;
             // 
-            // comboBox2
+            // cmbGiangVien
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(394, 55);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(231, 21);
-            this.comboBox2.TabIndex = 57;
+            this.cmbGiangVien.FormattingEnabled = true;
+            this.cmbGiangVien.Location = new System.Drawing.Point(394, 55);
+            this.cmbGiangVien.Name = "cmbGiangVien";
+            this.cmbGiangVien.Size = new System.Drawing.Size(231, 21);
+            this.cmbGiangVien.TabIndex = 57;
             // 
             // label2
             // 
@@ -176,20 +182,13 @@
             this.label2.TabIndex = 56;
             this.label2.Text = "Giảng viên :";
             // 
-            // comboBox1
+            // cmbTenMon
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(394, 22);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(231, 21);
-            this.comboBox1.TabIndex = 55;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(717, 87);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(41, 20);
-            this.textBox11.TabIndex = 54;
+            this.cmbTenMon.FormattingEnabled = true;
+            this.cmbTenMon.Location = new System.Drawing.Point(394, 22);
+            this.cmbTenMon.Name = "cmbTenMon";
+            this.cmbTenMon.Size = new System.Drawing.Size(231, 21);
+            this.cmbTenMon.TabIndex = 55;
             // 
             // label15
             // 
@@ -209,11 +208,11 @@
             this.label14.TabIndex = 50;
             this.label14.Text = " Học kỳ :";
             // 
-            // comboBox4
+            // cmbThu
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.cmbThu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbThu.FormattingEnabled = true;
+            this.cmbThu.Items.AddRange(new object[] {
             "2",
             "3",
             "4",
@@ -221,10 +220,10 @@
             "6",
             "7",
             "CN"});
-            this.comboBox4.Location = new System.Drawing.Point(716, 52);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(42, 21);
-            this.comboBox4.TabIndex = 49;
+            this.cmbThu.Location = new System.Drawing.Point(716, 52);
+            this.cmbThu.Name = "cmbThu";
+            this.cmbThu.Size = new System.Drawing.Size(42, 21);
+            this.cmbThu.TabIndex = 49;
             // 
             // label13
             // 
@@ -271,19 +270,19 @@
             this.label9.TabIndex = 43;
             this.label9.Text = "Tên Lớp Đăng ký:";
             // 
-            // textBox6
+            // txtTenLop
             // 
-            this.textBox6.Location = new System.Drawing.Point(144, 56);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(111, 20);
-            this.textBox6.TabIndex = 42;
+            this.txtTenLop.Location = new System.Drawing.Point(144, 56);
+            this.txtTenLop.Name = "txtTenLop";
+            this.txtTenLop.Size = new System.Drawing.Size(111, 20);
+            this.txtTenLop.TabIndex = 42;
             // 
-            // textBox4
+            // txtMaLop
             // 
-            this.textBox4.Location = new System.Drawing.Point(143, 23);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(112, 20);
-            this.textBox4.TabIndex = 41;
+            this.txtMaLop.Location = new System.Drawing.Point(143, 23);
+            this.txtMaLop.Name = "txtMaLop";
+            this.txtMaLop.Size = new System.Drawing.Size(112, 20);
+            this.txtMaLop.TabIndex = 41;
             // 
             // label7
             // 
@@ -311,6 +310,48 @@
             this.pnlHead.Size = new System.Drawing.Size(961, 38);
             this.pnlHead.TabIndex = 3;
             // 
+            // dtNgayMoLop
+            // 
+            this.dtNgayMoLop.CustomFormat = "dd-M-yyyy";
+            this.dtNgayMoLop.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtNgayMoLop.Location = new System.Drawing.Point(405, 96);
+            this.dtNgayMoLop.Name = "dtNgayMoLop";
+            this.dtNgayMoLop.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dtNgayMoLop.RightToLeftLayout = true;
+            this.dtNgayMoLop.Size = new System.Drawing.Size(90, 20);
+            this.dtNgayMoLop.TabIndex = 61;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(312, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 62;
+            this.label3.Text = "Ngày Mở lớp";
+            // 
+            // numCa
+            // 
+            this.numCa.Location = new System.Drawing.Point(717, 92);
+            this.numCa.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numCa.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numCa.Name = "numCa";
+            this.numCa.Size = new System.Drawing.Size(74, 20);
+            this.numCa.TabIndex = 63;
+            this.numCa.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // frmLopDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,12 +362,14 @@
             this.Controls.Add(this.pnlHead);
             this.Name = "frmLopDangKy";
             this.Text = "LopDangKy";
+            this.Load += new System.EventHandler(this.frmLopDangKy_Load);
             this.pnlBottom.ResumeLayout(false);
             this.pnlMidle.ResumeLayout(false);
             this.grbThongTinLopDangKy.ResumeLayout(false);
             this.grbThongTinLopDangKy.PerformLayout();
             this.pnlHead.ResumeLayout(false);
             this.pnlHead.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCa)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -340,23 +383,25 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlHead;
         private System.Windows.Forms.GroupBox grbThongTinLopDangKy;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.ComboBox cmbTenMon;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cmbThu;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtTenLop;
+        private System.Windows.Forms.TextBox txtMaLop;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbGiangVien;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbPhong;
         private System.Windows.Forms.ComboBox cmbHocky;
         private System.Windows.Forms.ComboBox cmbNamhoc;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtNgayMoLop;
+        private System.Windows.Forms.NumericUpDown numCa;
     }
 }

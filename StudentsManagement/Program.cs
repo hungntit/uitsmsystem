@@ -15,7 +15,7 @@ namespace StudentsManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLopDangKy());
+            Application.Run(new frmDangKyMonHoc());
         }
     }
 }

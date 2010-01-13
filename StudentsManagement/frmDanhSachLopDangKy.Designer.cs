@@ -63,7 +63,6 @@
             this.btnChonTatCa = new System.Windows.Forms.Button();
             this.pnlDieuHuong = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnXem = new System.Windows.Forms.Button();
             this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
             this.txtTongSo = new System.Windows.Forms.TextBox();
             this.pnlKetQua = new System.Windows.Forms.Panel();
@@ -73,7 +72,6 @@
             this.pnlDanhSachLopDangKy = new System.Windows.Forms.Panel();
             this.lstDanhSachLopDangKy = new System.Windows.Forms.ListView();
             this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader10 = new System.Windows.Forms.ColumnHeader();
@@ -329,6 +327,7 @@
             this.btnCuoi.TabIndex = 9;
             this.btnCuoi.Text = "Cuối";
             this.btnCuoi.UseVisualStyleBackColor = true;
+            this.btnCuoi.Click += new System.EventHandler(this.btnCuoi_Click);
             // 
             // btnSau
             // 
@@ -338,6 +337,7 @@
             this.btnSau.TabIndex = 8;
             this.btnSau.Text = "Sau";
             this.btnSau.UseVisualStyleBackColor = true;
+            this.btnSau.Click += new System.EventHandler(this.btnSau_Click);
             // 
             // label16
             // 
@@ -356,6 +356,7 @@
             this.btnTruoc.TabIndex = 7;
             this.btnTruoc.Text = "Trước";
             this.btnTruoc.UseVisualStyleBackColor = true;
+            this.btnTruoc.Click += new System.EventHandler(this.btnTruoc_Click);
             // 
             // btnDau
             // 
@@ -365,6 +366,7 @@
             this.btnDau.TabIndex = 6;
             this.btnDau.Text = "Đầu";
             this.btnDau.UseVisualStyleBackColor = true;
+            this.btnDau.Click += new System.EventHandler(this.btnDau_Click);
             // 
             // pnlTimCB
             // 
@@ -440,15 +442,6 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Số dòng hiển thị trên 1 trang :";
             // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(193, 5);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(78, 26);
-            this.btnXem.TabIndex = 3;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            // 
             // columnHeader9
             // 
             this.columnHeader9.Text = "Tên môn";
@@ -513,7 +506,6 @@
             this.lstDanhSachLopDangKy.CheckBoxes = true;
             this.lstDanhSachLopDangKy.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader8,
-            this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader9,
@@ -536,11 +528,6 @@
             // 
             this.columnHeader8.Text = "Chọn";
             this.columnHeader8.Width = 59;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "STT";
-            this.columnHeader1.Width = 46;
             // 
             // columnHeader2
             // 
@@ -580,7 +567,6 @@
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnSua);
-            this.panel2.Controls.Add(this.btnXem);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.btnThem);
             this.panel2.Controls.Add(this.btnXemTatCa);
@@ -591,21 +577,23 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(358, 5);
+            this.btnXoa.Location = new System.Drawing.Point(313, 7);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(78, 26);
             this.btnXoa.TabIndex = 5;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(275, 5);
+            this.btnSua.Location = new System.Drawing.Point(209, 6);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(78, 26);
             this.btnSua.TabIndex = 4;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // button3
             // 
@@ -624,6 +612,7 @@
             this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXemTatCa
             // 
@@ -633,6 +622,7 @@
             this.btnXemTatCa.TabIndex = 0;
             this.btnXemTatCa.Text = "Xem tất cả";
             this.btnXemTatCa.UseVisualStyleBackColor = true;
+            this.btnXemTatCa.Click += new System.EventHandler(this.btnXemTatCa_Click);
             // 
             // label1
             // 
@@ -710,7 +700,6 @@
         private System.Windows.Forms.Button btnChonTatCa;
         private System.Windows.Forms.Panel pnlDieuHuong;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.TextBox txtTongSo;
         private System.Windows.Forms.Panel pnlKetQua;
@@ -720,7 +709,6 @@
         private System.Windows.Forms.Panel pnlDanhSachLopDangKy;
         private System.Windows.Forms.ListView lstDanhSachLopDangKy;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader10;

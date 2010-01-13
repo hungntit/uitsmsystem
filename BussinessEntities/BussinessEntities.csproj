@@ -59,6 +59,7 @@
     <Compile Include="tblMonhoc.cs" />
     <Compile Include="tblPerson.cs" />
     <Compile Include="tblPhieuDangKy.cs" />
+    <Compile Include="tblPhong.cs" />
     <Compile Include="tblSinhVien.cs" />
   </ItemGroup>
   <ItemGroup>
